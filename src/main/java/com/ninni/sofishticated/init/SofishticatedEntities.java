@@ -1,0 +1,50 @@
+package com.ninni.sofishticated.init;
+
+import com.ninni.sofishticated.Sofishticated;
+import com.ninni.sofishticated.entity.AnglerFishEntity;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.*;
+import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.passive.FishEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.SpawnEggItem;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
+import net.minecraft.world.Heightmap;
+import net.minecraft.world.biome.BiomeKeys;
+
+@SuppressWarnings("deprecation")
+public class SofishticatedEntities {
+    public static final EntityType<AnglerFishEntity> ANGLER_FISH = register(
+        "angler_fish",
+        FabricEntityTypeBuilder.createMob()
+                               .entityFactory(AnglerFishEntity::new)
+                               .defaultAttributes(AnglerFishEntity::createAnglerfishAttributes)
+                               .spawnGroup(SpawnGroup.WATER_AMBIENT)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, FishEntity::canSpawn)
+                               .dimensions(EntityDimensions.fixed(0.6F, 0.6F))
+                               .trackRangeBlocks(8),
+        new int[]{ 0x372d2a, 0x73efe8 }
+    );
+
+
+    static {
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_FROZEN_OCEAN, BiomeKeys.DEEP_COLD_OCEAN), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.ANGLER_FISH, 10, 1, 1);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static <T extends Entity> EntityType<T> register(String id, EntityType<T> entityType, int[] spawnEggColors) {
+        if (spawnEggColors != null)
+            Registry.register(Registry.ITEM, new Identifier(Sofishticated.MOD_ID, id + "_spawn_egg"), new SpawnEggItem((EntityType<? extends MobEntity>) entityType, spawnEggColors[0], spawnEggColors[1], new Item.Settings().maxCount(64).group(Sofishticated.ITEM_GROUP)));
+
+        return Registry.register(Registry.ENTITY_TYPE, new Identifier(Sofishticated.MOD_ID, id), entityType);
+    }
+
+    private static <T extends Entity> EntityType<T> register(String id, FabricEntityTypeBuilder<T> entityType, int[] spawnEggColors) {
+        return register(id, entityType.build(), spawnEggColors);
+    }
+
+}
+
