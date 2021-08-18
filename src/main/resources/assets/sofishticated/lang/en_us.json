@@ -5,5 +5,10 @@
 
   "item.sofishticated.angler_fish_spawn_egg": "Angler Fish Spawn Egg",
   "item.sofishticated.angler_fish": "Angler Fish",
-  "item.sofishticated.angler_fish_bucket": "Bucket of Angler Fish"
+  "item.sofishticated.angler_fish_bucket": "Bucket of Angler Fish",
+  "subtitles.entity.sofishticated.fish.flop": "Fish flops",
+  "subtitles.entity.sofishticated.fish.hurt": "Fish hurts",
+  "subtitles.entity.sofishticated.fish.death": "Fish dies",
+  "subtitles.entity.sofishticated.fish.ambient": "Swimming"
+
 }

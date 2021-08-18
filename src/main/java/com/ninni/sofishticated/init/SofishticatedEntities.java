@@ -31,7 +31,7 @@ public class SofishticatedEntities {
 
 
     static {
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_FROZEN_OCEAN, BiomeKeys.DEEP_COLD_OCEAN), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.ANGLER_FISH, 10, 1, 1);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_FROZEN_OCEAN, BiomeKeys.DEEP_OCEAN), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.ANGLER_FISH, 10, 1, 1);
     }
 
     @SuppressWarnings("unchecked")

@@ -1,6 +1,7 @@
 package com.ninni.sofishticated.entity;
 
 import com.ninni.sofishticated.init.SofishticatedItems;
+import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -49,21 +50,21 @@ public class AnglerFishEntity extends FishEntity {
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SoundEvents.ENTITY_TROPICAL_FISH_DEATH;
+        return SofishticatedSoundEvents.ENTITY_FISH_DEATH;
     }
 
     @Override
     public SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_COD_AMBIENT;
+        return SofishticatedSoundEvents.ENTITY_FISH_AMBIENT;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SoundEvents.ENTITY_TROPICAL_FISH_HURT;
+        return SofishticatedSoundEvents.ENTITY_FISH_HURT;
     }
 
     @Override
     protected SoundEvent getFlopSound() {
-        return SoundEvents.ENTITY_TROPICAL_FISH_FLOP;
+        return SofishticatedSoundEvents.ENTITY_FISH_FLOP;
     }
 }
