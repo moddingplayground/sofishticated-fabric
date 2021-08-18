@@ -37,7 +37,9 @@ public class AnglerFishEntity extends FishEntity {
     @Override
     public void tickMovement() {
         super.tickMovement();
-        this.world.addParticle(ParticleTypes.GLOW, this.getParticleX(0.15D), this.getBodyY(1.25D), this.getParticleZ(0.15D), 0.0D, 0.0D, 0.0D);
+        if (this.isSubmergedInWater()) {
+            this.world.addParticle(ParticleTypes.GLOW, this.getParticleX(0.15D), this.getBodyY(1.25D), this.getParticleZ(0.15D), 0.0D, 0.0D, 0.0D);
+        }
     }
 
     @Override
