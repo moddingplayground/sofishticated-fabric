@@ -2,6 +2,7 @@ package com.ninni.sofishticated.init;
 
 import com.ninni.sofishticated.Sofishticated;
 import com.ninni.sofishticated.entity.AnglerFishEntity;
+import com.ninni.sofishticated.entity.MantaRayEntity;
 import com.ninni.sofishticated.entity.SunfishEntity;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
@@ -40,6 +41,18 @@ public class SofishticatedEntities {
                                .dimensions(EntityDimensions.fixed(1.6F, 2.0F))
                                .trackRangeBlocks(8),
         new int[]{ 0x505359, 0xcfd0d0 }
+    );
+
+    public static final EntityType<MantaRayEntity> MANTA_RAY = register(
+        "manta_ray",
+        FabricEntityTypeBuilder.createMob()
+                               .entityFactory(MantaRayEntity::new)
+                               .defaultAttributes(MantaRayEntity::createMantaRayAttributes)
+                               .spawnGroup(SpawnGroup.WATER_CREATURE)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, MantaRayEntity::canSpawn)
+                               .dimensions(EntityDimensions.fixed(3.5F, 0.6F))
+                               .trackRangeBlocks(8),
+        new int[]{ 0x303030, 0xe5e9e8 }
     );
 
     static {

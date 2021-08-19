@@ -11,8 +11,14 @@ import net.minecraft.util.Identifier;
 public class SofishticatedEntityModelLayers {
     public static final EntityModelLayer ANGLER_FISH = registerMain("angler_fish");
     public static final EntityModelLayer SUNFISH = registerMain("sunfish");
+    public static final EntityModelLayer MANTA_RAY = registerMain("manta_ray");
+    public static final EntityModelLayer MANTA_RAY_SADDLE = register("manta_ray", "saddle");
 
     private static EntityModelLayer registerMain(String id) {
         return EntityModelLayersInvoker.register(new Identifier(Sofishticated.MOD_ID, id).toString(), "main");
+    }
+
+    private static EntityModelLayer register(String id, String layer) {
+        return EntityModelLayersInvoker.register(new Identifier(Sofishticated.MOD_ID, id).toString(), layer);
     }
 }
