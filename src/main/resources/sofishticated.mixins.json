@@ -4,10 +4,12 @@
   "package": "com.ninni.sofishticated.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "StatusEffectUtilMixin"
   ],
   "client": [
     "client.EntityModelLayersInvoker",
-    "client.EntityModelLayersMixin"
+    "client.EntityModelLayersMixin",
+    "client.LightmapTextureManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
