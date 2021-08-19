@@ -62,7 +62,7 @@ public class SunfishEntity extends WaterCreatureEntity {
 
     @Override
     protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
-        return dimensions.height * 0.65F;
+        return dimensions.height * 1.2F;
     }
 
     @Override

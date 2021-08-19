@@ -22,7 +22,7 @@ public class SunfishEntityRenderer<T extends LivingEntity> extends MobEntityRend
     protected void setupTransforms(SunfishEntity sunfishEntity, MatrixStack matrixStack, float f, float g, float h) {
         super.setupTransforms(sunfishEntity, matrixStack, f, g, h);
         if (!sunfishEntity.isSubmergedInWater()) {
-            matrixStack.translate(0.85D, 0.25D, 0.0D);
+            matrixStack.translate(0.85D, 0.45D, 0.0D);
             matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(90.0F));
         }
 
