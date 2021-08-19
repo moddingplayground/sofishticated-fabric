@@ -98,12 +98,12 @@ public class SunfishEntityModel extends SinglePartEntityModel<SunfishEntity> {
     public void setAngles(SunfishEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
 		float speed = 1.5f;
 		float degree = 1.5f;
-		this.body.roll = MathHelper.cos(-1F + animationProgress * speed * 0.2F) * degree * 0.2F * limbDistance;
-		this.analFin.roll = MathHelper.cos(3F + animationProgress * speed * 0.2F) * degree * 1.6F * limbDistance;
-		this.dorsalFin.roll = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 1.6F * limbDistance;
-		this.tail.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * limbDistance;
-		this.leftPectoralFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * limbDistance + 0.8F;
-		this.rightPectoralFin.yaw = MathHelper.cos(-1F + animationProgress * speed * 0.4F) * degree * 0.8F * limbDistance - 0.8F;
+		this.body.roll = MathHelper.cos(-1F + animationProgress * speed * 0.2F) * degree * 0.2F * 0.25F;
+		this.analFin.roll = MathHelper.cos(3F + animationProgress * speed * 0.2F) * degree * 1.6F * 0.25F;
+		this.dorsalFin.roll = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 1.6F * 0.25F;
+		this.tail.yaw = MathHelper.cos(limbAngle * speed * 0.4F) * degree * 0.8F * limbDistance;
+		this.leftPectoralFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F + 0.8F;
+		this.rightPectoralFin.yaw = MathHelper.cos(-1F + animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F - 0.8F;
     }
 
     @Override

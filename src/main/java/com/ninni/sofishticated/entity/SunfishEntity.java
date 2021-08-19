@@ -62,7 +62,7 @@ public class SunfishEntity extends WaterCreatureEntity {
 
     @Override
     protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
-        return dimensions.height * 1.2F;
+        return dimensions.height * 0.65F;
     }
 
     @Override
@@ -93,18 +93,6 @@ public class SunfishEntity extends WaterCreatureEntity {
             super.travel(movementInput);
         }
 
-    }
-
-    @Override
-    public void tickMovement() {
-        if (!this.isTouchingWater() && this.onGround && this.verticalCollision) {
-            this.setVelocity(this.getVelocity().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.05F, 0.4000000059604645D, (this.random.nextFloat() * 2.0F - 1.0F) * 0.05F));
-            this.onGround = false;
-            this.velocityDirty = true;
-            this.playSound(this.getFlopSound(), this.getSoundVolume(), this.getSoundPitch());
-        }
-
-        super.tickMovement();
     }
 
     protected boolean hasSelfControl() {
@@ -180,10 +168,6 @@ public class SunfishEntity extends WaterCreatureEntity {
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
         return SofishticatedSoundEvents.ENTITY_FISH_HURT;
-    }
-
-    protected SoundEvent getFlopSound() {
-        return SofishticatedSoundEvents.ENTITY_FISH_FLOP;
     }
 
     @SuppressWarnings("unused")
