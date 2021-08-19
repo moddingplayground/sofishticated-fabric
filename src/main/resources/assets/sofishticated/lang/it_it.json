@@ -2,10 +2,13 @@
   "itemGroup.sofishticated.item_group": "Sofishticated",
 
   "entity.sofishticated.angler_fish": "Pesce abissale",
+  "entity.sofishticated.sunfish": "Pesce luna",
 
   "item.sofishticated.angler_fish_spawn_egg": "Uovo generatore di pesce abissale",
   "item.sofishticated.angler_fish": "Pesce abissale",
   "item.sofishticated.angler_fish_bucket": "Secchio con pesce abissale",
+  "item.sofishticated.sunfish_spawn_egg": "Uovo generatore di pesce luna",
+
   "subtitles.entity.sofishticated.fish.flop": "Pesce si dibatte",
   "subtitles.entity.sofishticated.fish.hurt": "Pesce ferito",
   "subtitles.entity.sofishticated.fish.death": "Pesce muore",

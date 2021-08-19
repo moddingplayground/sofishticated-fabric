@@ -31,7 +31,7 @@ public class AnglerFishEntity extends FishEntity {
         return new ItemStack(SofishticatedItems.ANGLER_FISH_BUCKET);
     }
 
-    public static DefaultAttributeContainer.Builder createAnglerfishAttributes() {
+    public static DefaultAttributeContainer.Builder createAnglerFishAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 6.0D);
     }
 

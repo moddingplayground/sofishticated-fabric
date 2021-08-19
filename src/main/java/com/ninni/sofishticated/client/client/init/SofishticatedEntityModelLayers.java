@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 @Environment(EnvType.CLIENT)
 public class SofishticatedEntityModelLayers {
     public static final EntityModelLayer ANGLER_FISH = registerMain("angler_fish");
+    public static final EntityModelLayer SUNFISH = registerMain("sunfish");
 
     private static EntityModelLayer registerMain(String id) {
         return EntityModelLayersInvoker.register(new Identifier(Sofishticated.MOD_ID, id).toString(), "main");

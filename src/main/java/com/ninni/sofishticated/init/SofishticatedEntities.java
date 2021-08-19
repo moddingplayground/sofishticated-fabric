@@ -2,6 +2,7 @@ package com.ninni.sofishticated.init;
 
 import com.ninni.sofishticated.Sofishticated;
 import com.ninni.sofishticated.entity.AnglerFishEntity;
+import com.ninni.sofishticated.entity.SunfishEntity;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -21,7 +22,7 @@ public class SofishticatedEntities {
         "angler_fish",
         FabricEntityTypeBuilder.createMob()
                                .entityFactory(AnglerFishEntity::new)
-                               .defaultAttributes(AnglerFishEntity::createAnglerfishAttributes)
+                               .defaultAttributes(AnglerFishEntity::createAnglerFishAttributes)
                                .spawnGroup(SpawnGroup.WATER_AMBIENT)
                                .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, FishEntity::canSpawn)
                                .dimensions(EntityDimensions.fixed(0.6F, 0.6F))
@@ -29,9 +30,21 @@ public class SofishticatedEntities {
         new int[]{ 0x372d2a, 0x73efe8 }
     );
 
+    public static final EntityType<SunfishEntity> SUNFISH = register(
+        "sunfish",
+        FabricEntityTypeBuilder.createMob()
+                               .entityFactory(SunfishEntity::new)
+                               .defaultAttributes(SunfishEntity::createSunfishAttributes)
+                               .spawnGroup(SpawnGroup.WATER_CREATURE)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, SunfishEntity::canSpawn)
+                               .dimensions(EntityDimensions.fixed(1.6F, 2.0F))
+                               .trackRangeBlocks(8),
+        new int[]{ 0x505359, 0xcfd0d0 }
+    );
 
     static {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_FROZEN_OCEAN, BiomeKeys.DEEP_OCEAN), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.ANGLER_FISH, 10, 1, 1);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.OCEAN, BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.COLD_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.SUNFISH, 10, 1, 1);
     }
 
     @SuppressWarnings("unchecked")
