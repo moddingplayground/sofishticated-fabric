@@ -1,6 +1,7 @@
 package com.ninni.sofishticated.entity;
 
 import com.ninni.sofishticated.entity.entity.ai.goal.MantaRayJumpGoal;
+import com.ninni.sofishticated.entity.entity.ai.goal.MantaRaySwimAroundGoal;
 import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import com.ninni.sofishticated.init.SofishticatedStatusEffects;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
@@ -62,7 +63,7 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
     protected void initGoals() {
         this.goalSelector.add(0, new BreatheAirGoal(this));
         this.goalSelector.add(0, new MoveIntoWaterGoal(this));
-        this.goalSelector.add(4, new SwimAroundGoal(this, 1.0D, 10));
+        this.goalSelector.add(4, new MantaRaySwimAroundGoal(this, 1.0D, 10));
         this.goalSelector.add(4, new LookAroundGoal(this));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(5, new MantaRayJumpGoal(this, 10));
@@ -115,10 +116,9 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
             if (stack.isIn(FabricToolTags.SHEARS)) {
                 this.setSaddled(false);
                 this.dropItem(Items.SADDLE);
-                /*if (!player.isCreative()) {
+                if (!player.isCreative()) {
                     stack.damage(1, player, p -> p.sendToolBreakStatus(hand));
-                }*/
-
+                }
                 this.world.playSoundFromEntity(null, player, SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.PLAYERS, 1.0f, 1.0f);
                 return ActionResult.success(player.world.isClient);
             } else if (!this.hasPassengers() && !player.shouldCancelInteraction()) {
@@ -255,7 +255,7 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
                 this.setMoistness(2400);
                 for (Entity entity : this.getPassengerList()) {
                     if (entity instanceof LivingEntity livingEntity) {
-                        livingEntity.addStatusEffect(new StatusEffectInstance(SofishticatedStatusEffects.MANTAS_BLESSING, 2, 0, false, false));
+                        livingEntity.addStatusEffect(new StatusEffectInstance(SofishticatedStatusEffects.MANTAS_BLESSING, (20 * (5 + 1)) - (20 / 2), 0, true, true));
                     }
                 }
             } else {
