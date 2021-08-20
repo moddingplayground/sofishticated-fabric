@@ -4,9 +4,11 @@
   "package": "com.ninni.sofishticated.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "StatusEffectUtilMixin"
+    "StatusEffectUtilMixin",
+    "WanderAroundGoalAccessor"
   ],
   "client": [
+    "client.BipedEntityModelMixin",
     "client.EntityModelLayersInvoker",
     "client.EntityModelLayersMixin",
     "client.LightmapTextureManagerMixin"

@@ -53,7 +53,9 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
     }
 
     public static DefaultAttributeContainer.Builder createMantaRayAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 16.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.2D);
+        return MobEntity.createMobAttributes()
+                        .add(EntityAttributes.GENERIC_MAX_HEALTH, 16.0D)
+                        .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.2D);
     }
 
     @Override
@@ -216,11 +218,15 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
             super.travel(movementInput);
         }
 
-        if (this.isSaddled()) {
+        if (this.isSaddled() && !this.hasPassengers()) {
             PlayerEntity closestPlayer = this.world.getClosestPlayer(this, 16.0d);
             if (closestPlayer != null) {
                 this.navigation.startMovingTo(closestPlayer, 1.0d);
             }
+        }
+
+        if (this.hasPassengers()) {
+            this.setVelocity(this.getVelocity().add(0.0D, 0.0075D, 0.0D));
         }
     }
 
