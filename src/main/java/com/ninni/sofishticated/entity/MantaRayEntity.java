@@ -269,7 +269,7 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
                 this.setMoistness(2400);
                 for (Entity entity : this.getPassengerList()) {
                     if (entity instanceof LivingEntity livingEntity) {
-                        livingEntity.addStatusEffect(new StatusEffectInstance(SofishticatedStatusEffects.MANTAS_BLESSING, (20 * (5 + 1)) - (20 / 2), 0, true, true));
+                        livingEntity.addStatusEffect(new StatusEffectInstance(SofishticatedStatusEffects.MANTAS_BLESSING, (20) - (20 / 2), 0, true, true));
                     }
                 }
             } else {
