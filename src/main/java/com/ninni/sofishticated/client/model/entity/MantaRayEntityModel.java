@@ -117,8 +117,8 @@ public class MantaRayEntityModel extends SinglePartEntityModel<MantaRayEntity> {
 	public void setAngles(MantaRayEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
 		float speed = 1.5f;
 		float degree = 0.75f;
-		this.torso.pitch = headPitch * 0.017453292F;
-		this.torso.yaw = headYaw * 0.017453292F;
+		this.torso.pitch = headPitch * 0.01F;
+		this.torso.yaw = headYaw * 0.01F;
 		this.torso.pitch += MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.3F * limbDistance;
 		this.tail.pitch = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.8F * 0.25F;
 		this.torso.roll = MathHelper.cos(-1.0F + limbAngle * speed * 0.1F) * degree * 0.4F * limbDistance;

@@ -76,6 +76,20 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
         this.dataTracker.startTracking(MOISTNESS, 2400);
     }
 
+    protected void copyEntityData(Entity entity) {
+        entity.setBodyYaw(this.getYaw());
+        float f = MathHelper.wrapDegrees(entity.getYaw() - this.getYaw());
+        float g = MathHelper.clamp(f, -60.0F, 60.0F);
+        entity.prevYaw += g - f;
+        entity.setYaw(entity.getYaw() + g - f);
+        entity.setHeadYaw(entity.getYaw());
+    }
+
+    @Override
+    public void onPassengerLookAround(Entity passenger) {
+        this.copyEntityData(passenger);
+    }
+
     public int getMoistness() {
         return this.dataTracker.get(MOISTNESS);
     }
@@ -274,8 +288,8 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
 
             if (this.world.isClient && this.isTouchingWater() && this.getVelocity().lengthSquared() > 0.03D) {
                 Vec3d vec3d = this.getRotationVec(0.0F);
-                float f = MathHelper.cos(this.getYaw() * 0.017453292F) * 0.3F;
-                float g = MathHelper.sin(this.getYaw() * 0.017453292F) * 0.3F;
+                float f = MathHelper.cos(this.getYaw() * 0.01F) * 0.3F;
+                float g = MathHelper.sin(this.getYaw() * 0.01F) * 0.3F;
                 float h = 1.2F - this.random.nextFloat() * 0.7F;
 
                 for(int i = 0; i < 2; ++i) {
