@@ -13,11 +13,10 @@ import net.minecraft.util.Identifier;
 
 public class MantaRayEntityRenderer<T extends LivingEntity> extends MobEntityRenderer<MantaRayEntity, MantaRayEntityModel> {
     public static final Identifier TEXTURE = new Identifier(Sofishticated.MOD_ID, "textures/entity/manta_ray/manta_ray.png");
-    public static final Identifier SADDLED_TEXTURE = new Identifier(Sofishticated.MOD_ID, "textures/entity/manta_ray/manta_ray_saddled.png");
 
     public MantaRayEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new MantaRayEntityModel(ctx.getPart(SofishticatedEntityModelLayers.MANTA_RAY)), 0.0F);
-        this.addFeature(new SaddleFeatureRenderer<>(this, new MantaRayEntityModel(ctx.getPart(SofishticatedEntityModelLayers.MANTA_RAY_SADDLE)), new Identifier(Sofishticated.MOD_ID, "textures/entity/manta_ray/manta_ray_saddle_overlay.png")));
+        this.addFeature(new SaddleFeatureRenderer<>(this, new MantaRayEntityModel(ctx.getPart(SofishticatedEntityModelLayers.MANTA_RAY_SADDLE)), new Identifier(Sofishticated.MOD_ID, "textures/entity/manta_ray/manta_ray_saddle.png")));
     }
 
     @Override
@@ -27,6 +26,6 @@ public class MantaRayEntityRenderer<T extends LivingEntity> extends MobEntityRen
 
     @Override
     public Identifier getTexture(MantaRayEntity entity) {
-        return entity.isSaddled() ? SADDLED_TEXTURE : TEXTURE;
+        return TEXTURE;
     }
 }
