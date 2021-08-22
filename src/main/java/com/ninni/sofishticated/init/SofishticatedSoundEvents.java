@@ -16,6 +16,7 @@ public class SofishticatedSoundEvents {
     }
 
     public static final SoundEvent ENTITY_PIRANHA_AMBIENT = piranha("ambient");
+    public static final SoundEvent ENTITY_PIRANHA_NIBBLE = piranha("nibble");
     private static SoundEvent piranha(String id) {
         return createEntitySound("piranha", id);
     }

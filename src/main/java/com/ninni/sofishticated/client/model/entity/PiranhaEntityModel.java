@@ -100,6 +100,7 @@ public class PiranhaEntityModel extends SinglePartEntityModel<PiranhaEntity> {
 			float speed = 2.5f;
 			float degree = 1.5f;
 			this.body.yaw = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;
+			this.jaw.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.2F * limbDistance;
 			this.tail.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
 			this.leftFin.roll = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
 			this.rightFin.roll = MathHelper.cos(3.0F + animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;

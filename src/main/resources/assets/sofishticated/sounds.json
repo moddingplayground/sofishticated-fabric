@@ -36,5 +36,13 @@
       "sofishticated:entity/piranha/thud"
     ],
     "subtitle": "subtitles.entity.sofishticated.piranha.ambient"
+  },
+  "entity.piranha.nibble": {
+    "sounds": [
+      "minecraft:mob/fox/bite1",
+      "minecraft:mob/fox/bite2",
+      "minecraft:mob/fox/bite3"
+    ],
+    "subtitle": "subtitles.entity.sofishticated.piranha.nibble"
   }
 }
