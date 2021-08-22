@@ -15,6 +15,11 @@ public class SofishticatedSoundEvents {
         return createEntitySound("fish", id);
     }
 
+    public static final SoundEvent ENTITY_PIRANHA_AMBIENT = piranha("ambient");
+    private static SoundEvent piranha(String id) {
+        return createEntitySound("piranha", id);
+    }
+
     private static SoundEvent register(String id) {
         Identifier identifier = new Identifier(Sofishticated.MOD_ID, id);
         return Registry.register(Registry.SOUND_EVENT, identifier, new SoundEvent(identifier));

@@ -86,13 +86,18 @@ public class PiranhaEntity extends FishEntity implements Angerable {
     }
 
     @Override
+    protected float getSoundVolume() {
+        return 0.3F;
+    }
+
+    @Override
     protected SoundEvent getDeathSound() {
         return SofishticatedSoundEvents.ENTITY_FISH_DEATH;
     }
 
     @Override
     public SoundEvent getAmbientSound() {
-        return SoundEvents.ENTITY_WOLF_AMBIENT;
+        return SofishticatedSoundEvents.ENTITY_PIRANHA_AMBIENT;
     }
 
     @Override
@@ -104,6 +109,8 @@ public class PiranhaEntity extends FishEntity implements Angerable {
     protected SoundEvent getFlopSound() {
         return SofishticatedSoundEvents.ENTITY_FISH_FLOP;
     }
+
+
 
     @Override
     public boolean tryAttack(Entity target) {

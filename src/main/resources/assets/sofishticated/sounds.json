@@ -29,5 +29,12 @@
   "entity.fish.ambient": {
   "sounds": [],
   "subtitle": "subtitles.entity.sofishticated.fish.ambient"
+  },
+  "entity.piranha.ambient": {
+    "sounds": [
+      "sofishticated:entity/piranha/bark",
+      "sofishticated:entity/piranha/thud"
+    ],
+    "subtitle": "subtitles.entity.sofishticated.piranha.ambient"
   }
 }
