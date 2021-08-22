@@ -4,10 +4,17 @@
   "entity.sofishticated.angler_fish": "Angler Fish",
   "entity.sofishticated.sunfish": "Sunfish",
   "entity.sofishticated.manta_ray": "Manta Ray",
+  "entity.sofishticated.piranha": "Piranha",
+
+  "death.attack.mob.sofishticated:piranha": "%1$s was nibbled to death by %2$s",
+  "death.attack.mob.sofishticated:piranha.item": "%1$s was killed by a %2$s weilding %3$s",
 
   "item.sofishticated.angler_fish_spawn_egg": "Angler Fish Spawn Egg",
   "item.sofishticated.angler_fish": "Angler Fish",
   "item.sofishticated.angler_fish_bucket": "Bucket of Angler Fish",
+  "item.sofishticated.piranha_spawn_egg": "Piranha Spawn Egg",
+  "item.sofishticated.piranha": "Piranha",
+  "item.sofishticated.piranha_bucket": "Bucket of Piranha",
   "item.sofishticated.sunfish_spawn_egg": "Sunfish Spawn Egg",
   "item.sofishticated.manta_ray_spawn_egg": "Manta Ray Spawn Egg",
 

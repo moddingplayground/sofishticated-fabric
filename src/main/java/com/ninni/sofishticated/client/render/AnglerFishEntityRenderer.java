@@ -22,11 +22,11 @@ public class AnglerFishEntityRenderer<T extends LivingEntity> extends MobEntityR
     }
 
     @Override
-    protected void setupTransforms(AnglerFishEntity anglerFishEntity, MatrixStack matrixStack, float f, float g, float h) {
-        super.setupTransforms(anglerFishEntity, matrixStack, f, g, h);
+    protected void setupTransforms(AnglerFishEntity entity, MatrixStack matrixStack, float f, float g, float h) {
+        super.setupTransforms(entity, matrixStack, f, g, h);
         float i = 4.3F * MathHelper.sin(0.6F * f);
         matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(i));
-        if (!anglerFishEntity.isTouchingWater()) {
+        if (!entity.isTouchingWater()) {
             matrixStack.translate(0.4D, 0.25D, 0.0D);
             matrixStack.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(90.0F));
         }

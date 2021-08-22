@@ -98,11 +98,11 @@ public class AnglerFishEntityModel extends SinglePartEntityModel<AnglerFishEntit
     public void setAngles(AnglerFishEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
 		float speed = 2.5f;
 		float degree = 1.5f;
-		this.body.yaw = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * limbDistance;
-		this.jaw.pitch = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.2F * limbDistance + 0.25F;
-		this.tail.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * limbDistance;
-		this.leftFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * limbDistance + 0.8F;
-		this.rightFin.yaw = MathHelper.cos(3.0F + animationProgress * speed * 0.4F) * degree * 0.8F * limbDistance - 0.8F;
+		this.body.yaw = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;
+		this.jaw.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.2F * limbDistance + 0.25F;
+		this.tail.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
+		this.leftFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F + 0.8F;
+		this.rightFin.yaw = MathHelper.cos(3.0F + animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F - 0.8F;
     }
 
     @Override

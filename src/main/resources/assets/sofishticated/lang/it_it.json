@@ -4,10 +4,17 @@
   "entity.sofishticated.angler_fish": "Pesce abissale",
   "entity.sofishticated.sunfish": "Pesce luna",
   "entity.sofishticated.manta_ray": "Manta",
+  "entity.sofishticated.piranha": "Piranha",
+
+  "death.attack.mob.sofishticated:piranha": "%1$s è stato mordicchiato troppo forte da %2$s",
+  "death.attack.mob.sofishticated:piranha.item": "%2$s ha ucciso %1$s usando %3$s",
 
   "item.sofishticated.angler_fish_spawn_egg": "Uovo generatore di pesce abissale",
   "item.sofishticated.angler_fish": "Pesce abissale",
   "item.sofishticated.angler_fish_bucket": "Secchio con pesce abissale",
+  "item.sofishticated.piranha_spawn_egg": "Uovo generatore di piranha",
+  "item.sofishticated.piranha": "Piranha",
+  "item.sofishticated.piranha_bucket": "Secchio con piranha",
   "item.sofishticated.sunfish_spawn_egg": "Uovo generatore di pesce luna",
   "item.sofishticated.manta_ray_spawn_egg": "Uovo generatore di manta",
 

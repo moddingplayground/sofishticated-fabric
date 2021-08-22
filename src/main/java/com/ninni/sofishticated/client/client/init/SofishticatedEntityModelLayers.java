@@ -13,6 +13,7 @@ public class SofishticatedEntityModelLayers {
     public static final EntityModelLayer SUNFISH = registerMain("sunfish");
     public static final EntityModelLayer MANTA_RAY = registerMain("manta_ray");
     public static final EntityModelLayer MANTA_RAY_SADDLE = register("manta_ray", "saddle");
+    public static final EntityModelLayer PIRANHA = registerMain("piranha");
 
     private static EntityModelLayer registerMain(String id) {
         return EntityModelLayersInvoker.register(new Identifier(Sofishticated.MOD_ID, id).toString(), "main");
