@@ -95,6 +95,11 @@ public class SunfishEntity extends WaterCreatureEntity {
 
     }
 
+    @Override
+    public Vec3d getLeashOffset() {
+        return new Vec3d(0.0D, 0.6F * this.getStandingEyeHeight(), this.getWidth() * 0.4F);
+    }
+
     protected boolean hasSelfControl() {
         return true;
     }

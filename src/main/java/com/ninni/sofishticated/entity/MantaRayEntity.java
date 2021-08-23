@@ -70,6 +70,11 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
     }
 
     @Override
+    public Vec3d getLeashOffset() {
+        return new Vec3d(0.0D, 0.6F * this.getStandingEyeHeight(), this.getWidth() * 0.2F);
+    }
+
+    @Override
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(SADDLED, false);
