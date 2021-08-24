@@ -1,10 +1,7 @@
 package com.ninni.sofishticated.init;
 
 import com.ninni.sofishticated.Sofishticated;
-import com.ninni.sofishticated.entity.AnglerFishEntity;
-import com.ninni.sofishticated.entity.MantaRayEntity;
-import com.ninni.sofishticated.entity.PiranhaEntity;
-import com.ninni.sofishticated.entity.SunfishEntity;
+import com.ninni.sofishticated.entity.*;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -63,7 +60,7 @@ public class SofishticatedEntities {
                                .defaultAttributes(PiranhaEntity::createPiranhaAttributes)
                                .spawnGroup(SpawnGroup.WATER_AMBIENT)
                                .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, FishEntity::canSpawn)
-                               .dimensions(EntityDimensions.fixed(0.4F, 0.4F))
+                               .dimensions(EntityDimensions.changing(0.4F, 0.4F))
                                .trackRangeBlocks(8),
         new int[]{ 0x4e552e, 0xe76f35 }
     );
