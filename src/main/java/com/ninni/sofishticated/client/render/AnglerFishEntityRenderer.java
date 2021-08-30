@@ -17,7 +17,7 @@ public class AnglerFishEntityRenderer<T extends LivingEntity> extends MobEntityR
     public static final Identifier TEXTURE = new Identifier(Sofishticated.MOD_ID, "textures/entity/angler_fish/angler_fish.png");
 
     public AnglerFishEntityRenderer(EntityRendererFactory.Context ctx) {
-        super(ctx, new AnglerFishEntityModel(ctx.getPart(SofishticatedEntityModelLayers.ANGLER_FISH)), 0.0F);
+        super(ctx, new AnglerFishEntityModel(ctx.getPart(SofishticatedEntityModelLayers.ANGLER_FISH)), 0.3F);
         this.addFeature(new AnglerFishBioluminescenceFeatureRenderer(this));
     }
 

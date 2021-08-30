@@ -131,7 +131,7 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
-        if (this.isSaddled()) {
+        if (this.isSaddled() && !this.hasPassengers()) {
             if (stack.isIn(FabricToolTags.SHEARS)) {
                 this.setSaddled(false);
                 this.dropItem(Items.SADDLE);

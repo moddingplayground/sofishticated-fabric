@@ -2,14 +2,8 @@ package com.ninni.sofishticated;
 
 import com.google.common.collect.ImmutableMap;
 import com.ninni.sofishticated.client.client.init.SofishticatedEntityModelLayers;
-import com.ninni.sofishticated.client.model.entity.AnglerFishEntityModel;
-import com.ninni.sofishticated.client.model.entity.MantaRayEntityModel;
-import com.ninni.sofishticated.client.model.entity.PiranhaEntityModel;
-import com.ninni.sofishticated.client.model.entity.SunfishEntityModel;
-import com.ninni.sofishticated.client.render.AnglerFishEntityRenderer;
-import com.ninni.sofishticated.client.render.MantaRayEntityRenderer;
-import com.ninni.sofishticated.client.render.PiranhaEntityRenderer;
-import com.ninni.sofishticated.client.render.SunfishEntityRenderer;
+import com.ninni.sofishticated.client.model.entity.*;
+import com.ninni.sofishticated.client.render.*;
 import com.ninni.sofishticated.init.SofishticatedEntities;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityModelLayerRegistry;
@@ -27,13 +21,15 @@ public class SofishticatedClient implements ClientModInitializer {
 		errInstance.register(SofishticatedEntities.SUNFISH, SunfishEntityRenderer::new);
 		errInstance.register(SofishticatedEntities.MANTA_RAY, MantaRayEntityRenderer::new);
 		errInstance.register(SofishticatedEntities.PIRANHA, PiranhaEntityRenderer::new);
+		errInstance.register(SofishticatedEntities.SHRIMP, ShrimpEntityRenderer::new);
 
-		ImmutableMap.<EntityModelLayer, EntityModelLayerRegistry.TexturedModelDataProvider>of(
-			SofishticatedEntityModelLayers.ANGLER_FISH, AnglerFishEntityModel::getTexturedModelData,
-			SofishticatedEntityModelLayers.SUNFISH, SunfishEntityModel::getTexturedModelData,
-			SofishticatedEntityModelLayers.MANTA_RAY, () -> MantaRayEntityModel.getTexturedModelData(Dilation.NONE),
-			SofishticatedEntityModelLayers.MANTA_RAY_SADDLE, () -> MantaRayEntityModel.getTexturedModelData(new Dilation(0.5F)),
-			SofishticatedEntityModelLayers.PIRANHA, PiranhaEntityModel::getTexturedModelData
-		).forEach(EntityModelLayerRegistry::registerModelLayer);
+		new ImmutableMap.Builder<EntityModelLayer, EntityModelLayerRegistry.TexturedModelDataProvider>()
+			.put(SofishticatedEntityModelLayers.ANGLER_FISH, AnglerFishEntityModel::getTexturedModelData)
+			.put(SofishticatedEntityModelLayers.SUNFISH, SunfishEntityModel::getTexturedModelData)
+			.put(SofishticatedEntityModelLayers.MANTA_RAY, () -> MantaRayEntityModel.getTexturedModelData(Dilation.NONE))
+			.put(SofishticatedEntityModelLayers.MANTA_RAY_SADDLE, () -> MantaRayEntityModel.getTexturedModelData(new Dilation(0.5F)))
+			.put(SofishticatedEntityModelLayers.PIRANHA, PiranhaEntityModel::getTexturedModelData)
+			.put(SofishticatedEntityModelLayers.SHRIMP, ShrimpEntityModel::getTexturedModelData)
+        .build().forEach(EntityModelLayerRegistry::registerModelLayer);
 	}
 }

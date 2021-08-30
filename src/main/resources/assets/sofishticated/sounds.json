@@ -30,6 +30,28 @@
   "sounds": [],
   "subtitle": "subtitles.entity.sofishticated.fish.ambient"
   },
+  "entity.shrimp.hurt": {
+    "sounds": [
+      "minecraft:entity/fish/hurt1",
+      "minecraft:entity/fish/hurt2",
+      "minecraft:entity/fish/hurt3",
+      "minecraft:entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.sofishticated.shrimp.hurt"
+  },
+  "entity.shrimp.death": {
+    "sounds": [
+      "minecraft:entity/fish/hurt1",
+      "minecraft:entity/fish/hurt2",
+      "minecraft:entity/fish/hurt3",
+      "minecraft:entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.sofishticated.shrimp.death"
+  },
+  "entity.shrimp.ambient": {
+    "sounds": [],
+    "subtitle": "subtitles.entity.sofishticated.shrimp.ambient"
+  },
   "entity.piranha.ambient": {
     "sounds": [
       "sofishticated:entity/piranha/bark",

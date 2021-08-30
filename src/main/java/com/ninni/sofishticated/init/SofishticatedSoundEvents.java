@@ -15,6 +15,13 @@ public class SofishticatedSoundEvents {
         return createEntitySound("fish", id);
     }
 
+    public static final SoundEvent ENTITY_SHRIMP_AMBIENT = shrimp("ambient");
+    public static final SoundEvent ENTITY_SHRIMP_HURT = shrimp("hurt");
+    public static final SoundEvent ENTITY_SHRIMP_DEATH = shrimp("death");
+    private static SoundEvent shrimp(String id) {
+        return createEntitySound("shrimp", id);
+    }
+    
     public static final SoundEvent ENTITY_PIRANHA_AMBIENT = piranha("ambient");
     public static final SoundEvent ENTITY_PIRANHA_NIBBLE = piranha("nibble");
     private static SoundEvent piranha(String id) {
