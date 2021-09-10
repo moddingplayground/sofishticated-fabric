@@ -4,6 +4,7 @@ import com.ninni.sofishticated.entity.enums.ShrimpVariant;
 import com.ninni.sofishticated.init.SofishticatedEntities;
 import com.ninni.sofishticated.init.SofishticatedItems;
 import com.ninni.sofishticated.init.SofishticatedSoundEvents;
+import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
@@ -19,29 +20,30 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.LocalDifficulty;
-import net.minecraft.world.ServerWorldAccess;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class ShrimpEntity extends AnimalEntity implements Bucketable {
+public class ShrimpEntity extends AnimalEntity {
     private static final TrackedData<String> VARIANT = DataTracker.registerData(ShrimpEntity.class, TrackedDataHandlerRegistry.STRING);
     private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Blocks.SEAGRASS.asItem());
     private static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(ShrimpEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
-    public ShrimpEntity(EntityType<? extends ShrimpEntity> entityType, World world) {
+    public ShrimpEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
         this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
-        this.stepHeight = 1.0F;
+        this.stepHeight = 1;
     }
 
     @Override
@@ -59,29 +61,47 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable {
     }
 
     @Override
+    public boolean canBeLeashedBy(PlayerEntity player) {
+        return false;
+    }
+
+    @Override
+    public boolean isPushedByFluids() {
+        return false;
+    }
+
+    @Override
+    public boolean canSpawn(WorldView world) {
+        return world.intersectsEntities(this);
+    }
+
+    @Override
     public boolean canBreatheInWater() {
         return true;
     }
 
-    protected void tickWaterBreathingAir(int air) {
-        if (this.isAlive() && !this.isInsideWaterOrBubbleColumn()) {
-            this.setAir(air - 1);
-            if (this.getAir() == -20) {
-                this.setAir(0);
-                this.damage(DamageSource.DROWN, 2.0F);
-            }
-        } else {
-            this.setAir(600);
-        }
-
-    }
     @Override
     public void baseTick() {
         int i = this.getAir();
         super.baseTick();
-        this.tickWaterBreathingAir(i);
+        if (!this.isAiDisabled()) {
+            this.tickAir(i);
+        }
+
     }
 
+    protected void tickAir(int air) {
+        if (this.isAlive() && !this.isWet()) {
+            this.setAir(air - 1);
+            if (this.getAir() == -20) {
+                this.setAir(0);
+                this.damage(DamageSource.DRYOUT, 2.0F);
+            }
+        } else {
+            this.setAir(this.getMaxAir());
+        }
+
+    }
     public static DefaultAttributeContainer.Builder createShrimpAttributes() {
         return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 6.0D);
     }
@@ -98,12 +118,10 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable {
         return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
     }
 
-    @Override
-    public boolean isFromBucket() {
+    private boolean isFromBucket() {
         return this.dataTracker.get(FROM_BUCKET);
     }
 
-    @Override
     public void setFromBucket(boolean fromBucket) {
         this.dataTracker.set(FROM_BUCKET, fromBucket);
     }
@@ -133,7 +151,6 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable {
         tag.putString("Variant", this.getVariant().toString());
         tag.putBoolean("FromBucket", this.isFromBucket());
     }
-
     @Override
     public void readCustomDataFromNbt(NbtCompound tag) {
         super.readCustomDataFromNbt(tag);
@@ -147,6 +164,11 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable {
     }
 
     @Override
+    public boolean canImmediatelyDespawn(double distanceSquared) {
+        return !this.isFromBucket() && !this.hasCustomName();
+    }
+
+    @Override
     public boolean isBreedingItem(ItemStack stack) {
         return BREEDING_INGREDIENT.test(stack);
     }
@@ -157,26 +179,8 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public void copyDataToStack(ItemStack stack) {
-        Bucketable.copyDataToStack(this, stack);
-    }
-
-    @Override
-    @SuppressWarnings("deprecation")
-    public void copyDataFromNbt(NbtCompound nbt) {
-        Bucketable.copyDataFromNbt(this, nbt);
-    }
-
-
-    @Override
-    public ItemStack getBucketItem() {
-        return new ItemStack(SofishticatedItems.SHRIMP_BUCKET);
-    }
-
-    @Override
-    public SoundEvent getBucketedSound() {
-        return SoundEvents.ITEM_BUCKET_EMPTY_FISH;
+    protected SoundEvent getSwimSound() {
+        return SoundEvents.ENTITY_FISH_SWIM;
     }
 
     @Override
@@ -194,9 +198,47 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable {
         return SofishticatedSoundEvents.ENTITY_SHRIMP_HURT;
     }
 
+    @Override
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        if (itemStack.getItem() == Items.WATER_BUCKET && this.isAlive() && !this.isBaby()) {
+            this.playSound(SoundEvents.ITEM_BUCKET_FILL_FISH, 1.0F, 1.0F);
+            itemStack.decrement(1);
+            ItemStack itemStack2 = this.getFishBucketItem();
+            this.copyDataToStack(itemStack2);
+            if (!this.world.isClient) {
+                Criteria.FILLED_BUCKET.trigger((ServerPlayerEntity)player, itemStack2);
+            }
+
+            if (itemStack.isEmpty()) {
+                player.setStackInHand(hand, itemStack2);
+            } else if (!player.getInventory().insertStack(itemStack2)) {
+                player.dropItem(itemStack2, false);
+            }
+
+            this.setRemoved(RemovalReason.DISCARDED);
+            return ActionResult.success(this.world.isClient);
+        } else {
+            return super.interactMob(player, hand);
+        }
+    }
+
+    protected void copyDataToStack(ItemStack stack) {
+        if (this.hasCustomName()) {
+            stack.setCustomName(this.getCustomName());
+        }
+
+        NbtCompound tag = stack.getOrCreateNbt();
+        tag.putString("BucketVariantTag", this.getVariant().name());
+    }
+
+    protected ItemStack getFishBucketItem() {
+        return new ItemStack(SofishticatedItems.SHRIMP_BUCKET);
+    }
+
     @Nullable
     @Override
-    public PassiveEntity createChild(ServerWorld world, PassiveEntity other) {
+    public ShrimpEntity createChild(ServerWorld world, PassiveEntity other) {
         ShrimpEntity entity = SofishticatedEntities.SHRIMP.create(world);
         if (entity != null) {
             entity.setVariant(this.getVariant());
