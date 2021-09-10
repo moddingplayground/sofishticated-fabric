@@ -38,9 +38,10 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable {
     private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Blocks.SEAGRASS.asItem());
     private static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(ShrimpEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
-    public ShrimpEntity(EntityType<? extends AnimalEntity> entityType, World world) {
+    public ShrimpEntity(EntityType<? extends ShrimpEntity> entityType, World world) {
         super(entityType, world);
         this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
+        this.stepHeight = 1.0F;
     }
 
     @Override

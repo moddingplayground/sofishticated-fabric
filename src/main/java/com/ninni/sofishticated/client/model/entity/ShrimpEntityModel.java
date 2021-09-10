@@ -3,6 +3,7 @@ package com.ninni.sofishticated.client.model.entity;
 import com.google.common.collect.ImmutableList;
 import com.ninni.sofishticated.entity.ShrimpEntity;
 import net.minecraft.client.model.*;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.AnimalModel;
 import net.minecraft.util.math.MathHelper;
 
@@ -20,6 +21,7 @@ public class ShrimpEntityModel extends AnimalModel<ShrimpEntity> {
 	private final ModelPart hands;
 
     public ShrimpEntityModel(ModelPart root) {
+		super(RenderLayer::getEntityTranslucent, true, 16.0F, 0.0F, 2.0F, 2.0F, 24.0F);
 
 		this.root = root;
 

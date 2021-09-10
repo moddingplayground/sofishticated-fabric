@@ -4,7 +4,6 @@
   "package": "com.ninni.sofishticated.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "EntityBucketItemMixin",
     "MobEntityInvoker",
     "StatusEffectUtilMixin",
     "WanderAroundGoalAccessor"
