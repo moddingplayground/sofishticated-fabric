@@ -56,7 +56,8 @@ public class ShrimpEntity extends AnimalEntity {
         this.goalSelector.add(5, new FollowParentGoal(this, 0.25));
         this.goalSelector.add(6, new SwimAroundGoal(this, 0.4D, 10));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(8, new FleeEntityGoal<>(this, PlayerEntity.class, 8.0F, 0.25, 0.25));
+        this.goalSelector.add(8, new FleeEntityGoal<>(this, PiranhaEntity.class, 8.0F, 0.45, 0.25));
+        this.goalSelector.add(9, new FleeEntityGoal<>(this, PlayerEntity.class, 8.0F, 0.25, 0.25));
 
     }
 

@@ -56,10 +56,12 @@ public class PiranhaEntity extends FishEntity implements Angerable {
     @Override
     protected void initGoals() {
         this.targetSelector.add(0, new UniversalAngerGoal<>(this, true));
-        this.goalSelector.add(7, new PiranhaEntity.AttackGoal(1.2000000476837158D, true));
         this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
         this.targetSelector.add(2, new FollowTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
-        this.goalSelector.add(3, new PiranhaEntity.SwimToRandomPlaceGoal(this));
+
+        this.goalSelector.add(0, new PiranhaEntity.SwimToRandomPlaceGoal(this));
+        this.goalSelector.add(1, new PiranhaEntity.AttackGoal(1.2000000476837158D, true));
+        this.goalSelector.add(2, new FollowTargetGoal<>(this, ShrimpEntity.class,true));
     }
 
     public static DefaultAttributeContainer.Builder createPiranhaAttributes() {
