@@ -1,0 +1,35 @@
+{
+  "entity.sofishticated.angler_fish": "Pez Abisal",
+  "entity.sofishticated.sunfish": "Pez Luna",
+  "entity.sofishticated.manta_ray": "Mantarraya",
+  "entity.sofishticated.piranha": "Piraña",
+  "entity.sofishticated.shrimp": "Camarón",
+
+  "death.attack.mob.sofishticated:piranha": "%1$s fue mordido hasta la muerte por %2$s",
+  "death.attack.mob.sofishticated:piranha.item": "%1$s murió por %2$s sosteniendo %3$s",
+
+  "item.sofishticated.angler_fish_spawn_egg": "Generador de Pez Abisal",
+  "item.sofishticated.angler_fish": "Pez Abisal",
+  "item.sofishticated.angler_fish_bucket": "Balde de Pez Abisal",
+  "item.sofishticated.shrimp_spawn_egg": "Generador de Camarón",
+  "item.sofishticated.shrimp": "Camarón",
+  "item.sofishticated.cooked_shrimp": "Camarón Cocido",
+  "item.sofishticated.shrimp_bucket": "Balde de Camarón",
+  "item.sofishticated.piranha_spawn_egg": "Generador de Piraña",
+  "item.sofishticated.piranha": "Piraña",
+  "item.sofishticated.piranha_bucket": "Balde de Piraña",
+  "item.sofishticated.sunfish_spawn_egg": "Generador de Pez Luna",
+  "item.sofishticated.manta_ray_spawn_egg": "Generador de Mantarraya",
+
+  "subtitles.entity.sofishticated.shrimp.hurt": "Camarón lastimado",
+  "subtitles.entity.sofishticated.shrimp.death": "Camarón muere",
+  "subtitles.entity.sofishticated.shrimp.ambient": "Camarón nadando",
+  "subtitles.entity.sofishticated.fish.flop": "Pez saltando",
+  "subtitles.entity.sofishticated.fish.hurt": "Pez lastimado",
+  "subtitles.entity.sofishticated.fish.death": "Pez muerto",
+  "subtitles.entity.sofishticated.fish.ambient": "Nadando",
+  "subtitles.entity.sofishticated.piranha.ambient": "Piraña ladrando",
+  "subtitles.entity.sofishticated.piranha.nibble": "Piraña mordiendo",
+
+  "effect.sofishticated.mantas_blessing": "Bendición de la Mantarraya"
+}
