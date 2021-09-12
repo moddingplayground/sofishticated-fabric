@@ -106,7 +106,7 @@ public class PiranhaEntity extends FishEntity implements Angerable {
 
     @Override
     public void setTarget(@Nullable LivingEntity target) {
-        if (this.getTarget() == null && target != null) {
+        if (target != null) {
             this.angerPassingCooldown = ANGER_PASSING_COOLDOWN_RANGE.get(this.random);
         }
 

@@ -17,6 +17,5 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class BipedEntityModelMixin<T extends LivingEntity> extends AnimalModel<T> implements ModelWithArms, ModelWithHead {
     @Inject(method = "setAngles", at = @At("TAIL"))
     private void setCustomAngles(T livingEntity, float f, float g, float h, float i, float j, CallbackInfo ci) {
-        // piss and shit
     }
 }

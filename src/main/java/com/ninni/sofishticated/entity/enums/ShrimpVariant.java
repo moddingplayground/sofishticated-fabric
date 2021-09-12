@@ -6,38 +6,22 @@ import net.minecraft.util.Identifier;
 import java.util.Locale;
 
 public enum ShrimpVariant {
-    APRICOT,
-    APRICOT_RILI,
-    CHERRY,
-    DREAM,
-    DREAM_BOLT,
-    DREAM_RACING,
-    DREAM_TIGER,
-    GHOST,
-    GOLDEN,
-    JADE,
-    JELLY,
-    JELLY_BOLT,
-    JELLY_BRUSH,
-    JELLY_FISHBONE,
-    JELLY_SULAWESI,
-    NEON,
-    ROSE,
-    ROSE_BRUSH,
-    ROSE_FISHBONE,
-    ROSE_TIGER,
-    SAKURA,
-    SAKURA_CRYSTAL,
-    SAKURA_FISHBONE,
-    SAKURA_RACING,
-    SCR,
-    SNOW,
-    SNOW_SULAWESI,
-    WASP,
-    WASP_SULAWESI,
-    WASP_TIGER,
-    WILD,
-    WILD_TIGER;
+    BLUE_FANTASY,
+    BLUE_DREAM,
+    BLUE_DIAMOND,
+    BLUE_JELLY,
+    SULAWESI_TIGER_CARDINAL,
+    ORANGE,
+    YELLOW_NEON,
+    BLACK_ROSE,
+    CARBON_RILI,
+    YELLOW_RILI,
+    ORANGE_RILI,
+    BLUE_RILI,
+    CARBON_BLUE_RILI,
+    RED_RILI,
+    RED_BLUE_RILI,
+    BLOODY_MARY;
     public final Identifier texture;
 
     ShrimpVariant() {
@@ -45,6 +29,6 @@ public enum ShrimpVariant {
     }
 
     public static ShrimpVariant getDefault() {
-        return WILD;
+        return BLOODY_MARY;
     }
 }
