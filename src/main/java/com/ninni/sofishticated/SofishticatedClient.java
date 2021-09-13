@@ -4,11 +4,14 @@ import com.google.common.collect.ImmutableMap;
 import com.ninni.sofishticated.client.client.init.SofishticatedEntityModelLayers;
 import com.ninni.sofishticated.client.model.entity.*;
 import com.ninni.sofishticated.client.render.*;
+import com.ninni.sofishticated.init.SofishticatedBlocks;
 import com.ninni.sofishticated.init.SofishticatedEntities;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.minecraft.client.model.Dilation;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 
 public class SofishticatedClient implements ClientModInitializer {
@@ -31,5 +34,12 @@ public class SofishticatedClient implements ClientModInitializer {
 			.put(SofishticatedEntityModelLayers.PIRANHA, PiranhaEntityModel::getTexturedModelData)
 			.put(SofishticatedEntityModelLayers.SHRIMP, ShrimpEntityModel::getTexturedModelData)
         .build().forEach(EntityModelLayerRegistry::registerModelLayer);
+
+
+		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
+			SofishticatedBlocks.CLEAR_GLASS,
+			SofishticatedBlocks.CLEAR_GLASS_PANE,
+			SofishticatedBlocks.CLEAR_GLASS_TRAPDOOR
+		);
 	}
 }

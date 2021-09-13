@@ -6,6 +6,8 @@ import net.minecraft.util.Identifier;
 import java.util.Locale;
 
 public enum ShrimpVariant {
+    RED_ONYX,
+    DRAGON_BLOOD,
     BLUE_FANTASY,
     BLUE_DREAM,
     BLUE_DIAMOND,

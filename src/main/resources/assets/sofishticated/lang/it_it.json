@@ -8,6 +8,10 @@
   "death.attack.mob.sofishticated:piranha": "%1$s è stato mordicchiato troppo forte da %2$s",
   "death.attack.mob.sofishticated:piranha.item": "%2$s ha ucciso %1$s usando %3$s",
 
+  "block.sofishticated.clear_glass": "Vetro trasparente",
+  "block.sofishticated.clear_glass_pane": "Pannello di vetro trasparente",
+  "block.sofishticated.clear_glass_trapdoor": "Botola di vetro trasparente",
+
   "item.sofishticated.shrimp_spawn_egg": "Uovo generatore di gamberetto",
   "item.sofishticated.shrimp": "Gamberetto",
   "item.sofishticated.cooked_shrimp": "Gamberetto cotto",

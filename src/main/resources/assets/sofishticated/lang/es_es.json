@@ -8,6 +8,10 @@
   "death.attack.mob.sofishticated:piranha": "%1$s fue mordido hasta la muerte por %2$s",
   "death.attack.mob.sofishticated:piranha.item": "%1$s murió por %2$s sosteniendo %3$s",
 
+  "block.sofishticated.clear_glass": "Vidrio Translúcido",
+  "block.sofishticated.clear_glass_pane": "Panel de Vidrio Translúcido",
+  "block.sofishticated.clear_glass_trapdoor": "Trampilla de Vidrio Translúcido",
+
   "item.sofishticated.angler_fish_spawn_egg": "Generador de Pez Abisal",
   "item.sofishticated.angler_fish": "Pez Abisal",
   "item.sofishticated.angler_fish_bucket": "Balde de Pez Abisal",

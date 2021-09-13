@@ -8,6 +8,8 @@
   "entity.sofishticated.shrimp": "Shrimp",
 
   "entity.sofishticated.shrimp.variant.blue_diamond": "Blue Diamond",
+  "entity.sofishticated.shrimp.variant.dragon_blood": "Dragon Blood",
+  "entity.sofishticated.shrimp.variant.red_onyx": "Red Onyx",
   "entity.sofishticated.shrimp.variant.blue_dream": "Blue Dream",
   "entity.sofishticated.shrimp.variant.blue_fantasy": "Blue Fantasy",
   "entity.sofishticated.shrimp.variant.bloody_mary": "Bloody Mary",
@@ -26,6 +28,10 @@
 
   "death.attack.mob.sofishticated:piranha": "%1$s was nibbled to death by %2$s",
   "death.attack.mob.sofishticated:piranha.item": "%1$s was killed by a %2$s weilding %3$s",
+
+  "block.sofishticated.clear_glass": "Clear Glass",
+  "block.sofishticated.clear_glass_pane": "Clear Glass Pane",
+  "block.sofishticated.clear_glass_trapdoor": "Clear Glass Trapdoor",
 
   "item.sofishticated.angler_fish_spawn_egg": "Angler Fish Spawn Egg",
   "item.sofishticated.angler_fish": "Angler Fish",
