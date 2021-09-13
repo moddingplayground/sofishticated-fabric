@@ -4,6 +4,7 @@ package com.ninni.sofishticated.client.model.entity;
 import com.ninni.sofishticated.entity.ReefSharkEntity;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
+import net.minecraft.util.math.MathHelper;
 
 @SuppressWarnings("FieldCanBeLocal, unused")
 public class ReefSharkEntityModel extends SinglePartEntityModel<ReefSharkEntity> {
@@ -121,10 +122,22 @@ public class ReefSharkEntityModel extends SinglePartEntityModel<ReefSharkEntity>
 
     @Override
     public void setAngles(ReefSharkEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-		float speed = 1.5f;
-		float degree = 0.75f;
+		float speed = 1.0f;
+		float degree = 1.25f;
 		this.body.pitch = headPitch * 0.01F;
 		this.body.yaw = headYaw * 0.01F;
+		this.body.yaw += MathHelper.cos(-1.0F + animationProgress * speed * 0.4F) * degree * 0.3F * 0.25F;
+		this.tail.yaw = MathHelper.cos(-2.0F + animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
+		this.tailFin.yaw = MathHelper.cos(-3.0F + animationProgress * speed * 0.4F) * degree * 0.6F * 0.25F;
+		this.head.yaw = MathHelper.cos(1.0F + animationProgress * speed * 0.4F) * degree * 0.4F * 0.25F;
+		this.leftFin.roll = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 1.6F * 0.25F + 0.6F;
+		this.rightFin.roll = MathHelper.cos(animationProgress * speed * 0.2F) * degree * -1.6F * 0.25F - 0.6F;
+		this.leftBackFin.roll = MathHelper.cos(-2.0F + animationProgress * speed * 0.2F) * degree * 1.6F * 0.25F + 0.6F;
+		this.rightBackFin.roll = MathHelper.cos(-2.0F + animationProgress * speed * 0.2F) * degree * -1.6F * 0.25F - 0.6F;
+		this.body.pivotY = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 2.5F * 0.25F + 24.0F;
+		this.body.pitch += MathHelper.cos(-1.0F + animationProgress * speed * 0.2F) * degree * 0.2F * 0.25F;
+		this.head.pitch = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.2F * 0.25F;
+		this.tail.pitch = MathHelper.cos(-2.0F + animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;
 	}
 
     @Override
