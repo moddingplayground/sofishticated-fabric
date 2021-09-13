@@ -85,7 +85,7 @@ public class SofishticatedEntities {
                                .defaultAttributes(ReefSharkEntity::createTiltingFishAttributes)
                                .spawnGroup(SpawnGroup.WATER_CREATURE)
                                .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, AbstractSubmissiveFishEntity::canSpawn)
-                               .dimensions(EntityDimensions.changing(1.2F, 0.4F))
+                               .dimensions(EntityDimensions.changing(0.8F, 0.4F))
                                .trackRangeBlocks(8),
         new int[]{ 0x746f65, 0xced6b5 }
     );
