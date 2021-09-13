@@ -1,4 +1,4 @@
-package com.ninni.sofishticated.entity.entity.ai.goal;
+package com.ninni.sofishticated.entity.ai.goal;
 
 import com.ninni.sofishticated.mixin.WanderAroundGoalAccessor;
 import net.minecraft.entity.ai.goal.SwimAroundGoal;

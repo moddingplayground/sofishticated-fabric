@@ -17,7 +17,6 @@ public class AnglerFishEntityModel extends SinglePartEntityModel<AnglerFishEntit
 	private final ModelPart rightFin;
 
     public AnglerFishEntityModel(ModelPart root) {
-
         this.root = root;
 
 		this.body       = root.getChild("body");
@@ -109,6 +108,4 @@ public class AnglerFishEntityModel extends SinglePartEntityModel<AnglerFishEntit
     public ModelPart getPart() {
         return this.root;
     }
-
-    
 }

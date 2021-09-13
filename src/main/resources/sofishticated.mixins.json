@@ -10,7 +10,6 @@
     "WanderAroundGoalAccessor"
   ],
   "client": [
-    "client.BipedEntityModelMixin",
     "client.EntityModelLayersInvoker",
     "client.EntityModelLayersMixin",
     "client.LightmapTextureManagerMixin"

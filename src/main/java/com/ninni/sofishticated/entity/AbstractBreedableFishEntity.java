@@ -1,4 +1,4 @@
-package com.ninni.sofishticated.entity.base;
+package com.ninni.sofishticated.entity;
 
 import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import net.minecraft.block.BlockState;
@@ -20,13 +20,11 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.FishEntity;
-import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.FluidTags;
@@ -37,17 +35,16 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class BreedableFishEntity extends AnimalEntity implements Bucketable {
+public abstract class AbstractBreedableFishEntity extends AnimalEntity implements Bucketable {
     private static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(FishEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.SEAGRASS);
 
-    protected BreedableFishEntity(EntityType<? extends AnimalEntity> entityType, World world) {
+    protected AbstractBreedableFishEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
-        this.moveControl = new BreedableFishEntity.FishMoveControl(this);
+        this.moveControl = new AbstractBreedableFishEntity.FishMoveControl(this);
     }
 
     @Override
@@ -56,7 +53,7 @@ public class BreedableFishEntity extends AnimalEntity implements Bucketable {
         this.goalSelector.add(1, new AnimalMateGoal(this, 1.0D));
         this.goalSelector.add(2, new TemptGoal(this, 1.2D, BREEDING_INGREDIENT, false));
         this.goalSelector.add(3, new FollowParentGoal(this, 1.1D));
-        this.goalSelector.add(4, new BreedableFishEntity.SwimToRandomPlaceGoal(this));
+        this.goalSelector.add(4, new AbstractBreedableFishEntity.SwimToRandomPlaceGoal(this));
     }
 
     protected void tickWaterBreathingAir(int air) {
@@ -113,7 +110,7 @@ public class BreedableFishEntity extends AnimalEntity implements Bucketable {
         return super.cannotDespawn() || this.isFromBucket();
     }
 
-    public static boolean canSpawn(EntityType<? extends BreedableFishEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<? extends AbstractBreedableFishEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return world.getBlockState(pos).isOf(Blocks.WATER) && world.getBlockState(pos.up()).isOf(Blocks.WATER);
     }
 
@@ -156,19 +153,8 @@ public class BreedableFishEntity extends AnimalEntity implements Bucketable {
     }
 
     @Override
-    public ItemStack getBucketItem() {
-        return null;
-    }
-
-    @Override
     public boolean isBreedingItem(ItemStack stack) {
         return BREEDING_INGREDIENT.test(stack);
-    }
-
-    @Nullable
-    @Override
-    public PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return null;
     }
 
     @Override
@@ -239,9 +225,9 @@ public class BreedableFishEntity extends AnimalEntity implements Bucketable {
     }
 
     private static class FishMoveControl extends MoveControl {
-        private final BreedableFishEntity fish;
+        private final AbstractBreedableFishEntity fish;
 
-        FishMoveControl(BreedableFishEntity owner) {
+        FishMoveControl(AbstractBreedableFishEntity owner) {
             super(owner);
             this.fish = owner;
         }
@@ -280,9 +266,9 @@ public class BreedableFishEntity extends AnimalEntity implements Bucketable {
     }
 
     private static class SwimToRandomPlaceGoal extends SwimAroundGoal {
-        private final BreedableFishEntity fish;
+        private final AbstractBreedableFishEntity fish;
 
-        public SwimToRandomPlaceGoal(BreedableFishEntity fish) {
+        public SwimToRandomPlaceGoal(AbstractBreedableFishEntity fish) {
             super(fish, 1.0D, 40);
             this.fish = fish;
         }

@@ -17,7 +17,6 @@ public class SunfishEntityModel extends SinglePartEntityModel<SunfishEntity> {
 	private final ModelPart rightPectoralFin;
 
     public SunfishEntityModel(ModelPart root) {
-
 		this.root = root;
 
 		this.body       = root.getChild("body");
@@ -110,6 +109,4 @@ public class SunfishEntityModel extends SinglePartEntityModel<SunfishEntity> {
     public ModelPart getPart() {
         return this.root;
     }
-
-    
 }

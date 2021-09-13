@@ -1,4 +1,4 @@
-package com.ninni.sofishticated.entity.base;
+package com.ninni.sofishticated.entity;
 
 import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import net.minecraft.block.BlockState;
@@ -37,10 +37,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
 
-public class TiltingFishEntity extends WaterCreatureEntity implements Bucketable {
+public abstract class AbstractSubmissiveFishEntity extends WaterCreatureEntity implements Bucketable {
     private static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(FishEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
-    protected TiltingFishEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
+    protected AbstractSubmissiveFishEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
         super(entityType, world);
         this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
         this.moveControl = new AquaticMoveControl(this, 85, 10, 0.02F, 0.1F, true);
@@ -56,7 +56,6 @@ public class TiltingFishEntity extends WaterCreatureEntity implements Bucketable
         this.goalSelector.add(4, new LookAroundGoal(this));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
     }
-
 
     @Override
     protected SoundEvent getSwimSound() {
@@ -158,7 +157,7 @@ public class TiltingFishEntity extends WaterCreatureEntity implements Bucketable
     }
 
     @SuppressWarnings("unused")
-    public static boolean canSpawn(EntityType<? extends TiltingFishEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<? extends AbstractSubmissiveFishEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return world.getBlockState(pos).isOf(Blocks.WATER) && world.getBlockState(pos.up()).isOf(Blocks.WATER);
     }
 
@@ -198,11 +197,6 @@ public class TiltingFishEntity extends WaterCreatureEntity implements Bucketable
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
         this.setFromBucket(nbt.getBoolean("FromBucket"));
-    }
-
-    @Override
-    public ItemStack getBucketItem() {
-        return null;
     }
 
     @Override

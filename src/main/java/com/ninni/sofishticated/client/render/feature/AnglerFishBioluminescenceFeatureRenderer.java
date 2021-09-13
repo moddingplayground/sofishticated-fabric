@@ -14,8 +14,8 @@ import net.minecraft.util.Identifier;
 public class AnglerFishBioluminescenceFeatureRenderer extends EyesFeatureRenderer<AnglerFishEntity, AnglerFishEntityModel> {
     private static final RenderLayer SKIN = RenderLayer.getEyes(new Identifier(Sofishticated.MOD_ID, "textures/entity/angler_fish/angler_fish_bioluminescence.png"));
 
-    public AnglerFishBioluminescenceFeatureRenderer(FeatureRendererContext<AnglerFishEntity, AnglerFishEntityModel> featureRendererContext) {
-        super(featureRendererContext);
+    public AnglerFishBioluminescenceFeatureRenderer(FeatureRendererContext<AnglerFishEntity, AnglerFishEntityModel> ctx) {
+        super(ctx);
     }
 
     @Override

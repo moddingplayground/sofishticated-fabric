@@ -1,7 +1,7 @@
 package com.ninni.sofishticated.client.render;
 
 import com.ninni.sofishticated.Sofishticated;
-import com.ninni.sofishticated.client.client.init.SofishticatedEntityModelLayers;
+import com.ninni.sofishticated.client.init.SofishticatedEntityModelLayers;
 import com.ninni.sofishticated.client.model.entity.AnglerFishEntityModel;
 import com.ninni.sofishticated.client.render.feature.AnglerFishBioluminescenceFeatureRenderer;
 import com.ninni.sofishticated.entity.AnglerFishEntity;

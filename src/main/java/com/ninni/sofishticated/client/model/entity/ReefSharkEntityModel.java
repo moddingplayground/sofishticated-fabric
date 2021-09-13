@@ -19,7 +19,6 @@ public class ReefSharkEntityModel extends SinglePartEntityModel<ReefSharkEntity>
 	private final ModelPart rightBackFin;
 
     public ReefSharkEntityModel(ModelPart root) {
-
 		this.root = root;
 
 		this.body       = root.getChild("body");
@@ -132,6 +131,4 @@ public class ReefSharkEntityModel extends SinglePartEntityModel<ReefSharkEntity>
     public ModelPart getPart() {
         return this.root;
     }
-
-    
 }

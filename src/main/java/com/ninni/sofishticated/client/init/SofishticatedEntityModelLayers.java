@@ -1,4 +1,4 @@
-package com.ninni.sofishticated.client.client.init;
+package com.ninni.sofishticated.client.init;
 
 import com.ninni.sofishticated.Sofishticated;
 import com.ninni.sofishticated.mixin.client.EntityModelLayersInvoker;

@@ -1,7 +1,7 @@
 package com.ninni.sofishticated;
 
 import com.google.common.collect.ImmutableMap;
-import com.ninni.sofishticated.client.client.init.SofishticatedEntityModelLayers;
+import com.ninni.sofishticated.client.init.SofishticatedEntityModelLayers;
 import com.ninni.sofishticated.client.model.entity.*;
 import com.ninni.sofishticated.client.render.*;
 import com.ninni.sofishticated.init.SofishticatedBlocks;
@@ -17,15 +17,15 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 public class SofishticatedClient implements ClientModInitializer {
 
 	@Override
-	@SuppressWarnings({"UnstableApiUsage", "deprecation"})
+	@SuppressWarnings({ "UnstableApiUsage", "deprecation" })
 	public void onInitializeClient() {
-		EntityRendererRegistry errInstance = EntityRendererRegistry.INSTANCE;
-		errInstance.register(SofishticatedEntities.ANGLER_FISH, AnglerFishEntityRenderer::new);
-		errInstance.register(SofishticatedEntities.SUNFISH, SunfishEntityRenderer::new);
-		errInstance.register(SofishticatedEntities.MANTA_RAY, MantaRayEntityRenderer::new);
-		errInstance.register(SofishticatedEntities.PIRANHA, PiranhaEntityRenderer::new);
-		errInstance.register(SofishticatedEntities.SHRIMP, ShrimpEntityRenderer::new);
-		errInstance.register(SofishticatedEntities.REEF_SHARK, ReefSharkEntityRenderer::new);
+		EntityRendererRegistry erri = EntityRendererRegistry.INSTANCE;
+		erri.register(SofishticatedEntities.ANGLER_FISH, AnglerFishEntityRenderer::new);
+		erri.register(SofishticatedEntities.SUNFISH, SunfishEntityRenderer::new);
+		erri.register(SofishticatedEntities.MANTA_RAY, MantaRayEntityRenderer::new);
+		erri.register(SofishticatedEntities.PIRANHA, PiranhaEntityRenderer::new);
+		erri.register(SofishticatedEntities.SHRIMP, ShrimpEntityRenderer::new);
+		erri.register(SofishticatedEntities.REEF_SHARK, ReefSharkEntityRenderer::new);
 
 		new ImmutableMap.Builder<EntityModelLayer, EntityModelLayerRegistry.TexturedModelDataProvider>()
 			.put(SofishticatedEntityModelLayers.ANGLER_FISH, AnglerFishEntityModel::getTexturedModelData)
@@ -37,8 +37,10 @@ public class SofishticatedClient implements ClientModInitializer {
 			.put(SofishticatedEntityModelLayers.REEF_SHARK, ReefSharkEntityModel::getTexturedModelData)
         .build().forEach(EntityModelLayerRegistry::registerModelLayer);
 
+		BlockRenderLayerMap brlm = BlockRenderLayerMap.INSTANCE;
+		brlm.putBlocks(
+			RenderLayer.getTranslucent(),
 
-		BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getTranslucent(),
 			SofishticatedBlocks.CLEAR_GLASS,
 			SofishticatedBlocks.CLEAR_GLASS_PANE,
 			SofishticatedBlocks.CLEAR_GLASS_TRAPDOOR

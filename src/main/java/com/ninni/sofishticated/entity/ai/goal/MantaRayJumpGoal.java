@@ -1,4 +1,4 @@
-package com.ninni.sofishticated.entity.entity.ai.goal;
+package com.ninni.sofishticated.entity.ai.goal;
 
 import com.ninni.sofishticated.entity.MantaRayEntity;
 import net.minecraft.entity.ai.goal.DiveJumpingGoal;
@@ -96,4 +96,3 @@ public class MantaRayJumpGoal extends DiveJumpingGoal {
 
     }
 }
-

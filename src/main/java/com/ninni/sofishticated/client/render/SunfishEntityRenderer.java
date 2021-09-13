@@ -1,7 +1,7 @@
 package com.ninni.sofishticated.client.render;
 
 import com.ninni.sofishticated.Sofishticated;
-import com.ninni.sofishticated.client.client.init.SofishticatedEntityModelLayers;
+import com.ninni.sofishticated.client.init.SofishticatedEntityModelLayers;
 import com.ninni.sofishticated.client.model.entity.SunfishEntityModel;
 import com.ninni.sofishticated.entity.SunfishEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;

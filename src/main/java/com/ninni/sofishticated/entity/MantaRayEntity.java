@@ -1,14 +1,17 @@
 package com.ninni.sofishticated.entity;
 
-import com.ninni.sofishticated.entity.entity.ai.goal.MantaRayJumpGoal;
-import com.ninni.sofishticated.entity.entity.ai.goal.MantaRaySwimAroundGoal;
+import com.ninni.sofishticated.entity.ai.goal.MantaRayJumpGoal;
+import com.ninni.sofishticated.entity.ai.goal.MantaRaySwimAroundGoal;
 import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import com.ninni.sofishticated.init.SofishticatedStatusEffects;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.AquaticLookControl;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.goal.BreatheAirGoal;
+import net.minecraft.entity.ai.goal.LookAroundGoal;
+import net.minecraft.entity.ai.goal.LookAtEntityGoal;
+import net.minecraft.entity.ai.goal.MoveIntoWaterGoal;
 import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.SwimNavigation;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;

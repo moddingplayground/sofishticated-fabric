@@ -24,10 +24,15 @@ public enum ShrimpVariant {
     RED_RILI,
     RED_BLUE_RILI,
     BLOODY_MARY;
-    public final Identifier texture;
+
+    private final Identifier texture;
 
     ShrimpVariant() {
-        this.texture = new Identifier(Sofishticated.MOD_ID, "textures/entity/shrimp/shrimp_" + this.toString().toLowerCase(Locale.ROOT) + ".png");
+        this.texture = new Identifier(Sofishticated.MOD_ID, "textures/entity/shrimp/shrimp_" + this.name().toLowerCase(Locale.ROOT) + ".png");
+    }
+
+    public Identifier getTexture() {
+        return texture;
     }
 
     public static ShrimpVariant getDefault() {

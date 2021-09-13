@@ -17,7 +17,6 @@ public class PiranhaEntityModel extends SinglePartEntityModel<PiranhaEntity> {
 	private final ModelPart leftFin;
 
 	public PiranhaEntityModel(ModelPart root) {
-
 		this.root = root;
 
 		this.body       = root.getChild("body");
@@ -119,6 +118,4 @@ public class PiranhaEntityModel extends SinglePartEntityModel<PiranhaEntity> {
 	public ModelPart getPart() {
 		return this.root;
 	}
-
-
 }

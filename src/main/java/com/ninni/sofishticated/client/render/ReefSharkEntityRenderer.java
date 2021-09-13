@@ -1,10 +1,8 @@
 package com.ninni.sofishticated.client.render;
 
 import com.ninni.sofishticated.Sofishticated;
-import com.ninni.sofishticated.client.client.init.SofishticatedEntityModelLayers;
-import com.ninni.sofishticated.client.model.entity.PiranhaEntityModel;
+import com.ninni.sofishticated.client.init.SofishticatedEntityModelLayers;
 import com.ninni.sofishticated.client.model.entity.ReefSharkEntityModel;
-import com.ninni.sofishticated.entity.PiranhaEntity;
 import com.ninni.sofishticated.entity.ReefSharkEntity;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.MobEntityRenderer;

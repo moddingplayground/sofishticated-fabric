@@ -19,7 +19,6 @@ public class MantaRayEntityModel extends SinglePartEntityModel<MantaRayEntity> {
 	private final ModelPart rightAntenna;
 
 	public MantaRayEntityModel(ModelPart root) {
-
 		this.root = root;
 
 		this.torso        = root.getChild("torso");
@@ -138,6 +137,4 @@ public class MantaRayEntityModel extends SinglePartEntityModel<MantaRayEntity> {
 	public ModelPart getPart() {
 		return this.root;
 	}
-
-
 }
