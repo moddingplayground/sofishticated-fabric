@@ -2,6 +2,7 @@ package com.ninni.sofishticated.init;
 
 import com.ninni.sofishticated.Sofishticated;
 import com.ninni.sofishticated.entity.*;
+import com.ninni.sofishticated.entity.base.TiltingFishEntity;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -75,6 +76,18 @@ public class SofishticatedEntities {
                                .dimensions(EntityDimensions.changing(0.6F, 0.4F))
                                .trackRangeBlocks(8),
         new int[]{ 0x645732, 0xCBB471 }
+    );
+
+    public static final EntityType<ReefSharkEntity> REEF_SHARK = register(
+        "reef_shark",
+        FabricEntityTypeBuilder.createMob()
+                               .entityFactory(ReefSharkEntity::new)
+                               .defaultAttributes(ReefSharkEntity::createTiltingFishAttributes)
+                               .spawnGroup(SpawnGroup.WATER_CREATURE)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, TiltingFishEntity::canSpawn)
+                               .dimensions(EntityDimensions.changing(1.2F, 0.4F))
+                               .trackRangeBlocks(8),
+        new int[]{ 0x746f65, 0xced6b5 }
     );
 
     static {

@@ -22,6 +22,7 @@ public class SofishticatedItems {
     public static final Item SHRIMP_BUCKET = register("shrimp_bucket", new EntityBucketItem(SofishticatedEntities.SHRIMP, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new FabricItemSettings().maxCount(1).group(Sofishticated.ITEM_GROUP)));
     public static final Item SHRIMP = register("shrimp", new Item(new FabricItemSettings().group(Sofishticated.ITEM_GROUP).food(new FoodComponent.Builder().hunger(3).saturationModifier(0.3F).build())));
     public static final Item COOKED_SHRIMP = register("cooked_shrimp", new Item(new FabricItemSettings().group(Sofishticated.ITEM_GROUP).food(new FoodComponent.Builder().hunger(5).saturationModifier(0.4F).build())));
+    public static final Item REEF_SHARK_BUCKET = register("reef_shark_bucket", new EntityBucketItem(SofishticatedEntities.REEF_SHARK, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new FabricItemSettings().maxCount(1).group(Sofishticated.ITEM_GROUP)));
 
     public static final Item CLEAR_GLASS = register("clear_glass", new BlockItem(SofishticatedBlocks.CLEAR_GLASS, new FabricItemSettings().group(Sofishticated.ITEM_GROUP)));
     public static final Item CLEAR_GLASS_PANE = register("clear_glass_pane", new BlockItem(SofishticatedBlocks.CLEAR_GLASS_PANE, new FabricItemSettings().group(Sofishticated.ITEM_GROUP)));

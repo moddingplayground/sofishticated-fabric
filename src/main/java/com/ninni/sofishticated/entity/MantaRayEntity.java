@@ -243,10 +243,6 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
                 this.navigation.startMovingTo(closestPlayer, 1.0d);
             }
         }
-
-        if (this.hasPassengers()) {
-            this.setVelocity(this.getVelocity().add(0.0D, 0.0075D, 0.0D));
-        }
     }
 
     @Override

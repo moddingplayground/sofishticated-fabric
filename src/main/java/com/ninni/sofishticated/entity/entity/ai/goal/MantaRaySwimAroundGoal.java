@@ -16,10 +16,6 @@ public class MantaRaySwimAroundGoal extends SwimAroundGoal {
             if (((WanderAroundGoalAccessor) this).canDespawn() && this.mob.getDespawnCounter() >= 100) {
                 return false;
             }
-
-            /*if (this.mob.getRandom().nextInt(this.chance) != 0) {
-                return false;
-            }*/
         }
 
         Vec3d vec3d = this.getWanderTarget();

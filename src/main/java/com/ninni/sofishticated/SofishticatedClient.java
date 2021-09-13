@@ -25,6 +25,7 @@ public class SofishticatedClient implements ClientModInitializer {
 		errInstance.register(SofishticatedEntities.MANTA_RAY, MantaRayEntityRenderer::new);
 		errInstance.register(SofishticatedEntities.PIRANHA, PiranhaEntityRenderer::new);
 		errInstance.register(SofishticatedEntities.SHRIMP, ShrimpEntityRenderer::new);
+		errInstance.register(SofishticatedEntities.REEF_SHARK, ReefSharkEntityRenderer::new);
 
 		new ImmutableMap.Builder<EntityModelLayer, EntityModelLayerRegistry.TexturedModelDataProvider>()
 			.put(SofishticatedEntityModelLayers.ANGLER_FISH, AnglerFishEntityModel::getTexturedModelData)
@@ -33,6 +34,7 @@ public class SofishticatedClient implements ClientModInitializer {
 			.put(SofishticatedEntityModelLayers.MANTA_RAY_SADDLE, () -> MantaRayEntityModel.getTexturedModelData(new Dilation(0.5F)))
 			.put(SofishticatedEntityModelLayers.PIRANHA, PiranhaEntityModel::getTexturedModelData)
 			.put(SofishticatedEntityModelLayers.SHRIMP, ShrimpEntityModel::getTexturedModelData)
+			.put(SofishticatedEntityModelLayers.REEF_SHARK, ReefSharkEntityModel::getTexturedModelData)
         .build().forEach(EntityModelLayerRegistry::registerModelLayer);
 
 

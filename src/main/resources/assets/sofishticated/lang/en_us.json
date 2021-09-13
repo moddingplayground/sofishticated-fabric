@@ -6,6 +6,7 @@
   "entity.sofishticated.manta_ray": "Manta Ray",
   "entity.sofishticated.piranha": "Piranha",
   "entity.sofishticated.shrimp": "Shrimp",
+  "entity.sofishticated.reef_shark": "Reef Shark",
 
   "entity.sofishticated.shrimp.variant.blue_diamond": "Blue Diamond",
   "entity.sofishticated.shrimp.variant.dragon_blood": "Dragon Blood",
@@ -33,6 +34,8 @@
   "block.sofishticated.clear_glass_pane": "Clear Glass Pane",
   "block.sofishticated.clear_glass_trapdoor": "Clear Glass Trapdoor",
 
+  "item.sofishticated.reef_shark_spawn_egg": "Reef Shark Spawn Egg",
+  "item.sofishticated.reef_shark_bucket": "Bucket of Reef Shark",
   "item.sofishticated.angler_fish_spawn_egg": "Angler Fish Spawn Egg",
   "item.sofishticated.angler_fish": "Angler Fish",
   "item.sofishticated.angler_fish_bucket": "Bucket of Angler Fish",
