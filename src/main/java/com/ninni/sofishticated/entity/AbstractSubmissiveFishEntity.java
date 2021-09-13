@@ -219,18 +219,17 @@ public abstract class AbstractSubmissiveFishEntity extends WaterCreatureEntity i
     }
 
 
+
     @Override
     public void tick() {
         super.tick();
         if (this.isAiDisabled()) {
             this.setAir(this.getMaxAir());
-        } else {
-                if (this.onGround) {
+        } if (this.onGround) {
                     this.setVelocity(this.getVelocity().add((this.random.nextFloat() * 2.0F - 1.0F) * 0.2F, 0.5D, (this.random.nextFloat() * 2.0F - 1.0F) * 0.2F));
                     this.setYaw(this.random.nextFloat() * 360.0F);
                     this.onGround = false;
                     this.velocityDirty = true;
                 }
-            }
     }
 }
