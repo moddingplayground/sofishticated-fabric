@@ -34,6 +34,8 @@
   "block.sofishticated.clear_glass_pane": "Clear Glass Pane",
   "block.sofishticated.clear_glass_trapdoor": "Clear Glass Trapdoor",
 
+  "item.sofishticated.tooth_club": "Tooth Club",
+  "item.sofishticated.shark_tooth": "Shark Tooth",
   "item.sofishticated.reef_shark_spawn_egg": "Reef Shark Spawn Egg",
   "item.sofishticated.reef_shark_bucket": "Bucket of Reef Shark",
   "item.sofishticated.angler_fish_spawn_egg": "Angler Fish Spawn Egg",
@@ -58,6 +60,9 @@
   "subtitles.entity.sofishticated.fish.ambient": "Swimming",
   "subtitles.entity.sofishticated.piranha.ambient": "Piranha thuds",
   "subtitles.entity.sofishticated.piranha.nibble": "Piranha nibbles",
+  "subtitles.entity.sofishticated.shark.bite": "Shark bites",
+
+  "enchantment.sofishticated.debilitating": "Debilitating",
 
   "effect.sofishticated.mantas_blessing": "Manta's Blessing"
 }

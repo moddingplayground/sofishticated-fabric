@@ -82,7 +82,7 @@ public class SofishticatedEntities {
         "reef_shark",
         FabricEntityTypeBuilder.createMob()
                                .entityFactory(ReefSharkEntity::new)
-                               .defaultAttributes(ReefSharkEntity::createTiltingFishAttributes)
+                               .defaultAttributes(ReefSharkEntity::createReefSharkAttributes)
                                .spawnGroup(SpawnGroup.WATER_CREATURE)
                                .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, AbstractSubmissiveFishEntity::canSpawn)
                                .dimensions(EntityDimensions.changing(0.8F, 0.4F))

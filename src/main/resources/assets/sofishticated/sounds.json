@@ -66,5 +66,13 @@
       "minecraft:mob/fox/bite3"
     ],
     "subtitle": "subtitles.entity.sofishticated.piranha.nibble"
+  },
+  "entity.shark.bite": {
+    "sounds": [
+      "minecraft:mob/fox/bite1",
+      "minecraft:mob/fox/bite2",
+      "minecraft:mob/fox/bite3"
+    ],
+    "subtitle": "subtitles.entity.sofishticated.shark.bite"
   }
 }

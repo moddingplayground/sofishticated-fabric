@@ -1,10 +1,7 @@
 package com.ninni.sofishticated;
 
 import com.google.common.reflect.Reflection;
-import com.ninni.sofishticated.init.SofishticatedEntities;
-import com.ninni.sofishticated.init.SofishticatedItems;
-import com.ninni.sofishticated.init.SofishticatedSoundEvents;
-import com.ninni.sofishticated.init.SofishticatedStatusEffects;
+import com.ninni.sofishticated.init.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
@@ -19,6 +16,7 @@ public class Sofishticated implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		Reflection.initialize(
+			SofishticatedEnchantments.class,
 			SofishticatedStatusEffects.class,
 			SofishticatedEntities.class,
 			SofishticatedSoundEvents.class,

@@ -28,6 +28,12 @@ public class SofishticatedSoundEvents {
         return createEntitySound("piranha", id);
     }
 
+    public static final SoundEvent ENTITY_SHARK_BITE = shark("bite");
+    private static SoundEvent shark(String id) {
+        return createEntitySound("shark", id);
+    }
+
+
     private static SoundEvent register(String id) {
         Identifier identifier = new Identifier(Sofishticated.MOD_ID, id);
         return Registry.register(Registry.SOUND_EVENT, identifier, new SoundEvent(identifier));

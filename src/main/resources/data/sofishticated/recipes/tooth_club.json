@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#/#",
+    "#/#",
+    "#/#"
+  ],
+  "key": {
+    "#": {
+      "item": "sofishticated:shark_tooth"
+    },
+    "/": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "sofishticated:tooth_club",
+    "count": 1
+  }
+}

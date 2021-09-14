@@ -122,7 +122,7 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
 
     @Override
     public boolean canImmediatelyDespawn(double distanceSquared) {
-        return !this.isSaddled();
+        return false;
     }
 
     @Override
