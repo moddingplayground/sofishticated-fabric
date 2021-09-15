@@ -77,9 +77,20 @@
       }
     }
   },
+  "butterfly_fish_bucket": {
+    "trigger": "minecraft:filled_bucket",
+    "conditions": {
+      "item": {
+        "items": [
+          "sofishticated:butterfly_fish_bucket"
+        ]
+    }
+  }
+},
   "requirements": [
     [
       "cod_bucket",
+      "butterfly_fish_bucket",
       "angler_fish_bucket",
       "piranha_bucket",
       "tropical_fish_bucket",

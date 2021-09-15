@@ -5,11 +5,17 @@
   "entity.sofishticated.piranha": "Piranha",
   "entity.sofishticated.shrimp": "Gamberetto",
   "entity.sofishticated.reef_shark": "Squalo del reef",
+  "entity.sofishticated.butterfly_fish": "Pesce Farfalla",
 
   "advancements.husbandry.reef_shark_bucket.title": "Secchio di felicitá",
   "advancements.husbandry.reef_shark_bucket.description": "Cattura un \"temibile\" predatore in un secchio",
   "advancements.husbandry.shrimp_bucket.title": "Darsela a gamberi",
   "advancements.husbandry.shrimp_bucket.description": "Cattura un gamberetto in un secchio",
+
+  "entity.sofishticated.butterfly_fish.variant.copper_bands": "Pesce farfalla dal rostro",
+  "entity.sofishticated.butterfly_fish.variant.hooded": "Pesce farfalla incappucciato",
+  "entity.sofishticated.butterfly_fish.variant.longnose": "Pesce farfalla muso lungo",
+  "entity.sofishticated.butterfly_fish.variant.raccoon": "Pesce farfalla procione",
 
   "death.attack.mob.sofishticated:piranha": "%1$s è stato mordicchiato troppo forte da %2$s",
   "death.attack.mob.sofishticated:piranha.item": "%2$s ha ucciso %1$s usando %3$s",
@@ -18,6 +24,8 @@
   "block.sofishticated.clear_glass_pane": "Pannello di vetro trasparente",
   "block.sofishticated.clear_glass_trapdoor": "Botola di vetro trasparente",
 
+  "item.sofishticated.butterfly_fish_spawn_egg": "Uovo generatore di pesce farfalla",
+  "item.sofishticated.butterfly_fish_bucket": "Secchio con pesce farfalla",
   "item.sofishticated.tooth_club": "Clava dentata",
   "item.sofishticated.shark_tooth": "Dente di squalo",
   "item.sofishticated.reef_shark_spawn_egg": "Uovo generatore di squalo del reef",

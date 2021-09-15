@@ -90,6 +90,18 @@ public class SofishticatedEntities {
         new int[]{ 0x746f65, 0xced6b5 }
     );
 
+    public static final EntityType<ButterflyFishEntity> BUTTERFLY_FISH = register(
+        "butterfly_fish",
+        FabricEntityTypeBuilder.createMob()
+                               .entityFactory(ButterflyFishEntity::new)
+                               .defaultAttributes(AbstractSubmissiveFishEntity::createTiltingFishAttributes)
+                               .spawnGroup(SpawnGroup.WATER_CREATURE)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, AbstractSubmissiveFishEntity::canSpawn)
+                               .dimensions(EntityDimensions.changing(0.4F, 0.4F))
+                               .trackRangeBlocks(8),
+        new int[]{ 0xd98700, 0x303f75 }
+    );
+
     static {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_FROZEN_OCEAN, BiomeKeys.DEEP_OCEAN), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.ANGLER_FISH, 10, 1, 1);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.DEEP_OCEAN, BiomeKeys.DEEP_WARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.MANTA_RAY, 8, 1, 1);

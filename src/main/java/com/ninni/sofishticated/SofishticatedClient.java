@@ -26,6 +26,7 @@ public class SofishticatedClient implements ClientModInitializer {
 		erri.register(SofishticatedEntities.PIRANHA, PiranhaEntityRenderer::new);
 		erri.register(SofishticatedEntities.SHRIMP, ShrimpEntityRenderer::new);
 		erri.register(SofishticatedEntities.REEF_SHARK, ReefSharkEntityRenderer::new);
+		erri.register(SofishticatedEntities.BUTTERFLY_FISH, ButterflyFishEntityRenderer::new);
 
 		new ImmutableMap.Builder<EntityModelLayer, EntityModelLayerRegistry.TexturedModelDataProvider>()
 			.put(SofishticatedEntityModelLayers.ANGLER_FISH, AnglerFishEntityModel::getTexturedModelData)
@@ -35,6 +36,7 @@ public class SofishticatedClient implements ClientModInitializer {
 			.put(SofishticatedEntityModelLayers.PIRANHA, PiranhaEntityModel::getTexturedModelData)
 			.put(SofishticatedEntityModelLayers.SHRIMP, ShrimpEntityModel::getTexturedModelData)
 			.put(SofishticatedEntityModelLayers.REEF_SHARK, ReefSharkEntityModel::getTexturedModelData)
+			.put(SofishticatedEntityModelLayers.BUTTERFLY_FISH, ButterflyFishEntityModel::getTexturedModelData)
         .build().forEach(EntityModelLayerRegistry::registerModelLayer);
 
 		BlockRenderLayerMap brlm = BlockRenderLayerMap.INSTANCE;

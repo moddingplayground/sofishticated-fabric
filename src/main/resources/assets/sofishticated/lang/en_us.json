@@ -7,11 +7,17 @@
   "entity.sofishticated.piranha": "Piranha",
   "entity.sofishticated.shrimp": "Shrimp",
   "entity.sofishticated.reef_shark": "Reef Shark",
+  "entity.sofishticated.butterfly_fish": "Butterfly Fish",
 
   "advancements.husbandry.reef_shark_bucket.title": "Bucket of Friend",
   "advancements.husbandry.reef_shark_bucket.description": "Catch a \"fearsome\" predator in a bucket",
   "advancements.husbandry.shrimp_bucket.title": "Tactical Shrimping",
   "advancements.husbandry.shrimp_bucket.description": "Catch a shrimp in a bucket",
+
+  "entity.sofishticated.butterfly_fish.variant.copper_bands": "Copper Bands",
+  "entity.sofishticated.butterfly_fish.variant.hooded": "Hooded",
+  "entity.sofishticated.butterfly_fish.variant.longnose": "Longnose",
+  "entity.sofishticated.butterfly_fish.variant.raccoon": "Raccoon",
 
   "entity.sofishticated.shrimp.variant.blue_diamond": "Blue Diamond",
   "entity.sofishticated.shrimp.variant.dragon_blood": "Dragon Blood",
@@ -39,6 +45,8 @@
   "block.sofishticated.clear_glass_pane": "Clear Glass Pane",
   "block.sofishticated.clear_glass_trapdoor": "Clear Glass Trapdoor",
 
+  "item.sofishticated.butterfly_fish_spawn_egg": "Butterfly Fish Spawn Egg",
+  "item.sofishticated.butterfly_fish_bucket": "Bucket of Butterfly Fish",
   "item.sofishticated.tooth_club": "Tooth Club",
   "item.sofishticated.shark_tooth": "Shark Tooth",
   "item.sofishticated.reef_shark_spawn_egg": "Reef Shark Spawn Egg",

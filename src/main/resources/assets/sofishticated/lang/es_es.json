@@ -5,6 +5,7 @@
   "entity.sofishticated.piranha": "Piraña",
   "entity.sofishticated.shrimp": "Camarón",
   "entity.sofishticated.reef_shark": "Tiburón de Arrecife",
+  "entity.sofishticated.butterfly_fish": "Pez Mariposa",
 
   "advancements.husbandry.reef_shark_bucket.title": "Balde Amigo",
   "advancements.husbandry.reef_shark_bucket.description": "Atrapa un \"Intimidante\" depredador con un balde.",
@@ -18,6 +19,8 @@
   "block.sofishticated.clear_glass_pane": "Panel de Vidrio Translúcido",
   "block.sofishticated.clear_glass_trapdoor": "Trampilla de Vidrio Translúcido",
 
+  "item.sofishticated.butterfly_fish_spawn_egg": "Generador de Pez Mariposa",
+  "item.sofishticated.butterfly_fish_bucket": "Balde con Pez Mariposa",
   "item.sofishticated.tooth_club": "Mazo Dientudo",
   "item.sofishticated.shark_tooth": "Diente de Tiburón",
   "item.sofishticated.reef_shark_spawn_egg": "Generador de Tiburón de Arrecife",

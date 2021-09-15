@@ -71,7 +71,7 @@ public abstract class AbstractSubmissiveFishEntity extends WaterCreatureEntity i
     @Nullable
     @Override
     protected SoundEvent getDeathSound() {
-        return SofishticatedSoundEvents.ENTITY_SHRIMP_DEATH;
+        return SofishticatedSoundEvents.ENTITY_FISH_DEATH;
     }
 
     @Override
@@ -148,7 +148,7 @@ public abstract class AbstractSubmissiveFishEntity extends WaterCreatureEntity i
     }
 
     public static DefaultAttributeContainer.Builder createTiltingFishAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 18.0D);
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 6.0D);
     }
 
     @Override

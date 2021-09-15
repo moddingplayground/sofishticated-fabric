@@ -1,6 +1,7 @@
 package com.ninni.sofishticated.mixin;
 
 import com.ninni.sofishticated.entity.ShrimpEntity;
+import com.ninni.sofishticated.entity.enums.ButterflyFishVariant;
 import com.ninni.sofishticated.entity.enums.ShrimpVariant;
 import com.ninni.sofishticated.init.SofishticatedEntities;
 import com.ninni.sofishticated.init.SofishticatedItems;
@@ -54,13 +55,22 @@ public class EntityBucketItemMixin {
             if (tag != null) {
                 String variant = tag.getString("BucketVariantTag");
                 if (variant != null) {
-                    tooltip.add(biotic_createVariantTooltip(SofishticatedEntities.SHRIMP, ShrimpVariant.valueOf(variant)));
+                    tooltip.add(sofishticated_createVariantTooltip(SofishticatedEntities.SHRIMP, ShrimpVariant.valueOf(variant)));
+                }
+            }
+        }
+        if (stack.getItem() == SofishticatedItems.BUTTERFLY_FISH_BUCKET) {
+            NbtCompound tag = stack.getNbt();
+            if (tag != null) {
+                String variant = tag.getString("ButterflyFishBucketVariantTag");
+                if (variant != null) {
+                    tooltip.add(sofishticated_createVariantTooltip(SofishticatedEntities.BUTTERFLY_FISH, ButterflyFishVariant.valueOf(variant)));
                 }
             }
         }
     }
 
-    private static Text biotic_createVariantTooltip(EntityType<?> type, Object variant) {
+    private static Text sofishticated_createVariantTooltip(EntityType<?> type, Object variant) {
         return new TranslatableText(
             String.format(
                 "%s.variant.%s",
