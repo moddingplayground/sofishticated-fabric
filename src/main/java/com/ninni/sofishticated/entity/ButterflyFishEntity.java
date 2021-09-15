@@ -2,10 +2,7 @@ package com.ninni.sofishticated.entity;
 
 import com.ninni.sofishticated.entity.enums.ButterflyFishVariant;
 import com.ninni.sofishticated.init.SofishticatedItems;
-import net.minecraft.entity.EntityData;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.MovementType;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
@@ -35,6 +32,11 @@ public class ButterflyFishEntity extends AbstractSubmissiveFishEntity{
         }
 
         return super.initialize(world, difficulty, spawnReason, entityData, entityTag);
+    }
+
+    @Override
+    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
+        return dimensions.height * 0.25F;
     }
 
     @Override

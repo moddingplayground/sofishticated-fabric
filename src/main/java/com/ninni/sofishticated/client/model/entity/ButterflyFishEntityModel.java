@@ -104,7 +104,7 @@ public class ButterflyFishEntityModel extends SinglePartEntityModel<ButterflyFis
     public void setAngles(ButterflyFishEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
 		float speed = 1.5f;
 		float degree = 1.5f;
-		this.body.pitch = headPitch * 0.01F;
+		this.body.pitch = headPitch * 0.015F;
 		this.body.yaw = headYaw * 0.01F;
 		this.body.yaw += MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;
 		this.tailFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
