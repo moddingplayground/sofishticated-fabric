@@ -110,8 +110,8 @@ public class ButterflyFishEntityModel extends SinglePartEntityModel<ButterflyFis
 		this.tailFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
 		this.leftFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F + 0.8F;
 		this.rightFin.yaw = MathHelper.cos(3.0F + animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F - 0.8F;
-		this.leftBottomFin.roll = MathHelper.cos(-2.0F + animationProgress * speed * 0.2F) * degree * 1.6F * 0.25F - 0.6F;
-		this.rightBottomFin.roll = MathHelper.cos(-2.0F + animationProgress * speed * 0.2F) * degree * -1.6F * 0.25F + 0.6F;
+		this.leftBottomFin.roll = MathHelper.cos(-2.0F + animationProgress * speed * 0.2F) * degree * 0.8F * 0.25F - 0.6F;
+		this.rightBottomFin.roll = MathHelper.cos(-2.0F + animationProgress * speed * 0.2F) * degree * -0.8F * 0.25F + 0.6F;
 	}
 
     @Override
