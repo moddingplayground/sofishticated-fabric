@@ -6,6 +6,11 @@
   "entity.sofishticated.shrimp": "Gamberetto",
   "entity.sofishticated.reef_shark": "Squalo del reef",
 
+  "advancements.husbandry.reef_shark_bucket.title": "Secchio di felicitá",
+  "advancements.husbandry.reef_shark_bucket.description": "Cattura un \"temibile\" predatore in un secchio",
+  "advancements.husbandry.shrimp_bucket.title": "Darsela a gamberi",
+  "advancements.husbandry.shrimp_bucket.description": "Cattura un gamberetto in un secchio",
+
   "death.attack.mob.sofishticated:piranha": "%1$s è stato mordicchiato troppo forte da %2$s",
   "death.attack.mob.sofishticated:piranha.item": "%2$s ha ucciso %1$s usando %3$s",
 

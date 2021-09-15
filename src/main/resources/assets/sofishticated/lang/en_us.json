@@ -8,6 +8,11 @@
   "entity.sofishticated.shrimp": "Shrimp",
   "entity.sofishticated.reef_shark": "Reef Shark",
 
+  "advancements.husbandry.reef_shark_bucket.title": "Bucket of Friend",
+  "advancements.husbandry.reef_shark_bucket.description": "Catch a \"fearsome\" predator in a bucket",
+  "advancements.husbandry.shrimp_bucket.title": "Tactical Shrimping",
+  "advancements.husbandry.shrimp_bucket.description": "Catch a shrimp in a bucket",
+
   "entity.sofishticated.shrimp.variant.blue_diamond": "Blue Diamond",
   "entity.sofishticated.shrimp.variant.dragon_blood": "Dragon Blood",
   "entity.sofishticated.shrimp.variant.red_onyx": "Red Onyx",
