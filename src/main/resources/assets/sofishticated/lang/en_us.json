@@ -14,7 +14,10 @@
   "advancements.husbandry.shrimp_bucket.title": "Tactical Shrimping",
   "advancements.husbandry.shrimp_bucket.description": "Catch a shrimp in a bucket",
 
-  "entity.sofishticated.butterfly_fish.variant.copper_bands": "Copper Bands",
+  "entity.sofishticated.butterfly_fish.variant.copper_band": "Copper Band",
+  "entity.sofishticated.butterfly_fish.variant.tinkers": "Tinker's",
+  "entity.sofishticated.butterfly_fish.variant.smiths": "Smith's",
+  "entity.sofishticated.butterfly_fish.variant.threadfin": "Threadfin",
   "entity.sofishticated.butterfly_fish.variant.hooded": "Hooded",
   "entity.sofishticated.butterfly_fish.variant.longnose": "Longnose",
   "entity.sofishticated.butterfly_fish.variant.raccoon": "Raccoon",

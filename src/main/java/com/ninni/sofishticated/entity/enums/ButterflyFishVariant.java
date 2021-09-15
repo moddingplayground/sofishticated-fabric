@@ -7,6 +7,9 @@ import java.util.Locale;
 
 public enum ButterflyFishVariant {
     HOODED,
+    THREADFIN,
+    SMITHS,
+    TINKERS,
     LONGNOSE,
     RACCOON,
     COPPER_BAND;
