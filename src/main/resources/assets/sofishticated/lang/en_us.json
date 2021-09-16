@@ -8,6 +8,7 @@
   "entity.sofishticated.shrimp": "Shrimp",
   "entity.sofishticated.reef_shark": "Reef Shark",
   "entity.sofishticated.butterfly_fish": "Butterfly Fish",
+  "entity.sofishticated.big_eyed": "Big Eyed",
 
   "advancements.husbandry.reef_shark_bucket.title": "Bucket of Friend",
   "advancements.husbandry.reef_shark_bucket.description": "Catch a \"fearsome\" predator in a bucket",
@@ -49,6 +50,7 @@
   "block.sofishticated.clear_glass_pane": "Clear Glass Pane",
   "block.sofishticated.clear_glass_trapdoor": "Clear Glass Trapdoor",
 
+  "item.sofishticated.big_eyed_spawn_egg": "Big Eyed Spawn Egg",
   "item.sofishticated.butterfly_fish_spawn_egg": "Butterfly Fish Spawn Egg",
   "item.sofishticated.butterfly_fish_bucket": "Bucket of Butterfly Fish",
   "item.sofishticated.tooth_club": "Tooth Club",
@@ -78,6 +80,9 @@
   "subtitles.entity.sofishticated.piranha.ambient": "Piranha thuds",
   "subtitles.entity.sofishticated.piranha.nibble": "Piranha nibbles",
   "subtitles.entity.sofishticated.shark.bite": "Shark bites",
+  "subtitles.entity.sofishticated.big_eyed.attack": "Big Eyed attacks",
+  "subtitles.entity.sofishticated.big_eyed.hurt": "Big Eyed hurts",
+  "subtitles.entity.sofishticated.big_eyed.death": "Big Eyed dies",
 
   "enchantment.sofishticated.debilitating": "Debilitating",
 

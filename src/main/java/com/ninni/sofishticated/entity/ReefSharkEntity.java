@@ -33,7 +33,7 @@ public class ReefSharkEntity extends AbstractSubmissiveFishEntity {
     protected void initGoals() {
         super.initGoals();
         this.targetSelector.add(0, new RevengeGoal(this));
-        this.goalSelector.add(1, new ReefSharkEntity.AttackGoal(1.2000000476837158D, true));
+        this.goalSelector.add(1, new ReefSharkEntity.AttackGoal(1.2D, true));
     }
 
     @Override

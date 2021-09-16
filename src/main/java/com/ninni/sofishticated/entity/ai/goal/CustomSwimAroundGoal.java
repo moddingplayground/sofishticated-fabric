@@ -5,8 +5,8 @@ import net.minecraft.entity.ai.goal.SwimAroundGoal;
 import net.minecraft.entity.mob.PathAwareEntity;
 import net.minecraft.util.math.Vec3d;
 
-public class MantaRaySwimAroundGoal extends SwimAroundGoal {
-    public MantaRaySwimAroundGoal(PathAwareEntity pathAwareEntity, double d, int i) {
+public class CustomSwimAroundGoal extends SwimAroundGoal {
+    public CustomSwimAroundGoal(PathAwareEntity pathAwareEntity, double d, int i) {
         super(pathAwareEntity, d, i);
     }
 

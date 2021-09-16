@@ -1,7 +1,7 @@
 package com.ninni.sofishticated.entity;
 
 import com.ninni.sofishticated.entity.ai.goal.MantaRayJumpGoal;
-import com.ninni.sofishticated.entity.ai.goal.MantaRaySwimAroundGoal;
+import com.ninni.sofishticated.entity.ai.goal.CustomSwimAroundGoal;
 import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import com.ninni.sofishticated.init.SofishticatedStatusEffects;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
@@ -66,7 +66,7 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
     protected void initGoals() {
         this.goalSelector.add(0, new BreatheAirGoal(this));
         this.goalSelector.add(0, new MoveIntoWaterGoal(this));
-        this.goalSelector.add(4, new MantaRaySwimAroundGoal(this, 1.0D, 10));
+        this.goalSelector.add(4, new CustomSwimAroundGoal(this, 1.0D, 10));
         this.goalSelector.add(4, new LookAroundGoal(this));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(5, new MantaRayJumpGoal(this, 10));

@@ -74,5 +74,31 @@
       "minecraft:mob/fox/bite3"
     ],
     "subtitle": "subtitles.entity.sofishticated.shark.bite"
+  },
+  "entity.big_eyed.attack": {
+    "sounds": [
+      "mob/dolphin/attack1",
+      "mob/dolphin/attack2",
+      "mob/dolphin/attack3"
+    ],
+    "subtitle": "subtitles.entity.sofishticated.big_eyed.attack"
+  },
+  "entity.big_eyed.hurt": {
+    "sounds": [
+      "minecraft:entity/fish/hurt1",
+      "minecraft:entity/fish/hurt2",
+      "minecraft:entity/fish/hurt3",
+      "minecraft:entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.sofishticated.big_eyed.hurt"
+  },
+  "entity.big_eyed.death": {
+    "sounds": [
+      "minecraft:entity/fish/hurt1",
+      "minecraft:entity/fish/hurt2",
+      "minecraft:entity/fish/hurt3",
+      "minecraft:entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.sofishticated.big_eyed.death"
   }
 }

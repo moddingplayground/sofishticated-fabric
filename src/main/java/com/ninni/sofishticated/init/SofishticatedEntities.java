@@ -102,6 +102,18 @@ public class SofishticatedEntities {
         new int[]{ 0xd98700, 0x303f75 }
     );
 
+    public static final EntityType<BigEyedEntity> BIG_EYED = register(
+        "big_eyed",
+        FabricEntityTypeBuilder.createMob()
+                               .entityFactory(BigEyedEntity::new)
+                               .defaultAttributes(BigEyedEntity::createBigEyedAttributes)
+                               .spawnGroup(SpawnGroup.WATER_CREATURE)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, BigEyedEntity::canSpawn)
+                               .dimensions(EntityDimensions.changing(1.0F, 0.6F))
+                               .trackRangeBlocks(8),
+        new int[]{ 0x303030, 0xf8c53a }
+    );
+
     static {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_FROZEN_OCEAN, BiomeKeys.DEEP_OCEAN), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.ANGLER_FISH, 10, 1, 1);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.DEEP_OCEAN, BiomeKeys.DEEP_WARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.MANTA_RAY, 8, 1, 1);

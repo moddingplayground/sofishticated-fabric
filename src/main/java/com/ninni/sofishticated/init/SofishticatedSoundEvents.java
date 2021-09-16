@@ -33,6 +33,12 @@ public class SofishticatedSoundEvents {
         return createEntitySound("shark", id);
     }
 
+    public static final SoundEvent ENTITY_BIG_EYED_ATTACK = big_eyed("attack");
+    public static final SoundEvent ENTITY_BIG_EYED_HURT = big_eyed("hurt");
+    public static final SoundEvent ENTITY_BIG_EYED_DEATH = big_eyed("death");
+    private static SoundEvent big_eyed(String id) {
+        return createEntitySound("big_eyed", id);
+    }
 
     private static SoundEvent register(String id) {
         Identifier identifier = new Identifier(Sofishticated.MOD_ID, id);
