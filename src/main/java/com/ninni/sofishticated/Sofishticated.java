@@ -9,18 +9,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 public class Sofishticated implements ModInitializer {
-	public static final String MOD_ID = "sofishticated";
-	public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(new Identifier(Sofishticated.MOD_ID, "item_group"), () -> new ItemStack(SofishticatedItems.ANGLER_FISH));
+    public static final String MOD_ID = "sofishticated";
+    public static final ItemGroup ITEM_GROUP = FabricItemGroupBuilder.build(new Identifier(Sofishticated.MOD_ID, "item_group"), () -> new ItemStack(SofishticatedItems.ANGLER_FISH));
 
-	@SuppressWarnings("UnstableApiUsage")
-	@Override
-	public void onInitialize() {
-		Reflection.initialize(
-			SofishticatedEnchantments.class,
-			SofishticatedStatusEffects.class,
-			SofishticatedEntities.class,
-			SofishticatedSoundEvents.class,
-			SofishticatedItems.class
-		);
-	}
+    @SuppressWarnings("UnstableApiUsage")
+    @Override
+    public void onInitialize() {
+        Reflection.initialize(
+            SofishticatedEnchantments.class,
+            SofishticatedStatusEffects.class,
+            SofishticatedEntities.class,
+            SofishticatedSoundEvents.class,
+            SofishticatedItems.class
+        );
+    }
 }

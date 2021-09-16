@@ -1,23 +1,23 @@
 {
-	"credit": "Made by Ninni",
-	"parent": "block/thin_block",
-	"textures": {
-		"1": "sofishticated:block/clear_glass_trapdoor_side",
-		"particle": "sofishticated:block/clear_glass_trapdoor",
-		"texture": "sofishticated:block/clear_glass_trapdoor"
-	},
-	"elements": [
-		{
-			"from": [0, 0, 0],
-			"to": [16, 3, 16],
-			"faces": {
-				"north": {"uv": [0, 16, 3, 0], "rotation": 90, "texture": "#1"},
-				"east": {"uv": [0, 16, 3, 0], "rotation": 90, "texture": "#1"},
-				"south": {"uv": [0, 16, 3, 0], "rotation": 90, "texture": "#1"},
-				"west": {"uv": [0, 16, 3, 0], "rotation": 90, "texture": "#1"},
-				"up": {"uv": [0, 16, 16, 0], "texture": "#texture"},
-				"down": {"uv": [0, 0, 16, 16], "texture": "#texture"}
-			}
-		}
-	]
+  "credit": "Made by Ninni",
+  "parent": "block/thin_block",
+  "textures": {
+    "1": "sofishticated:block/clear_glass_trapdoor_side",
+    "particle": "sofishticated:block/clear_glass_trapdoor",
+    "texture": "sofishticated:block/clear_glass_trapdoor"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 3, 16],
+      "faces": {
+        "north": {"uv": [0, 16, 3, 0], "rotation": 90, "texture": "#1"},
+        "east": {"uv": [0, 16, 3, 0], "rotation": 90, "texture": "#1"},
+        "south": {"uv": [0, 16, 3, 0], "rotation": 90, "texture": "#1"},
+        "west": {"uv": [0, 16, 3, 0], "rotation": 90, "texture": "#1"},
+        "up": {"uv": [0, 16, 16, 0], "texture": "#texture"},
+        "down": {"uv": [0, 0, 16, 16], "texture": "#texture"}
+      }
+    }
+  ]
 }
