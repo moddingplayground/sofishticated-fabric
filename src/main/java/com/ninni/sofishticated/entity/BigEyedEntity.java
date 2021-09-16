@@ -51,13 +51,14 @@ public class BigEyedEntity extends AnimalEntity {
     protected void initGoals() {
         super.initGoals();
         this.goalSelector.add(0, new MoveIntoWaterGoal(this));
-        this.targetSelector.add(0, new RevengeGoal(this));
         this.goalSelector.add(1, new MeleeAttackGoal(this, 1.2D, true));
         this.goalSelector.add(2, new AnimalMateGoal(this, 1.0D));
         this.goalSelector.add(3, new TemptGoal(this, 1.2D, BREEDING_INGREDIENT, false));
         this.goalSelector.add(4, new FollowParentGoal(this, 1.1D));
         this.goalSelector.add(5, new CustomSwimAroundGoal(this, 1.0D, 10));
         this.goalSelector.add(6, new LookAroundGoal(this));
+
+        this.targetSelector.add(0, new RevengeGoal(this));
     }
 
     public static DefaultAttributeContainer.Builder createBigEyedAttributes() {
@@ -69,7 +70,7 @@ public class BigEyedEntity extends AnimalEntity {
 
     @Override
     protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
-        return dimensions.height * 0.65F;
+        return dimensions.height * 0.5F;
     }
 
     @Override

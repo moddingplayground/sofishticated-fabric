@@ -1,7 +1,7 @@
 package com.ninni.sofishticated.entity;
 
-import com.ninni.sofishticated.entity.ai.goal.MantaRayJumpGoal;
 import com.ninni.sofishticated.entity.ai.goal.CustomSwimAroundGoal;
+import com.ninni.sofishticated.entity.ai.goal.MantaRayJumpGoal;
 import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import com.ninni.sofishticated.init.SofishticatedStatusEffects;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;

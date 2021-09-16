@@ -2,7 +2,6 @@ package com.ninni.sofishticated.init;
 
 import com.ninni.sofishticated.Sofishticated;
 import com.ninni.sofishticated.entity.*;
-import com.ninni.sofishticated.entity.AbstractSubmissiveFishEntity;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "sofishticated:block/big_eyed_fossil",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "sofishticated:block/big_eyed_fossil"
+    },
+    "facing=south": {
+      "model": "sofishticated:block/big_eyed_fossil",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "sofishticated:block/big_eyed_fossil",
+      "y": 270
+    }
+  }
+}

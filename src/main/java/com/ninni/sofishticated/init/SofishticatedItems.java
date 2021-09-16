@@ -4,8 +4,6 @@ import com.ninni.sofishticated.Sofishticated;
 import com.ninni.sofishticated.item.ToothClubItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
-import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.minecraft.block.Blocks;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.fluid.Fluids;
@@ -28,6 +26,7 @@ public class SofishticatedItems {
     public static final Item TOOTH_CLUB = register("tooth_club", new ToothClubItem(ToolMaterials.STONE, 6, -3.3F, (new Item.Settings()).group(Sofishticated.ITEM_GROUP)));
     public static final Item REEF_SHARK_BUCKET = register("reef_shark_bucket", new EntityBucketItem(SofishticatedEntities.REEF_SHARK, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new FabricItemSettings().maxCount(1).group(Sofishticated.ITEM_GROUP)));
     public static final Item BUTTERFLY_FISH_BUCKET = register("butterfly_fish_bucket", new EntityBucketItem(SofishticatedEntities.BUTTERFLY_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new FabricItemSettings().maxCount(1).group(Sofishticated.ITEM_GROUP)));
+    public static final Item BIG_EYED_FOSSIL = register("big_eyed_fossil", new BlockItem(SofishticatedBlocks.BIG_EYED_FOSSIL, new FabricItemSettings().group(Sofishticated.ITEM_GROUP)));
 
     public static final Item CLEAR_GLASS = register("clear_glass", new BlockItem(SofishticatedBlocks.CLEAR_GLASS, new FabricItemSettings().group(Sofishticated.ITEM_GROUP)));
     public static final Item CLEAR_GLASS_PANE = register("clear_glass_pane", new BlockItem(SofishticatedBlocks.CLEAR_GLASS_PANE, new FabricItemSettings().group(Sofishticated.ITEM_GROUP)));
