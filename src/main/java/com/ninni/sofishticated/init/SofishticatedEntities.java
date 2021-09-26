@@ -113,6 +113,18 @@ public class SofishticatedEntities {
         new int[]{ 0x303030, 0xf8c53a }
     );
 
+    public static final EntityType<HorseshoeCrabEntity> HORSESHOE_CRAB = register(
+        "horseshoe_crab",
+        FabricEntityTypeBuilder.createMob()
+                               .entityFactory(HorseshoeCrabEntity::new)
+                               .defaultAttributes(HorseshoeCrabEntity::createHorseshoeCrabAttributes)
+                               .spawnGroup(SpawnGroup.WATER_CREATURE)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, HorseshoeCrabEntity::canSpawn)
+                               .dimensions(EntityDimensions.changing(0.8F, 0.5F))
+                               .trackRangeBlocks(8),
+        new int[]{ 0x473e39, 0x7a6045 }
+    );
+
     static {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_FROZEN_OCEAN, BiomeKeys.DEEP_OCEAN), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.ANGLER_FISH, 10, 1, 1);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.DEEP_OCEAN, BiomeKeys.DEEP_WARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.MANTA_RAY, 8, 1, 1);
@@ -120,7 +132,7 @@ public class SofishticatedEntities {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.OCEAN, BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.COLD_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.SUNFISH, 10, 1, 1);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.JUNGLE, BiomeKeys.JUNGLE_EDGE, BiomeKeys.JUNGLE_HILLS, BiomeKeys.BAMBOO_JUNGLE_HILLS, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.MODIFIED_JUNGLE, BiomeKeys.MODIFIED_JUNGLE_EDGE), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.PIRANHA, 15, 2, 5);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.WARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.REEF_SHARK, 25, 1, 1);
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.WARM_OCEAN, BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.BUTTERFLY_FISH, 25, 1, 2);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.WARM_OCEAN, BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.BUTTERFLY_FISH, 1, 1, 2);
     }
 
     @SuppressWarnings("unchecked")

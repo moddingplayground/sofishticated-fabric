@@ -27,6 +27,7 @@ public class SofishticatedItems {
     public static final Item REEF_SHARK_BUCKET = register("reef_shark_bucket", new EntityBucketItem(SofishticatedEntities.REEF_SHARK, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new FabricItemSettings().maxCount(1).group(Sofishticated.ITEM_GROUP)));
     public static final Item BUTTERFLY_FISH_BUCKET = register("butterfly_fish_bucket", new EntityBucketItem(SofishticatedEntities.BUTTERFLY_FISH, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new FabricItemSettings().maxCount(1).group(Sofishticated.ITEM_GROUP)));
     public static final Item BIG_EYED_FOSSIL = register("big_eyed_fossil", new BlockItem(SofishticatedBlocks.BIG_EYED_FOSSIL, new FabricItemSettings().group(Sofishticated.ITEM_GROUP)));
+    public static final Item HORSESHOE_CRAB_BUCKET = register("horseshoe_crab_bucket", new EntityBucketItem(SofishticatedEntities.HORSESHOE_CRAB, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new FabricItemSettings().maxCount(1).group(Sofishticated.ITEM_GROUP)));
 
     public static final Item CLEAR_GLASS = register("clear_glass", new BlockItem(SofishticatedBlocks.CLEAR_GLASS, new FabricItemSettings().group(Sofishticated.ITEM_GROUP)));
     public static final Item CLEAR_GLASS_PANE = register("clear_glass_pane", new BlockItem(SofishticatedBlocks.CLEAR_GLASS_PANE, new FabricItemSettings().group(Sofishticated.ITEM_GROUP)));
