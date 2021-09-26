@@ -52,7 +52,7 @@ public class BigEyedFossilBlock extends HorizontalFacingBlock implements Waterlo
 
     @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        return !world.isAir(pos.down());
+        return world.getBlockState(pos.down()).isSideSolidFullSquare(world, pos, Direction.UP);
     }
 
     @Override

@@ -21,7 +21,6 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.Angerable;
 import net.minecraft.entity.mob.MobEntity;
-import net.minecraft.entity.passive.FishEntity;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -40,14 +39,14 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
-public class PiranhaEntity extends FishEntity implements Angerable {
+public class PiranhaEntity extends AbstractSubmissiveFishEntity implements Angerable {
     private static final UniformIntProvider ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(WolfEntity .class, TrackedDataHandlerRegistry.INTEGER);
     private UUID targetUuid;
     private static final UniformIntProvider ANGER_PASSING_COOLDOWN_RANGE = TimeHelper.betweenSeconds(4, 6);
     private int angerPassingCooldown;
 
-    public PiranhaEntity(EntityType<? extends FishEntity> entityType, World world) {
+    public PiranhaEntity(EntityType<? extends AbstractSubmissiveFishEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new AquaticMoveControl(this, 85, 10, 0.02F, 0.1F, true);
         this.lookControl = new AquaticLookControl(this, 10);
@@ -57,17 +56,17 @@ public class PiranhaEntity extends FishEntity implements Angerable {
     protected void initGoals() {
         this.targetSelector.add(0, new UniversalAngerGoal<>(this, true));
         this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
-        this.targetSelector.add(2, new FollowTargetGoal<>(this, PlayerEntity.class, 10, true, false, this::shouldAngerAt));
+        this.targetSelector.add(2, new FollowTargetGoal<>(this, PlayerEntity.class, 100, true, false, this::shouldAngerAt));
 
         this.goalSelector.add(0, new PiranhaEntity.SwimToRandomPlaceGoal(this));
-        this.goalSelector.add(1, new PiranhaEntity.AttackGoal(1.2000000476837158D, true));
+        this.goalSelector.add(1, new PiranhaEntity.AttackGoal(1.2D, true));
     }
 
     public static DefaultAttributeContainer.Builder createPiranhaAttributes() {
         return MobEntity.createMobAttributes()
                         .add(EntityAttributes.GENERIC_MAX_HEALTH, 3.0D)
                         .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D)
-                        .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 80.0D)
+                        .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.0D)
                         .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 0.0D);
     }
 
@@ -169,12 +168,6 @@ public class PiranhaEntity extends FishEntity implements Angerable {
         return SofishticatedSoundEvents.ENTITY_FISH_HURT;
     }
 
-    @Override
-    protected SoundEvent getFlopSound() {
-        return SofishticatedSoundEvents.ENTITY_FISH_FLOP;
-    }
-
-
 
     @Override
     public boolean tryAttack(Entity target) {
@@ -234,7 +227,6 @@ public class PiranhaEntity extends FishEntity implements Angerable {
         this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
     }
 
-    @Override
     protected boolean hasSelfControl() {
         return true;
     }

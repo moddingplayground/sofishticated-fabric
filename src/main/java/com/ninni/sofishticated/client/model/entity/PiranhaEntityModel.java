@@ -98,7 +98,9 @@ public class PiranhaEntityModel extends SinglePartEntityModel<PiranhaEntity> {
         if (!entity.isAttacking()) {
             float speed = 2.5f;
             float degree = 1.5f;
-            this.body.yaw = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;
+            this.body.pitch = headPitch * 0.01F;
+            this.body.yaw = headYaw * 0.01F;
+            this.body.yaw += MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;
             this.jaw.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.2F * limbDistance;
             this.tail.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
             this.leftFin.roll = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
@@ -106,7 +108,9 @@ public class PiranhaEntityModel extends SinglePartEntityModel<PiranhaEntity> {
         } else {
             float speed = 3.0f;
             float degree = 1.5f;
-            this.body.yaw = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;
+            this.body.pitch = headPitch * 0.01F;
+            this.body.yaw = headYaw * 0.01F;
+            this.body.yaw += MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;
             this.jaw.pitch = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 1.6F * 0.25F + 0.8F;
             this.tail.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
             this.leftFin.roll = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;

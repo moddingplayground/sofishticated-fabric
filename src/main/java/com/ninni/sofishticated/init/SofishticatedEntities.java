@@ -58,8 +58,8 @@ public class SofishticatedEntities {
         FabricEntityTypeBuilder.createMob()
                                .entityFactory(PiranhaEntity::new)
                                .defaultAttributes(PiranhaEntity::createPiranhaAttributes)
-                               .spawnGroup(SpawnGroup.WATER_AMBIENT)
-                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, FishEntity::canSpawn)
+                               .spawnGroup(SpawnGroup.WATER_CREATURE)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, PiranhaEntity::canSpawn)
                                .dimensions(EntityDimensions.changing(0.4F, 0.4F))
                                .trackRangeBlocks(8),
         new int[]{ 0x4e552e, 0xe76f35 }
