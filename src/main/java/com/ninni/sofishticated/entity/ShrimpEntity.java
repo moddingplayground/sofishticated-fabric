@@ -6,10 +6,7 @@ import com.ninni.sofishticated.init.SofishticatedItems;
 import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.EntityData;
-import net.minecraft.entity.EntityGroup;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
@@ -33,6 +30,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.*;
 import org.jetbrains.annotations.Nullable;
 
@@ -52,15 +50,15 @@ public class ShrimpEntity extends AnimalEntity {
     @Override
     protected void initGoals() {
         this.goalSelector.add(1, new MoveIntoWaterGoal(this));
-        this.goalSelector.add(2, new EscapeDangerGoal(this, 0.25));
-        this.goalSelector.add(3, new AnimalMateGoal(this, 0.25));
-        this.goalSelector.add(4, new TemptGoal(this, 0.25, Ingredient.ofItems(Blocks.SEAGRASS.asItem()), false));
-        this.goalSelector.add(4, new TemptGoal(this, 0.25, BREEDING_INGREDIENT, false));
-        this.goalSelector.add(5, new FollowParentGoal(this, 0.25));
+        this.goalSelector.add(2, new EscapeDangerGoal(this, 0.5));
+        this.goalSelector.add(3, new AnimalMateGoal(this, 1));
+        this.goalSelector.add(4, new TemptGoal(this, 0.5, Ingredient.ofItems(Blocks.SEAGRASS.asItem()), false));
+        this.goalSelector.add(4, new TemptGoal(this, 0.5, BREEDING_INGREDIENT, false));
+        this.goalSelector.add(5, new FollowParentGoal(this, 0.5));
         this.goalSelector.add(6, new SwimAroundGoal(this, 0.4D, 10));
         this.goalSelector.add(7, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(8, new FleeEntityGoal<>(this, PiranhaEntity.class, 8.0F, 0.45, 0.25));
-        this.goalSelector.add(9, new FleeEntityGoal<>(this, PlayerEntity.class, 8.0F, 0.25, 0.25));
+        this.goalSelector.add(8, new FleeEntityGoal<>(this, PiranhaEntity.class, 8.0F, 0.45, 0.5));
+        this.goalSelector.add(9, new FleeEntityGoal<>(this, PlayerEntity.class, 8.0F, 0.25, 0.5));
 
     }
 
@@ -94,12 +92,17 @@ public class ShrimpEntity extends AnimalEntity {
 
     }
 
+    @Override
+    public int getMaxAir() {
+        return 900;
+    }
+
     protected void tickAir(int air) {
         if (this.isAlive() && !this.isWet()) {
             this.setAir(air - 1);
             if (this.getAir() == -20) {
                 this.setAir(0);
-                this.damage(DamageSource.DRYOUT, 2.0F);
+                this.damage(DamageSource.DRYOUT, 1.0F);
             }
         } else {
             this.setAir(this.getMaxAir());
@@ -107,7 +110,20 @@ public class ShrimpEntity extends AnimalEntity {
 
     }
     public static DefaultAttributeContainer.Builder createShrimpAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 6.0D);
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 6.0D)
+                                              .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
+    }
+
+    @Override
+    public void travel(Vec3d movementInput) {
+        if (this.canMoveVoluntarily() && this.isTouchingWater()) {
+            this.updateVelocity(this.getMovementSpeed(), movementInput);
+            this.move(MovementType.SELF, this.getVelocity());
+            this.setVelocity(this.getVelocity().multiply(0.8D));
+            this.setVelocity(this.getVelocity().add(0.0D, -0.025D, 0.0D));
+        } else {
+            super.travel(movementInput);
+        }
     }
 
     @Override

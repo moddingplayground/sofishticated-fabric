@@ -67,13 +67,13 @@ public class HorseshoeCrabEntityModel extends AnimalModel<HorseshoeCrabEntity> {
         float speed = 1.0f;
         float degree = 1.25f;
         if (entity.isSubmergedInWater()) {
-            this.head.pitch = headPitch * 0.01F;
+            this.head.pitch = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
             this.head.yaw = headYaw * 0.01F;
             this.head.yaw += MathHelper.cos(-1.0F + animationProgress * speed * 0.4F) * degree * 0.3F * 0.25F;
             this.abdomen.pitch = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
             this.abdomen.yaw = MathHelper.cos(-2.0F + animationProgress * speed * 0.4F) * degree * 0.4F * 0.25F;
             this.tail.yaw = MathHelper.cos(-3.0F + animationProgress * speed * 0.2F) * degree * 0.1F * 0.25F;
-            this.tail.pitch = MathHelper.cos(-1.0F + animationProgress * speed * 0.4F) * degree * 1.8F * 0.25F;
+            this.tail.pitch = MathHelper.cos(-1.0F + animationProgress * speed * 0.4F) * degree * 0.1F * 0.25F;
         } else {
             this.head.pitch = headPitch * 0.0F;
             this.head.yaw = headYaw * 0.0F;

@@ -24,7 +24,7 @@ public class HorseshoeCrabEntityRenderer<T extends LivingEntity> extends MobEnti
         super.setupTransforms(entity, matrixStack, f, g, h);
         if (entity.world.getFluidState(entity.getBlockPos().up(1)).isIn(FluidTags.WATER)) {
             matrixStack.translate(0.0D, 0.35D, 0.0D);
-            matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(200.0F));
+            matrixStack.multiply(Vec3f.POSITIVE_X.getDegreesQuaternion(180.0F));
             matrixStack.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(180.0F));
         }
 

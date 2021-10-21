@@ -130,7 +130,7 @@ public class ShrimpEntityModel extends AnimalModel<ShrimpEntity> {
 
     @Override
     public void setAngles(ShrimpEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-        if (entity.getVelocity().length() <= 0.1D && entity.isSubmergedInWater()) {
+        if (entity.getVelocity().length() <= 0.1D && !entity.isSubmergedInWater()) {
             float speed = 8.0f;
             float degree = 3.5f;
             this.tail.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.4F * limbDistance + 0.25F;

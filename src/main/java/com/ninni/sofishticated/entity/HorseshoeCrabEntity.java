@@ -52,7 +52,7 @@ public class HorseshoeCrabEntity extends AnimalEntity {
     public HorseshoeCrabEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new HorseshoeCrabEntity.HorseshoeCrabMoveControl(this);
-        this.lookControl = new AquaticLookControl(this, 10);
+        this.lookControl = new AquaticLookControl(this, 0);
         this.stepHeight = 1;
         this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
     }
@@ -179,7 +179,7 @@ public class HorseshoeCrabEntity extends AnimalEntity {
         if (this.canMoveVoluntarily() && this.isTouchingWater()) {
             this.updateVelocity(this.getMovementSpeed(), movementInput);
             this.move(MovementType.SELF, this.getVelocity());
-            this.setVelocity(this.getVelocity().multiply(0.8D));
+            this.setVelocity(this.getVelocity().multiply(0.6D));
             if (this.getTarget() == null) {
                 this.setVelocity(this.getVelocity().add(0.0D, -0.005D, 0.0D));
             }

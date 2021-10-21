@@ -94,7 +94,7 @@ public class SofishticatedEntities {
         FabricEntityTypeBuilder.createMob()
                                .entityFactory(ButterflyFishEntity::new)
                                .defaultAttributes(AbstractSubmissiveFishEntity::createTiltingFishAttributes)
-                               .spawnGroup(SpawnGroup.WATER_CREATURE)
+                               .spawnGroup(SpawnGroup.CREATURE)
                                .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, AbstractSubmissiveFishEntity::canSpawn)
                                .dimensions(EntityDimensions.changing(0.4F, 0.4F))
                                .trackRangeBlocks(8),
@@ -132,7 +132,7 @@ public class SofishticatedEntities {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.OCEAN, BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.COLD_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.SUNFISH, 10, 1, 1);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.JUNGLE, BiomeKeys.JUNGLE_EDGE, BiomeKeys.JUNGLE_HILLS, BiomeKeys.BAMBOO_JUNGLE_HILLS, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.MODIFIED_JUNGLE, BiomeKeys.MODIFIED_JUNGLE_EDGE), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.PIRANHA, 15, 2, 5);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.WARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.REEF_SHARK, 25, 1, 1);
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.WARM_OCEAN, BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.BUTTERFLY_FISH, 1, 1, 2);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.WARM_OCEAN, BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.BUTTERFLY_FISH, 10, 1, 2);
     }
 
     @SuppressWarnings("unchecked")
