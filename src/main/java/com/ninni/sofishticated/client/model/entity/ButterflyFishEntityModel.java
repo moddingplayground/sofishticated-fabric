@@ -107,8 +107,8 @@ public class ButterflyFishEntityModel extends SinglePartEntityModel<ButterflyFis
         if (entity.isTouchingWater()) {
             this.body.pitch = headPitch * 0.015F;
             this.body.yaw = headYaw * 0.01F;
+            this.body.yaw += MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;
         }
-        this.body.yaw += MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;
         this.tailFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
         this.leftFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F + 0.8F;
         this.rightFin.yaw = MathHelper.cos(3.0F + animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F - 0.8F;

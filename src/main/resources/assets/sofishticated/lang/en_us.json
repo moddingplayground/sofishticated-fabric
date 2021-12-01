@@ -8,6 +8,7 @@
   "entity.sofishticated.shrimp": "Shrimp",
   "entity.sofishticated.reef_shark": "Reef Shark",
   "entity.sofishticated.butterfly_fish": "Butterfly Fish",
+  "entity.sofishticated.gar": "Gar",
 
   "advancements.husbandry.reef_shark_bucket.title": "Bucket of Friend",
   "advancements.husbandry.reef_shark_bucket.description": "Catch a \"fearsome\" predator in a bucket",
@@ -83,6 +84,7 @@
   "block.sofishticated.clear_glass_pane": "Clear Glass Pane",
   "block.sofishticated.clear_glass_trapdoor": "Clear Glass Trapdoor",
 
+  "item.sofishticated.gar_spawn_egg": "Gar Spawn Egg",
   "item.sofishticated.butterfly_fish_spawn_egg": "Butterfly Fish Spawn Egg",
   "item.sofishticated.butterfly_fish_bucket": "Bucket of Butterfly Fish",
   "item.sofishticated.tooth_club": "Tooth Club",

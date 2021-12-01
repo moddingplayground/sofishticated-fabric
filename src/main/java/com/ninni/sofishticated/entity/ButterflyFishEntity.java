@@ -1,24 +1,29 @@
 package com.ninni.sofishticated.entity;
 
+import com.ninni.sofishticated.entity.common.TiltingFishEntity;
 import com.ninni.sofishticated.entity.enums.ButterflyFishVariant;
 import com.ninni.sofishticated.init.SofishticatedItems;
+import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import net.minecraft.entity.*;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.WaterCreatureEntity;
+import net.minecraft.entity.passive.FishEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class ButterflyFishEntity extends AbstractSubmissiveFishEntity{
+public class ButterflyFishEntity extends TiltingFishEntity {
     private static final TrackedData<String> VARIANT = DataTracker.registerData(ButterflyFishEntity.class, TrackedDataHandlerRegistry.STRING);
 
-    public ButterflyFishEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
+    public ButterflyFishEntity(EntityType<? extends FishEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -58,6 +63,27 @@ public class ButterflyFishEntity extends AbstractSubmissiveFishEntity{
         super.copyDataToStack(stack);
         NbtCompound tag = stack.getOrCreateNbt();
         tag.putString("ButterflyFishBucketVariantTag", this.getVariant().toString());
+    }
+
+    @Override
+    protected SoundEvent getSwimSound() {
+        return SoundEvents.ENTITY_FISH_SWIM;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SofishticatedSoundEvents.ENTITY_FISH_DEATH;
+    }
+
+    @Override
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return SofishticatedSoundEvents.ENTITY_FISH_HURT;
+    }
+
+
+    @Override
+    protected SoundEvent getFlopSound() {
+        return SofishticatedSoundEvents.ENTITY_FISH_FLOP;
     }
 
     @Override

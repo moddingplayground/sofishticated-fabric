@@ -1,6 +1,7 @@
 package com.ninni.sofishticated.entity;
 
 import com.ninni.sofishticated.Sofishticated;
+import com.ninni.sofishticated.entity.common.TiltingSchoolingFishEntity;
 import com.ninni.sofishticated.init.SofishticatedItems;
 import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import com.ninni.sofishticated.mixin.MobEntityInvoker;
@@ -9,8 +10,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.control.AquaticMoveControl;
-import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -39,17 +38,15 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
-public class PiranhaEntity extends AbstractSubmissiveFishEntity implements Angerable {
+public class PiranhaEntity extends TiltingSchoolingFishEntity implements Angerable {
     private static final UniformIntProvider ANGER_TIME_RANGE = TimeHelper.betweenSeconds(20, 39);
     private static final TrackedData<Integer> ANGER_TIME = DataTracker.registerData(WolfEntity .class, TrackedDataHandlerRegistry.INTEGER);
     private UUID targetUuid;
     private static final UniformIntProvider ANGER_PASSING_COOLDOWN_RANGE = TimeHelper.betweenSeconds(4, 6);
     private int angerPassingCooldown;
 
-    public PiranhaEntity(EntityType<? extends AbstractSubmissiveFishEntity> entityType, World world) {
+    public PiranhaEntity(EntityType<? extends TiltingSchoolingFishEntity> entityType, World world) {
         super(entityType, world);
-        this.moveControl = new AquaticMoveControl(this, 85, 10, 0.02F, 0.1F, true);
-        this.lookControl = new YawAdjustingLookControl(this, 10);
     }
 
     @Override
@@ -59,15 +56,21 @@ public class PiranhaEntity extends AbstractSubmissiveFishEntity implements Anger
         this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, 100, true, false, this::shouldAngerAt));
 
         this.goalSelector.add(0, new PiranhaEntity.SwimToRandomPlaceGoal(this));
-        this.goalSelector.add(1, new PiranhaEntity.AttackGoal(1.2D, true));
+        this.goalSelector.add(1, new FollowGroupLeaderGoal(this));
+        this.goalSelector.add(2, new PiranhaEntity.AttackGoal(1.4D, true));
     }
 
     public static DefaultAttributeContainer.Builder createPiranhaAttributes() {
         return MobEntity.createMobAttributes()
                         .add(EntityAttributes.GENERIC_MAX_HEALTH, 3.0D)
                         .add(EntityAttributes.GENERIC_ATTACK_DAMAGE, 3.0D)
-                        .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 1.0D)
+                        .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.75D)
                         .add(EntityAttributes.GENERIC_ATTACK_KNOCKBACK, 0.0D);
+    }
+
+    @Override
+    public int getMaxGroupSize() {
+        return 20;
     }
 
     @Override
@@ -227,8 +230,14 @@ public class PiranhaEntity extends AbstractSubmissiveFishEntity implements Anger
         this.setAngerTime(ANGER_TIME_RANGE.get(this.random));
     }
 
+    @Override
     protected boolean hasSelfControl() {
         return true;
+    }
+
+    @Override
+    protected SoundEvent getFlopSound() {
+        return SofishticatedSoundEvents.ENTITY_FISH_FLOP;
     }
 
     private static class SwimToRandomPlaceGoal extends SwimAroundGoal {

@@ -2,6 +2,7 @@ package com.ninni.sofishticated.init;
 
 import com.ninni.sofishticated.Sofishticated;
 import com.ninni.sofishticated.entity.*;
+import com.ninni.sofishticated.entity.common.TiltingFishEntity;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -82,7 +83,7 @@ public class SofishticatedEntities {
                                .entityFactory(ReefSharkEntity::new)
                                .defaultAttributes(ReefSharkEntity::createReefSharkAttributes)
                                .spawnGroup(SpawnGroup.WATER_CREATURE)
-                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, AbstractSubmissiveFishEntity::canSpawn)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, TiltingFishEntity::canSpawn)
                                .dimensions(EntityDimensions.changing(0.8F, 0.4F))
                                .trackRangeBlocks(8),
         new int[]{ 0x746f65, 0xced6b5 }
@@ -92,12 +93,24 @@ public class SofishticatedEntities {
         "butterfly_fish",
         FabricEntityTypeBuilder.createMob()
                                .entityFactory(ButterflyFishEntity::new)
-                               .defaultAttributes(AbstractSubmissiveFishEntity::createTiltingFishAttributes)
+                               .defaultAttributes(TiltingFishEntity::createFishAttributes)
                                .spawnGroup(SpawnGroup.CREATURE)
-                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, AbstractSubmissiveFishEntity::canSpawn)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, TiltingFishEntity::canSpawn)
                                .dimensions(EntityDimensions.changing(0.4F, 0.4F))
                                .trackRangeBlocks(8),
         new int[]{ 0xd98700, 0x303f75 }
+    );
+
+    public static final EntityType<GarEntity> GAR = register(
+        "gar",
+        FabricEntityTypeBuilder.createMob()
+                               .entityFactory(GarEntity::new)
+                               .defaultAttributes(GarEntity::createGarAttributes)
+                               .spawnGroup(SpawnGroup.CREATURE)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, TiltingFishEntity::canSpawn)
+                               .dimensions(EntityDimensions.changing(0.6F, 0.3F))
+                               .trackRangeBlocks(8),
+        new int[]{ 0x544532, 0x88794a }
     );
 
 

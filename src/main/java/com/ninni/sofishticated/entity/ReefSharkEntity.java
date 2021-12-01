@@ -1,5 +1,6 @@
 package com.ninni.sofishticated.entity;
 
+import com.ninni.sofishticated.entity.common.TiltingFishEntity;
 import com.ninni.sofishticated.init.SofishticatedItems;
 import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import net.minecraft.entity.EntityType;
@@ -14,6 +15,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.ItemTags;
 import net.minecraft.util.ActionResult;
@@ -23,9 +25,9 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class ReefSharkEntity extends AbstractSubmissiveFishEntity {
+public class ReefSharkEntity extends TiltingFishEntity {
 
-    public ReefSharkEntity(EntityType<? extends AbstractSubmissiveFishEntity> entityType, World world) {
+    public ReefSharkEntity(EntityType<? extends TiltingFishEntity> entityType, World world) {
         super(entityType, world);
     }
 
@@ -63,6 +65,11 @@ public class ReefSharkEntity extends AbstractSubmissiveFishEntity {
         }
 
         return super.interactMob(player, hand);
+    }
+
+    @Override
+    protected SoundEvent getFlopSound() {
+        return SofishticatedSoundEvents.ENTITY_FISH_FLOP;
     }
 
     public static DefaultAttributeContainer.Builder createReefSharkAttributes() {

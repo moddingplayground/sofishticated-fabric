@@ -1,4 +1,4 @@
-package com.ninni.sofishticated.entity;
+package com.ninni.sofishticated.entity.common;
 
 import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import net.minecraft.block.BlockState;
@@ -38,13 +38,13 @@ import net.minecraft.world.WorldAccess;
 
 import java.util.Random;
 
-public abstract class AbstractBreedableFishEntity extends AnimalEntity implements Bucketable {
+public abstract class BreedableFishEntity extends AnimalEntity implements Bucketable {
     private static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(FishEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Items.SEAGRASS);
 
-    protected AbstractBreedableFishEntity(EntityType<? extends AnimalEntity> entityType, World world) {
+    protected BreedableFishEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
-        this.moveControl = new AbstractBreedableFishEntity.FishMoveControl(this);
+        this.moveControl = new BreedableFishEntity.FishMoveControl(this);
     }
 
     @Override
@@ -53,7 +53,7 @@ public abstract class AbstractBreedableFishEntity extends AnimalEntity implement
         this.goalSelector.add(1, new AnimalMateGoal(this, 1.0D));
         this.goalSelector.add(2, new TemptGoal(this, 1.2D, BREEDING_INGREDIENT, false));
         this.goalSelector.add(3, new FollowParentGoal(this, 1.1D));
-        this.goalSelector.add(4, new AbstractBreedableFishEntity.SwimToRandomPlaceGoal(this));
+        this.goalSelector.add(4, new BreedableFishEntity.SwimToRandomPlaceGoal(this));
     }
 
     protected void tickWaterBreathingAir(int air) {
@@ -110,7 +110,7 @@ public abstract class AbstractBreedableFishEntity extends AnimalEntity implement
         return super.cannotDespawn() || this.isFromBucket();
     }
 
-    public static boolean canSpawn(EntityType<? extends AbstractBreedableFishEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<? extends BreedableFishEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return world.getBlockState(pos).isOf(Blocks.WATER) && world.getBlockState(pos.up()).isOf(Blocks.WATER);
     }
 
@@ -225,9 +225,9 @@ public abstract class AbstractBreedableFishEntity extends AnimalEntity implement
     }
 
     private static class FishMoveControl extends MoveControl {
-        private final AbstractBreedableFishEntity fish;
+        private final BreedableFishEntity fish;
 
-        FishMoveControl(AbstractBreedableFishEntity owner) {
+        FishMoveControl(BreedableFishEntity owner) {
             super(owner);
             this.fish = owner;
         }
@@ -266,9 +266,9 @@ public abstract class AbstractBreedableFishEntity extends AnimalEntity implement
     }
 
     private static class SwimToRandomPlaceGoal extends SwimAroundGoal {
-        private final AbstractBreedableFishEntity fish;
+        private final BreedableFishEntity fish;
 
-        public SwimToRandomPlaceGoal(AbstractBreedableFishEntity fish) {
+        public SwimToRandomPlaceGoal(BreedableFishEntity fish) {
             super(fish, 1.0D, 40);
             this.fish = fish;
         }
