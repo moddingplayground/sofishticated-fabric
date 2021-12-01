@@ -4,8 +4,8 @@ import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.control.AquaticLookControl;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
+import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.goal.MoveIntoWaterGoal;
@@ -44,7 +44,7 @@ public abstract class AbstractSubmissiveFishEntity extends WaterCreatureEntity i
         super(entityType, world);
         this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
         this.moveControl = new AquaticMoveControl(this, 85, 10, 0.02F, 0.1F, true);
-        this.lookControl = new AquaticLookControl(this, 10);
+        this.lookControl = new YawAdjustingLookControl(this, 10);
         this.stepHeight = 0;
     }
 
@@ -157,7 +157,7 @@ public abstract class AbstractSubmissiveFishEntity extends WaterCreatureEntity i
     }
 
     @SuppressWarnings("unused")
-    public static boolean canSpawn(EntityType<? extends AbstractSubmissiveFishEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<? extends WaterCreatureEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return world.getBlockState(pos).isOf(Blocks.WATER) && world.getBlockState(pos.up()).isOf(Blocks.WATER);
     }
 

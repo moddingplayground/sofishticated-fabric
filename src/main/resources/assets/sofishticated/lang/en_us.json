@@ -8,7 +8,6 @@
   "entity.sofishticated.shrimp": "Shrimp",
   "entity.sofishticated.reef_shark": "Reef Shark",
   "entity.sofishticated.butterfly_fish": "Butterfly Fish",
-  "entity.sofishticated.big_eyed": "Big Eyed",
 
   "advancements.husbandry.reef_shark_bucket.title": "Bucket of Friend",
   "advancements.husbandry.reef_shark_bucket.description": "Catch a \"fearsome\" predator in a bucket",
@@ -16,7 +15,7 @@
   "advancements.husbandry.shrimp_bucket.description": "Catch a shrimp in a bucket",
 
   "entity.sofishticated.butterfly_fish.variant.copper_band": "Copper Band",
-  "entity.sofishticated.butterfly_fish.variant.eastern_island": "Eastern Island's",
+  "entity.sofishticated.butterfly_fish.variant.easter_island": "Easter Island",
   "entity.sofishticated.butterfly_fish.variant.tinkers": "Tinker's",
   "entity.sofishticated.butterfly_fish.variant.smiths": "Smith's",
   "entity.sofishticated.butterfly_fish.variant.threadfin": "Threadfin",
@@ -83,10 +82,7 @@
   "block.sofishticated.clear_glass": "Clear Glass",
   "block.sofishticated.clear_glass_pane": "Clear Glass Pane",
   "block.sofishticated.clear_glass_trapdoor": "Clear Glass Trapdoor",
-  "block.sofishticated.big_eyed_fossil": "Big Eyed Fossil",
 
-  "item.sofishticated.big_eyed_essence": "Big Eyed Essence",
-  "item.sofishticated.big_eyed_spawn_egg": "Big Eyed Spawn Egg",
   "item.sofishticated.butterfly_fish_spawn_egg": "Butterfly Fish Spawn Egg",
   "item.sofishticated.butterfly_fish_bucket": "Bucket of Butterfly Fish",
   "item.sofishticated.tooth_club": "Tooth Club",

@@ -15,7 +15,6 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
 
-@SuppressWarnings("deprecation")
 public class SofishticatedEntities {
     public static final EntityType<AnglerFishEntity> ANGLER_FISH = register(
         "angler_fish",
@@ -101,38 +100,15 @@ public class SofishticatedEntities {
         new int[]{ 0xd98700, 0x303f75 }
     );
 
-    public static final EntityType<BigEyedEntity> BIG_EYED = register(
-        "big_eyed",
-        FabricEntityTypeBuilder.createMob()
-                               .entityFactory(BigEyedEntity::new)
-                               .defaultAttributes(BigEyedEntity::createBigEyedAttributes)
-                               .spawnGroup(SpawnGroup.WATER_CREATURE)
-                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, BigEyedEntity::canSpawn)
-                               .dimensions(EntityDimensions.changing(1.0F, 0.6F))
-                               .trackRangeBlocks(8),
-        new int[]{ 0x303030, 0xf8c53a }
-    );
-
-    public static final EntityType<HorseshoeCrabEntity> HORSESHOE_CRAB = register(
-        "horseshoe_crab",
-        FabricEntityTypeBuilder.createMob()
-                               .entityFactory(HorseshoeCrabEntity::new)
-                               .defaultAttributes(HorseshoeCrabEntity::createHorseshoeCrabAttributes)
-                               .spawnGroup(SpawnGroup.WATER_CREATURE)
-                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, HorseshoeCrabEntity::canSpawn)
-                               .dimensions(EntityDimensions.changing(0.8F, 0.5F))
-                               .trackRangeBlocks(8),
-        new int[]{ 0x473e39, 0x7a6045 }
-    );
 
     static {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_FROZEN_OCEAN, BiomeKeys.DEEP_OCEAN), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.ANGLER_FISH, 10, 1, 1);
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.DEEP_OCEAN, BiomeKeys.DEEP_WARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.MANTA_RAY, 8, 1, 1);
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.RIVER, BiomeKeys.DARK_FOREST_HILLS, BiomeKeys.DARK_FOREST), SpawnGroup.WATER_CREATURE, SofishticatedEntities.SHRIMP, 100, 2, 5);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.DEEP_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.MANTA_RAY, 8, 1, 1);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.RIVER, BiomeKeys.DARK_FOREST), SpawnGroup.WATER_CREATURE, SofishticatedEntities.SHRIMP, 100, 2, 5);
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.OCEAN, BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.COLD_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.SUNFISH, 10, 1, 1);
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.JUNGLE, BiomeKeys.JUNGLE_EDGE, BiomeKeys.JUNGLE_HILLS, BiomeKeys.BAMBOO_JUNGLE_HILLS, BiomeKeys.BAMBOO_JUNGLE, BiomeKeys.MODIFIED_JUNGLE, BiomeKeys.MODIFIED_JUNGLE_EDGE), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.PIRANHA, 15, 2, 5);
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.WARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.REEF_SHARK, 25, 1, 1);
-        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_WARM_OCEAN, BiomeKeys.WARM_OCEAN, BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.BUTTERFLY_FISH, 10, 1, 2);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.JUNGLE, BiomeKeys.SPARSE_JUNGLE, BiomeKeys.BAMBOO_JUNGLE), SpawnGroup.WATER_AMBIENT, SofishticatedEntities.PIRANHA, 15, 2, 5);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DEEP_LUKEWARM_OCEAN, BiomeKeys.WARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.REEF_SHARK, 25, 1, 1);
+        BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.WARM_OCEAN, BiomeKeys.LUKEWARM_OCEAN, BiomeKeys.DEEP_LUKEWARM_OCEAN), SpawnGroup.WATER_CREATURE, SofishticatedEntities.BUTTERFLY_FISH, 10, 1, 2);
     }
 
     @SuppressWarnings("unchecked")

@@ -6,8 +6,8 @@ import com.ninni.sofishticated.init.SofishticatedSoundEvents;
 import com.ninni.sofishticated.init.SofishticatedStatusEffects;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.entity.*;
-import net.minecraft.entity.ai.control.AquaticLookControl;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
+import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.goal.BreatheAirGoal;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
@@ -53,7 +53,7 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
     public MantaRayEntity(EntityType<? extends WaterCreatureEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new AquaticMoveControl(this, 85, 10, 0.02F, 0.1F, true);
-        this.lookControl = new AquaticLookControl(this, 10);
+        this.lookControl = new YawAdjustingLookControl(this, 10);
     }
 
     public static DefaultAttributeContainer.Builder createMantaRayAttributes() {
@@ -254,12 +254,12 @@ public class MantaRayEntity extends WaterCreatureEntity implements Saddleable {
     }
 
     @Override
-    public int getLookPitchSpeed() {
+    public int getMaxLookPitchChange() {
         return 1;
     }
 
     @Override
-    public int getBodyYawSpeed() {
+    public int getMaxHeadRotation() {
         return 1;
     }
 

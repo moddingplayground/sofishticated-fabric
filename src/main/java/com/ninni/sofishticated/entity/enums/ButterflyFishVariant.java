@@ -9,7 +9,7 @@ public enum ButterflyFishVariant {
     HOODED,
     THREADFIN,
     SMITHS,
-    EASTERN_ISLAND,
+    EASTER_ISLAND,
     TINKERS,
     LONGNOSE,
     RACCOON,

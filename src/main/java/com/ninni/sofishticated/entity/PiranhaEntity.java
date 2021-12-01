@@ -9,8 +9,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ai.control.AquaticLookControl;
 import net.minecraft.entity.ai.control.AquaticMoveControl;
+import net.minecraft.entity.ai.control.YawAdjustingLookControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -49,14 +49,14 @@ public class PiranhaEntity extends AbstractSubmissiveFishEntity implements Anger
     public PiranhaEntity(EntityType<? extends AbstractSubmissiveFishEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new AquaticMoveControl(this, 85, 10, 0.02F, 0.1F, true);
-        this.lookControl = new AquaticLookControl(this, 10);
+        this.lookControl = new YawAdjustingLookControl(this, 10);
     }
 
     @Override
     protected void initGoals() {
         this.targetSelector.add(0, new UniversalAngerGoal<>(this, true));
         this.targetSelector.add(1, new RevengeGoal(this).setGroupRevenge());
-        this.targetSelector.add(2, new FollowTargetGoal<>(this, PlayerEntity.class, 100, true, false, this::shouldAngerAt));
+        this.targetSelector.add(2, new ActiveTargetGoal<>(this, PlayerEntity.class, 100, true, false, this::shouldAngerAt));
 
         this.goalSelector.add(0, new PiranhaEntity.SwimToRandomPlaceGoal(this));
         this.goalSelector.add(1, new PiranhaEntity.AttackGoal(1.2D, true));

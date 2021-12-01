@@ -176,7 +176,7 @@ public class SunfishEntity extends WaterCreatureEntity {
     }
 
     @SuppressWarnings("unused")
-    public static boolean canSpawn(EntityType<SunfishEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<? extends WaterCreatureEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
         return world.getBlockState(pos).isOf(Blocks.WATER) && world.getBlockState(pos.up()).isOf(Blocks.WATER);
     }
 }
