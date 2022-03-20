@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "sofishticated:shrimp"
+  },
+  "result": "sofishticated:cooked_shrimp",
+  "experience": 0.35,
+  "cookingtime": 200
+}

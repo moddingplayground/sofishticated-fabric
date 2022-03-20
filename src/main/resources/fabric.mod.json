@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+
+  "id": "sofishticated",
+  "version": "${version}",
+  "license": [
+    "MIT (Code)",
+    "All Rights Reserved (Assets)"
+  ],
+
+  "name": "Sofishticated",
+  "icon": "assets/sofishticated/icon.png",
+  "description": "A mod all about aquatic creatures!",
+
+  "authors": [
+    "Gaetano Russo (Ninni)",
+    "Daniel Orr (Andante)"
+  ],
+  "contact": {
+    "homepage": "https://moddingplayground.net/sofishticated",
+    "sources": "https://github.com/moddingplayground/sofishticated-fabric",
+    "issues": "https://github.com/moddingplayground/sofishticated-fabric/issues"
+  },
+  "custom": {
+    "modmenu": { "links": { "mod.sofishticated.contact.discord": "https://discord.moddingplayground.net" } }
+  },
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.moddingplayground.sofishticated.impl.SofishticatedImpl",
+      "net.moddingplayground.sofishticated.impl.entity.SofishticatedEntityTypeImpl"
+    ],
+    "client": [
+      "net.moddingplayground.sofishticated.impl.client.SofishticatedClientImpl",
+      "net.moddingplayground.sofishticated.impl.client.entity.SofishticatedEntityTypeClientImpl"
+    ],
+
+    "toymaker": [ "net.moddingplayground.sofishticated.impl.data.SofishticatedToymakerImpl" ]
+  },
+  "mixins": [ "sofishticated.mixins.json" ],
+
+  "depends": {
+    "java": ">=17",
+    "minecraft": ">=1.18.2",
+    "fabricloader": ">=0.13",
+    "fabric": ">=0.48",
+    "frame": ">=0.16"
+  }
+}
