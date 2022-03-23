@@ -18,7 +18,7 @@ public class ItemModelGenerator extends AbstractItemModelGenerator {
 
     @Override
     public void generate() {
-        this.generatedItems(SHRIMP, COOKED_SHRIMP);
+        this.generatedItems(SHRIMP, COOKED_SHRIMP, ANGLER_FISH);
 
         for (EntityType<?> type : Registry.ENTITY_TYPE) {
             Identifier id = Registry.ENTITY_TYPE.getId(type);

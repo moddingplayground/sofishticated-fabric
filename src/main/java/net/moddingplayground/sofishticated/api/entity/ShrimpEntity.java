@@ -64,7 +64,7 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable {
 
     public static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Blocks.SEAGRASS);
 
-    public ShrimpEntity(EntityType<? extends AnimalEntity> type, World world) {
+    public ShrimpEntity(EntityType<? extends ShrimpEntity> type, World world) {
         super(type, world);
         this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
         this.stepHeight = 1;

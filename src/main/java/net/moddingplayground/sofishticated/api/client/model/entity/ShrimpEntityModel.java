@@ -18,7 +18,7 @@ import net.moddingplayground.sofishticated.api.entity.ShrimpEntity;
 import static net.minecraft.client.render.entity.model.EntityModelPartNames.*;
 
 @Environment(EnvType.CLIENT)
-public class ShrimpEntityModel extends AnimalModel<ShrimpEntity> {
+public class ShrimpEntityModel<E extends ShrimpEntity> extends AnimalModel<E> {
     public static final String TAIL_FIN = "tail_fin";
     public static final String HANDS    = "hands";
     public static final String FACE     = "face";
@@ -122,17 +122,7 @@ public class ShrimpEntityModel extends AnimalModel<ShrimpEntity> {
     }
 
     @Override
-    protected Iterable<ModelPart> getHeadParts() {
-        return ImmutableList.of();
-    }
-
-    @Override
-    protected Iterable<ModelPart> getBodyParts() {
-        return ImmutableList.of(this.body);
-    }
-
-    @Override
-    public void setAngles(ShrimpEntity entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+    public void setAngles(E entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         if (entity.getVelocity().length() <= 0.1D && !entity.isSubmergedInWater()) {
             float speed = 8.0f;
             float degree = 3.5f;
@@ -160,5 +150,15 @@ public class ShrimpEntityModel extends AnimalModel<ShrimpEntity> {
             this.rightLeg.yaw = MathHelper.cos(3.0F + limbAngle * speed * 0.6F) * degree * 0.1F * limbDistance;
             this.leftLeg.yaw = MathHelper.cos(3.0F + limbAngle * speed * 0.6F) * degree * 0.1F * limbDistance;
         }
+    }
+
+    @Override
+    protected Iterable<ModelPart> getHeadParts() {
+        return ImmutableList.of();
+    }
+
+    @Override
+    protected Iterable<ModelPart> getBodyParts() {
+        return ImmutableList.of(this.body);
     }
 }

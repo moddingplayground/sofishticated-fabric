@@ -10,9 +10,9 @@ import net.moddingplayground.sofishticated.api.client.model.entity.ShrimpEntityM
 import net.moddingplayground.sofishticated.api.entity.ShrimpEntity;
 
 @Environment(EnvType.CLIENT)
-public class ShrimpEntityRenderer extends MobEntityRenderer<ShrimpEntity, ShrimpEntityModel> {
+public class ShrimpEntityRenderer extends MobEntityRenderer<ShrimpEntity, ShrimpEntityModel<ShrimpEntity>> {
     public ShrimpEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, new ShrimpEntityModel(context.getPart(SofishticatedEntityModelLayers.SHRIMP)), 0.3F);
+        super(context, new ShrimpEntityModel<>(context.getPart(SofishticatedEntityModelLayers.SHRIMP)), 0.3F);
     }
 
     @Override

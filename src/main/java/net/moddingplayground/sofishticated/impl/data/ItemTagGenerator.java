@@ -15,7 +15,7 @@ public class ItemTagGenerator extends AbstractTagGenerator<Item> {
 
     @Override
     public void generate() {
-        this.add(SofishticatedItemTags.FISHES, SHRIMP, COOKED_SHRIMP);
+        this.add(SofishticatedItemTags.FISHES, SHRIMP, COOKED_SHRIMP, ANGLER_FISH);
         this.add(ItemTags.FISHES, SofishticatedItemTags.FISHES);
     }
 }

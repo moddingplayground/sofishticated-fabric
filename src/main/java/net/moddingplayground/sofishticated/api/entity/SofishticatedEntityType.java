@@ -28,6 +28,15 @@ public interface SofishticatedEntityType {
                                .trackRangeBlocks(8)
     );
 
+    EntityType<AnglerFishEntity> ANGLER_FISH = register("angler_fish", 0x372D2A, 0x73EFE8,
+        FabricEntityTypeBuilder.createMob()
+                               .entityFactory(AnglerFishEntity::new).spawnGroup(SpawnGroup.WATER_AMBIENT)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, AnglerFishEntity::canSpawn)
+                               .defaultAttributes(AnglerFishEntity::createAnglerFishAttributes)
+                               .dimensions(EntityDimensions.changing(0.6F, 0.6F))
+                               .trackRangeBlocks(8)
+    );
+
     @SuppressWarnings("unchecked")
     private static <T extends Entity> EntityType<T> register(String id, FabricEntityTypeBuilder<T> type, int primary, int secondary, SpawnEggFactory egg) {
         EntityType<T> built = type.build();

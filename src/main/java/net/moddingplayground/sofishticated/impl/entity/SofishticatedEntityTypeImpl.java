@@ -15,6 +15,7 @@ public final class SofishticatedEntityTypeImpl implements SofishticatedEntityTyp
     @Override
     public void onInitialize() {
         addSpawn(SHRIMP, SpawnGroup.WATER_CREATURE, 100, 2, 5);
+        addSpawn(ANGLER_FISH, SpawnGroup.WATER_AMBIENT, 10, 1, 1);
     }
 
     private void addSpawn(EntityType<?> type, SpawnGroup group, int weight, int minGroupSize, int maxGroupSize) {
