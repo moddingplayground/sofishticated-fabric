@@ -46,8 +46,6 @@ public class AnglerFishEntityRenderer<E extends AnglerFishEntity> extends MobEnt
         super.setupTransforms(entity, matrices, animationProgress, bodyYaw, tickDelta);
         if (entity.isDeflated()) return;
 
-        float angle = 4.3F * MathHelper.sin(0.6F * animationProgress);
-        matrices.multiply(Vec3f.POSITIVE_Y.getDegreesQuaternion(angle));
         if (!entity.isTouchingWater()) {
             matrices.translate(0.4D, 0.25D, 0.0D);
             matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(90.0F));
