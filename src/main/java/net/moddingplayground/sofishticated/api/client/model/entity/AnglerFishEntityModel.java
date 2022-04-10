@@ -45,7 +45,6 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             BODY,
             ModelPartBuilder.create()
                             .uv(0, 0)
-                            .mirrored(false)
                             .cuboid(-4.0F, -4.0F, -4.5F, 7.0F, 7.0F, 9.0F),
             ModelTransform.pivot(0.5F, 19.0F, -1.0F)
         );
@@ -54,7 +53,6 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             TAIL,
             ModelPartBuilder.create()
                             .uv(0, 0)
-                            .mirrored(false)
                             .cuboid(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 4.0F),
             ModelTransform.pivot(-0.5F, 0.5F, 4.5F)
         );
@@ -63,10 +61,8 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             LANTERN,
             ModelPartBuilder.create()
                             .uv(0, 14)
-                            .mirrored(false)
                             .cuboid(0.0F, -3.0F, -1.0F, 0.0F, 3.0F, 2.0F)
                             .uv(22, 16)
-                            .mirrored(false)
                             .cuboid(-0.5F, -5.0F, -1.0F, 1.0F, 2.0F, 2.0F),
             ModelTransform.of(-0.5F, -3.5F, -2.5F, -0.3927F, 0.0F, 0.0F)
         );
@@ -75,7 +71,6 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             JAW,
             ModelPartBuilder.create()
                             .uv(0, 16)
-                            .mirrored(false)
                             .cuboid(-3.5F, -3.0F, -7.5F, 7.0F, 5.0F, 7.0F, new Dilation(0.25F)),
             ModelTransform.of(-0.5F, 1.0F, 3.0F, 0.1745F, 0.0F, 0.0F)
         );
@@ -84,7 +79,6 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             LEFT_FIN,
             ModelPartBuilder.create()
                             .uv(0, 0)
-                            .mirrored(false)
                             .cuboid(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 2.0F),
             ModelTransform.of(3.0F, 0.0F, 1.5F, 0.0F, 0.3927F, 0.0F)
         );
@@ -93,8 +87,64 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             RIGHT_FIN,
             ModelPartBuilder.create()
                             .uv(0, 0)
-                            .mirrored(false)
                             .cuboid(0.0F, -1.0F, 0.0F, 0.0F, 2.0F, 2.0F),
+            ModelTransform.of(-4.0F, 0.0F, 1.5F, 0.0F, -0.3927F, 0.0F)
+        );
+
+        return TexturedModelData.of(data, 32, 32);
+    }
+
+    public static TexturedModelData getDeflatedTexturedModelData() {
+        ModelData data = new ModelData();
+        ModelPartData root = data.getRoot();
+
+        ModelPartData body = root.addChild(
+            BODY,
+            ModelPartBuilder.create()
+                            .uv(0, 2)
+                            .cuboid(-4.0F, -2.0F, -4.5F, 7.0F, 5.0F, 9.0F),
+            ModelTransform.pivot(0.5F, 21.0F, -1.0F)
+        );
+
+        ModelPartData tail = body.addChild(
+            TAIL,
+            ModelPartBuilder.create()
+                            .uv(0, 0)
+                            .cuboid(0.0F, -2.5F, 0.0F, 0.0F, 5.0F, 4.0F),
+            ModelTransform.pivot(-0.5F, 0.5F, 4.5F)
+        );
+
+        ModelPartData lantern = body.addChild(
+            LANTERN,
+            ModelPartBuilder.create()
+                            .uv(0, 14)
+                            .cuboid(0.0F, -3.0F, -1.0F, 0.0F, 3.0F, 2.0F)
+                            .uv(22, 16)
+                            .cuboid(-0.5F, -5.0F, -1.0F, 1.0F, 2.0F, 2.0F),
+            ModelTransform.of(-0.5F, -1.5F, -2.5F, -0.8727F, 0.0F, 0.0F)
+        );
+
+        ModelPartData jaw = body.addChild(
+            JAW,
+            ModelPartBuilder.create()
+                            .uv(0, 16)
+                            .cuboid(-3.5F, -3.0F, -7.5F, 7.0F, 5.0F, 7.0F, new Dilation(0.25F)),
+            ModelTransform.pivot(-0.5F, 1.0F, 3.0F)
+        );
+
+        ModelPartData leftFin = body.addChild(
+            LEFT_FIN,
+            ModelPartBuilder.create()
+                            .uv(0, 0)
+                            .cuboid(0.0F, 1.0F, 0.0F, 0.0F, 2.0F, 2.0F),
+            ModelTransform.of(3.0F, 0.0F, 1.5F, 0.0F, 0.3927F, 0.0F)
+        );
+
+        ModelPartData rightFin = body.addChild(
+            RIGHT_FIN,
+            ModelPartBuilder.create()
+                            .uv(0, 0)
+                            .cuboid(0.0F, 1.0F, 0.0F, 0.0F, 2.0F, 2.0F),
             ModelTransform.of(-4.0F, 0.0F, 1.5F, 0.0F, -0.3927F, 0.0F)
         );
 
@@ -103,6 +153,11 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
 
     @Override
     public void setAngles(E entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+        this.body.pitch = headPitch * 0.015F;
+        this.body.yaw = headYaw * 0.01F;
+
+        if (entity.isDeflated()) return;
+
         float speed = 2.5f;
         float degree = 1.5f;
         this.body.yaw = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;

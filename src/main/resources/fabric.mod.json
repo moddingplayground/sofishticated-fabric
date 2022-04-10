@@ -33,7 +33,8 @@
     ],
     "client": [
       "net.moddingplayground.sofishticated.impl.client.SofishticatedClientImpl",
-      "net.moddingplayground.sofishticated.impl.client.entity.SofishticatedEntityTypeClientImpl"
+      "net.moddingplayground.sofishticated.impl.client.entity.SofishticatedEntityTypeClientImpl",
+      "net.moddingplayground.sofishticated.impl.client.particle.SofishticatedParticleTypesClientImpl"
     ],
 
     "toymaker": [ "net.moddingplayground.sofishticated.impl.data.SofishticatedToymakerImpl" ]

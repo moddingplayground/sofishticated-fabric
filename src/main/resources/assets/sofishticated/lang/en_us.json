@@ -10,10 +10,10 @@
   "entity.sofishticated.reef_shark": "Reef Shark",
   "entity.sofishticated.gar": "Gar",
 
-  "advancements.husbandry.reef_shark_bucket.title": "Bucket of Friend",
-  "advancements.husbandry.reef_shark_bucket.description": "Catch a 'fearsome' predator in a bucket",
-  "advancements.husbandry.shrimp_bucket.title": "Tactical Shrimping",
-  "advancements.husbandry.shrimp_bucket.description": "Catch a shrimp in a bucket",
+  "advancements.sofishticated.obtain_reef_shark_bucket.title": "Bucket of Friend",
+  "advancements.sofishticated.obtain_reef_shark_bucket.description": "Catch a 'fearsome' predator in a bucket",
+  "advancements.sofishticated.obtain_shrimp_bucket.title": "Tactical Shrimping",
+  "advancements.sofishticated.obtain_shrimp_bucket.description": "Catch a shrimp in a bucket",
 
   "entity.sofishticated.butterfly_fish": "Butterfly Fish",
   "entity.sofishticated.butterfly_fish.variant.copper_band": "Copper Band",
@@ -105,6 +105,7 @@
   "subtitles.entity.sofishticated.shrimp.hurt": "Shrimp hurts",
   "subtitles.entity.sofishticated.shrimp.death": "Shrimp dies",
   "subtitles.entity.sofishticated.shrimp.ambient": "Shrimp Swimming",
+  "subtitles.entity.sofishticated.angler_fish.deflate": "Angler Fish deflates",
   "subtitles.entity.sofishticated.fish.flop": "Fish flops",
   "subtitles.entity.sofishticated.fish.hurt": "Fish hurts",
   "subtitles.entity.sofishticated.fish.death": "Fish dies",

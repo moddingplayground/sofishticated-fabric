@@ -13,6 +13,7 @@ import net.moddingplayground.sofishticated.api.client.model.entity.ShrimpEntityM
 public interface SofishticatedEntityModelLayers {
     EntityModelLayer SHRIMP = main("shrimp", ShrimpEntityModel::getTexturedModelData);
     EntityModelLayer ANGLER_FISH = main("angler_fish", AnglerFishEntityModel::getTexturedModelData);
+    EntityModelLayer ANGLER_FISH_DEFLATED = main("angler_fish_deflated", AnglerFishEntityModel::getDeflatedTexturedModelData);
 
     private static EntityModelLayer register(String id, String name, EntityModelLayerRegistry.TexturedModelDataProvider provider) {
         EntityModelLayer layer = new EntityModelLayer(new Identifier(Sofishticated.MOD_ID, id), name);

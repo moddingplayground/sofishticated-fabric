@@ -14,6 +14,11 @@ public interface SofishticatedSoundEvents {
         return entity("fish", id);
     }
 
+    SoundEvent ENTITY_ANGLER_FISH_DEFLATE = anglerFish("deflate");
+    private static SoundEvent anglerFish(String id) {
+        return entity("angler_fish", id);
+    }
+
     SoundEvent ENTITY_SHRIMP_AMBIENT = shrimp("ambient");
     SoundEvent ENTITY_SHRIMP_HURT = shrimp("hurt");
     SoundEvent ENTITY_SHRIMP_DEATH = shrimp("death");

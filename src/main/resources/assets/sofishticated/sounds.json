@@ -26,10 +26,10 @@
     ],
     "subtitle": "subtitles.entity.sofishticated.fish.death"
   },
-  "entity.fish.ambient": {
-  "sounds": [],
-  "subtitle": "subtitles.entity.sofishticated.fish.ambient"
-  },
+  "entity.fish.ambient": { "sounds": [], "subtitle": "subtitles.entity.sofishticated.fish.ambient" },
+
+  "entity.angler_fish.deflate": { "sounds": [ "sofishticated:entity/angler_fish/deflate" ], "subtitle": "subtitles.entity.sofishticated.angler_fish.deflate" },
+
   "entity.shrimp.hurt": {
     "sounds": [
       "minecraft:entity/fish/hurt1",
@@ -48,10 +48,8 @@
     ],
     "subtitle": "subtitles.entity.sofishticated.shrimp.death"
   },
-  "entity.shrimp.ambient": {
-    "sounds": [],
-    "subtitle": "subtitles.entity.sofishticated.shrimp.ambient"
-  },
+  "entity.shrimp.ambient": { "sounds": [], "subtitle": "subtitles.entity.sofishticated.shrimp.ambient" },
+
   "entity.piranha.ambient": {
     "sounds": [
       "sofishticated:entity/piranha/bark",
@@ -67,6 +65,7 @@
     ],
     "subtitle": "subtitles.entity.sofishticated.piranha.nibble"
   },
+
   "entity.shark.bite": {
     "sounds": [
       "minecraft:mob/fox/bite1",
@@ -75,6 +74,7 @@
     ],
     "subtitle": "subtitles.entity.sofishticated.shark.bite"
   },
+
   "entity.big_eyed.attack": {
     "sounds": [
       "mob/dolphin/attack1",

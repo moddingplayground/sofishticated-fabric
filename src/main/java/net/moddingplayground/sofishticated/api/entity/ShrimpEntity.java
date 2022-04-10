@@ -46,10 +46,10 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
-import net.moddingplayground.sofishticated.api.Sofishticated;
 import net.moddingplayground.sofishticated.api.item.SofishticatedItems;
 import net.moddingplayground.sofishticated.api.sound.SofishticatedSoundEvents;
 import net.moddingplayground.sofishticated.api.tag.SofishticatedBlockTags;
+import net.moddingplayground.sofishticated.api.util.TextureHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
@@ -97,7 +97,7 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable, VariantHel
         this.dataTracker.startTracking(VARIANT, VariantHelper.getDefault(Variant.class).toString());
     }
 
-    /* Ticking */
+    /* Live Code */
 
     @Override
     public void baseTick() {
@@ -144,7 +144,7 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable, VariantHel
             ItemStack bucket = this.getBucketItem();
             this.copyDataToStack(bucket);
 
-            if (player instanceof ServerPlayerEntity serverPlayer) Criteria.FILLED_BUCKET.trigger(serverPlayer, bucket);
+            if (player instanceof ServerPlayerEntity splayer) Criteria.FILLED_BUCKET.trigger(splayer, bucket);
 
             if (stack.isEmpty()) {
                 player.setStackInHand(hand, bucket);
@@ -367,8 +367,7 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable, VariantHel
         private final Identifier texture;
 
         Variant() {
-            String id = this.name().toLowerCase();
-            this.texture = new Identifier(Sofishticated.MOD_ID, "textures/entity/shrimp/shrimp_%s.png".formatted(id));
+            this.texture = TextureHelper.create(SofishticatedEntityType.SHRIMP, this.name().toLowerCase());
         }
 
         public Identifier getTexture() {
