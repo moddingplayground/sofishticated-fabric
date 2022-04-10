@@ -6,12 +6,16 @@ import net.minecraft.entity.ai.goal.TemptGoal;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -27,6 +31,7 @@ import net.moddingplayground.sofishticated.api.tag.SofishticatedItemTags;
 
 public class AnglerFishEntity extends TiltingFishEntity implements Bucketable, DeepLurker, FlopConditionable {
     private static final Ingredient TEMPT_INGREDIENT = Ingredient.fromTag(SofishticatedItemTags.ANGLER_FISH_TEMPTS);
+    private static final TrackedData<Integer> EFFECT_TICKS = DataTracker.registerData(AnglerFishEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     private boolean lastDeflated;
     private long lastDeflationSound = 100;
@@ -52,6 +57,13 @@ public class AnglerFishEntity extends TiltingFishEntity implements Bucketable, D
                         .add(EntityAttributes.GENERIC_MAX_HEALTH, 10.0D);
     }
 
+    public int getEffectTicks() {
+        return this.dataTracker.get(EFFECT_TICKS);
+    }
+    public void setEffectTicks(int effectTicks) {
+        this.dataTracker.set(EFFECT_TICKS, effectTicks);
+    }
+
     /* Live Code */
 
     @Override
@@ -60,7 +72,7 @@ public class AnglerFishEntity extends TiltingFishEntity implements Bucketable, D
 
         if (!this.world.isClient) {
             boolean deflated = this.isDeflated();
-            if (deflated && deflated != this.lastDeflated) {
+            if (deflated && !this.lastDeflated) {
                 long time = this.world.getTime();
                 if (time - this.lastDeflationSound >= 15) {
                     this.world.playSoundFromEntity(null, this, SofishticatedSoundEvents.ENTITY_ANGLER_FISH_DEFLATE, this.getSoundCategory(), this.getSoundVolume(), this.getSoundPitch());
@@ -80,14 +92,18 @@ public class AnglerFishEntity extends TiltingFishEntity implements Bucketable, D
                 0.0D, 0.0D, 0.0D
             );
         }
+        if(getEffectTicks() > 0) {
+            this.setEffectTicks(this.getEffectTicks() - 1);
+        }
     }
 
     @Override
     protected ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemStack = player.getStackInHand(hand);
-        if (itemStack.isOf(Items.GLOW_INK_SAC)){
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 20 * 20, 0, false, true));
-            //ToDo: add sound effect and timer
+        if (itemStack.isOf(Items.GLOW_INK_SAC) && this.getEffectTicks() == 0 && this.isSubmergedInWater()){
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 40 * 20, 0, false, true));
+            this.setEffectTicks(60 * 20);
+            //ToDo: add sound effect and particles when the player tries to get night vision and the fish is on cooldown
             if (!player.isCreative()) itemStack.decrement(1);
             return ActionResult.SUCCESS;
         }
@@ -103,6 +119,23 @@ public class AnglerFishEntity extends TiltingFishEntity implements Bucketable, D
     @Override
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
         return this.getLurkingPathfindingFavor(pos, world);
+    }
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(EFFECT_TICKS, 0);
+    }
+
+    @Override
+    public void writeCustomDataToNbt(NbtCompound nbt) {
+        super.writeCustomDataToNbt(nbt);
+        nbt.putInt("EffectTicks", this.getEffectTicks());
+    }
+    @Override
+    public void readCustomDataFromNbt(NbtCompound nbt) {
+        super.readCustomDataFromNbt(nbt);
+        this.setEffectTicks(nbt.getInt("EffectTicks"));
     }
 
     /* Miscellaneous Overrides */
