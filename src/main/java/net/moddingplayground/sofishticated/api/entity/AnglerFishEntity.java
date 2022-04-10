@@ -38,7 +38,7 @@ public class AnglerFishEntity extends TiltingFishEntity implements Bucketable, D
     @Override
     protected void initGoals() {
         super.initGoals();
-        this.goalSelector.add(1, new TemptGoal(this, 1.0F, TEMPT_INGREDIENT, true));
+        this.goalSelector.add(1, new TemptGoal(this, 1.25F, TEMPT_INGREDIENT, false));
     }
 
     public static DefaultAttributeContainer.Builder createAnglerFishAttributes() {
