@@ -55,10 +55,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 import java.util.Random;
 
-import static net.moddingplayground.sofishticated.api.util.SofishticatedNbtConstants.*;
-
 @SuppressWarnings("deprecation")
-public class ShrimpEntity extends AnimalEntity implements Bucketable {
+public class ShrimpEntity extends AnimalEntity implements Bucketable, VariantHelper {
     public static final TrackedData<String> VARIANT = DataTracker.registerData(ShrimpEntity.class, TrackedDataHandlerRegistry.STRING);
     public static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(ShrimpEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 

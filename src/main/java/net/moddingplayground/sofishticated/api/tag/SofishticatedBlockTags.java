@@ -7,9 +7,9 @@ import net.minecraft.util.registry.Registry;
 import net.moddingplayground.sofishticated.api.Sofishticated;
 
 public interface SofishticatedBlockTags {
-    TagKey<Block> MOIST_BLOCKS = register("moist_blocks");
+    TagKey<Block> MOIST_BLOCKS = create("moist_blocks");
 
-    private static TagKey<Block> register(String id) {
+    private static TagKey<Block> create(String id) {
         return TagKey.of(Registry.BLOCK_KEY, new Identifier(Sofishticated.MOD_ID, id));
     }
 }

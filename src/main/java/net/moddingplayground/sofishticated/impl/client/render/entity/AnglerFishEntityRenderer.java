@@ -12,15 +12,16 @@ import net.moddingplayground.sofishticated.api.Sofishticated;
 import net.moddingplayground.sofishticated.api.client.model.SofishticatedEntityModelLayers;
 import net.moddingplayground.sofishticated.api.client.model.entity.AnglerFishEntityModel;
 import net.moddingplayground.sofishticated.api.entity.AnglerFishEntity;
-import net.moddingplayground.sofishticated.impl.client.render.entity.feature.AnglerFishBioluminescenceFeatureRenderer;
+import net.moddingplayground.sofishticated.impl.client.render.entity.feature.EmissiveLayerFeatureRenderer;
 
 @Environment(EnvType.CLIENT)
 public class AnglerFishEntityRenderer extends MobEntityRenderer<AnglerFishEntity, AnglerFishEntityModel<AnglerFishEntity>> {
     public static final Identifier TEXTURE = new Identifier(Sofishticated.MOD_ID, "textures/entity/angler_fish/angler_fish.png");
+    public static final Identifier TEXTURE_EMISSIVE = new Identifier(Sofishticated.MOD_ID, "textures/entity/angler_fish/angler_fish_bioluminescence.png");
 
     public AnglerFishEntityRenderer(EntityRendererFactory.Context context) {
         super(context, new AnglerFishEntityModel<>(context.getPart(SofishticatedEntityModelLayers.ANGLER_FISH)), 0.3F);
-        this.addFeature(new AnglerFishBioluminescenceFeatureRenderer(this));
+        this.addFeature(new EmissiveLayerFeatureRenderer<>(this, TEXTURE_EMISSIVE));
     }
 
     @Override

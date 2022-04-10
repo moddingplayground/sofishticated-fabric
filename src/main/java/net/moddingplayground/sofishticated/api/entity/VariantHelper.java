@@ -4,9 +4,11 @@ import net.minecraft.nbt.NbtCompound;
 
 import java.util.Random;
 
-import static net.moddingplayground.sofishticated.api.util.SofishticatedNbtConstants.*;
-
 public interface VariantHelper {
+    String KEY_VARIANT = "Variant";
+    String KEY_BUCKET_VARIANT_TAG = "BucketVariantTag";
+    String KEY_FROM_BUCKET = "FromBucket";
+
     /* From NBT */
 
     static <V extends Enum<V>> V fromNbt(Class<V> clazz, NbtCompound nbt, Random random, String key) {

@@ -43,7 +43,7 @@ public interface SofishticatedItems {
         return register(id, settings -> settings.food(food.apply(new FoodComponent.Builder()).build()));
     }
 
-    static Item variantEntityBucket(String id, EntityType<?> type) {
+    private static Item variantEntityBucket(String id, EntityType<?> type) {
         return register(id, new VariantEntityBucketItem(type, Fluids.WATER, SoundEvents.ITEM_BUCKET_EMPTY_FISH, new FabricItemSettings().maxCount(1).group(SofishticatedItemGroups.ALL)));
     }
 }

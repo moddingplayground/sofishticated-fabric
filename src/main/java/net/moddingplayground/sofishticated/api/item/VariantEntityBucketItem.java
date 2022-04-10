@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-import static net.moddingplayground.sofishticated.api.util.SofishticatedNbtConstants.*;
+import static net.moddingplayground.sofishticated.api.entity.VariantHelper.*;
 
 public class VariantEntityBucketItem extends EntityBucketItem {
     public VariantEntityBucketItem(EntityType<?> type, Fluid fluid, SoundEvent emptyingSound, Settings settings) {
