@@ -154,6 +154,7 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
     @Override
     public void setAngles(E entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         this.body.yaw = headYaw * 0.01F;
+
         if (entity.isDeflated()) return;
         this.body.pitch = headPitch * 0.015F;
         float speed = 2.5f;

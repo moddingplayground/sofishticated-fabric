@@ -8,7 +8,6 @@ import net.minecraft.client.render.entity.MobEntityRenderer;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3f;
 import net.moddingplayground.sofishticated.api.client.model.SofishticatedEntityModelLayers;
 import net.moddingplayground.sofishticated.api.client.model.entity.AnglerFishEntityModel;
