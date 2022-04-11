@@ -11,12 +11,13 @@ import net.moddingplayground.sofishticated.api.Sofishticated;
 public final class SofishticatedToymakerImpl implements ToymakerEntrypoint, Sofishticated {
     @Override
     public void onInitializeToymaker() {
-        ItemModelGeneratorStore.register(() -> new ItemModelGenerator(MOD_ID));
-        LootGeneratorStore.register(() -> new EntityLootTableGenerator(MOD_ID), LootContextTypes.ENTITY);
-        RecipeGeneratorStore.register(() -> new RecipeGenerator(MOD_ID));
-        TagGeneratorStore.register(() -> new BiomeTagGenerator(MOD_ID));
-        TagGeneratorStore.register(() -> new ItemTagGenerator(MOD_ID));
-        TagGeneratorStore.register(() -> new EntityTypeTagGenerator(MOD_ID));
-        TagGeneratorStore.register(() -> new BlockTagGenerator(MOD_ID));
+        ItemModelGeneratorStore.register(ItemModelGenerator::new);
+        LootGeneratorStore.register(EntityLootTableGenerator::new, LootContextTypes.ENTITY);
+        RecipeGeneratorStore.register(RecipeGenerator::new);
+        TagGeneratorStore.register(BiomeTagGenerator::new);
+        TagGeneratorStore.register(ItemTagGenerator::new);
+        TagGeneratorStore.register(EntityTypeTagGenerator::new);
+        TagGeneratorStore.register(BlockTagGenerator::new);
+        TagGeneratorStore.register(ShrimpVariantTagGenerator::new);
     }
 }

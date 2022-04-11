@@ -8,6 +8,7 @@ import net.moddingplayground.sofishticated.api.Sofishticated;
 
 public interface SofishticatedItemTags {
     TagKey<Item> FISHES = create("fishes");
+    TagKey<Item> SHRIMP_BREEDS = create("shrimp_breeds");
 
     TagKey<Item> ANGLER_FISH_FEEDS = create("angler_fish_feeds");
     TagKey<Item> ANGLER_FISH_TEMPTS = create("angler_fish_tempts");

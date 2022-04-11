@@ -48,13 +48,21 @@ public interface VariantHelper {
 
     /* Constants */
 
+    @SuppressWarnings("unchecked")
     static <V extends Enum<V>> V getDefault(Class<V> clazz) {
         V[] values = clazz.getEnumConstants();
-        return values[0];
+        V def = values[0];
+        if (def instanceof Defaulted<?> defaulted) return (V) defaulted.getDefault();
+        return def;
     }
 
     static <V extends Enum<V>> V getRandom(Class<V> clazz, Random random) {
         V[] values = clazz.getEnumConstants();
         return values[random.nextInt(values.length)];
     }
+
+    /**
+     * An interface allowing for a custom default value of an enum.
+     */
+    interface Defaulted<V extends Enum<V>> { V getDefault(); }
 }

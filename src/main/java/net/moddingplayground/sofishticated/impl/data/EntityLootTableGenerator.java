@@ -10,6 +10,7 @@ import net.minecraft.predicate.entity.EntityFlagsPredicate;
 import net.minecraft.predicate.entity.EntityPredicate;
 import net.minecraft.util.registry.Registry;
 import net.moddingplayground.frame.api.toymaker.v0.generator.loot.AbstractLootTableGenerator;
+import net.moddingplayground.sofishticated.api.Sofishticated;
 import net.moddingplayground.sofishticated.api.entity.SofishticatedEntityType;
 import net.moddingplayground.sofishticated.api.item.SofishticatedItems;
 
@@ -18,8 +19,8 @@ import static net.minecraft.loot.context.LootContext.EntityTarget.*;
 public class EntityLootTableGenerator extends AbstractLootTableGenerator<EntityType<?>> {
     private static final EntityPredicate.Builder NEEDS_ENTITY_ON_FIRE = EntityPredicate.Builder.create().flags(EntityFlagsPredicate.Builder.create().onFire(true).build());
 
-    public EntityLootTableGenerator(String modId) {
-        super(modId);
+    public EntityLootTableGenerator() {
+        super(Sofishticated.MOD_ID);
     }
 
     @Override

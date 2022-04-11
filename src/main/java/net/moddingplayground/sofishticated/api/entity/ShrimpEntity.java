@@ -41,38 +41,49 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
+import net.moddingplayground.sofishticated.api.entity.variant.ShrimpVariant;
 import net.moddingplayground.sofishticated.api.item.SofishticatedItems;
+import net.moddingplayground.sofishticated.api.registry.SofishticatedRegistry;
 import net.moddingplayground.sofishticated.api.sound.SofishticatedSoundEvents;
 import net.moddingplayground.sofishticated.api.tag.SofishticatedBlockTags;
-import net.moddingplayground.sofishticated.api.util.TextureHelper;
+import net.moddingplayground.sofishticated.api.tag.SofishticatedItemTags;
+import net.moddingplayground.sofishticated.api.tag.SofishticatedShrimpVariantTags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 import java.util.Random;
 
+import static net.moddingplayground.sofishticated.api.entity.VariantHelper.*;
+
 @SuppressWarnings("deprecation")
-public class ShrimpEntity extends AnimalEntity implements Bucketable, VariantHelper {
+public class ShrimpEntity extends AnimalEntity implements Bucketable {
     public static final TrackedData<String> VARIANT = DataTracker.registerData(ShrimpEntity.class, TrackedDataHandlerRegistry.STRING);
     public static final TrackedData<Boolean> FROM_BUCKET = DataTracker.registerData(ShrimpEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
 
-    public static final Ingredient BREEDING_INGREDIENT = Ingredient.ofItems(Blocks.SEAGRASS);
+    public static final Ingredient BREEDING_INGREDIENT = Ingredient.fromTag(SofishticatedItemTags.SHRIMP_BREEDS);
 
     public ShrimpEntity(EntityType<? extends ShrimpEntity> type, World world) {
         super(type, world);
         this.setPathfindingPenalty(PathNodeType.WATER, 0.0F);
-        this.stepHeight = 1;
+        this.stepHeight = 1.0F;
     }
 
     /* Initialization */
 
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason reason, @Nullable EntityData data, @Nullable NbtCompound nbt) {
-        if (reason != SpawnReason.BUCKET) this.setVariant(VariantHelper.getRandom(Variant.class, this.random));
+        if (reason != SpawnReason.BUCKET) {
+            SofishticatedRegistry.SHRIMP_VARIANT.getOrCreateEntryList(SofishticatedShrimpVariantTags.NATURAL_SPAWN_VARIANTS)
+                                                .getRandom(this.random)
+                                                .map(RegistryEntry::value)
+                                                .ifPresent(this::setVariant);
+        }
         return super.initialize(world, difficulty, reason, data, nbt);
     }
 
@@ -94,7 +105,13 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable, VariantHel
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(FROM_BUCKET, false);
-        this.dataTracker.startTracking(VARIANT, VariantHelper.getDefault(Variant.class).toString());
+        this.dataTracker.startTracking(VARIANT, SofishticatedRegistry.SHRIMP_VARIANT.getDefaultId().toString());
+    }
+
+    public static DefaultAttributeContainer.Builder createShrimpAttributes() {
+        return MobEntity.createMobAttributes()
+                        .add(EntityAttributes.GENERIC_MAX_HEALTH, 6.0D)
+                        .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
     }
 
     /* Live Code */
@@ -158,13 +175,17 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable, VariantHel
         return super.interactMob(player, hand);
     }
 
-    /* Getters/Setters */
-
-    public Variant getVariant() {
-        return VariantHelper.safeValueOf(Variant.class, this.dataTracker.get(VARIANT));
+    public static boolean canSpawn(EntityType<? extends ShrimpEntity> type, WorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
+        return world.getBlockState(pos).isOf(Blocks.WATER) && world.getBlockState(pos.up()).isOf(Blocks.WATER);
     }
 
-    public void setVariant(Variant variant) {
+    /* Getters/Setters */
+
+    public ShrimpVariant getVariant() {
+        return SofishticatedRegistry.SHRIMP_VARIANT.get(Identifier.tryParse(this.dataTracker.get(VARIANT)));
+    }
+
+    public void setVariant(ShrimpVariant variant) {
         this.dataTracker.set(VARIANT, variant.toString());
     }
 
@@ -237,10 +258,13 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable, VariantHel
 
     @Override
     public ShrimpEntity createChild(ServerWorld world, PassiveEntity other) {
-        ShrimpEntity entity = SofishticatedEntityType.SHRIMP.create(world);
-        return Optional.ofNullable(entity).map(e -> {
-            e.setVariant(this.getVariant());
-            return e;
+        return Optional.ofNullable(SofishticatedEntityType.SHRIMP.create(world)).map(entity -> {
+            if (this.random.nextFloat() <= 0.5F) {
+                SofishticatedRegistry.SHRIMP_VARIANT.getRandom(this.random)
+                                                    .map(RegistryEntry::value)
+                                                    .ifPresent(entity::setVariant);
+            } else entity.setVariant(this.getVariant());
+            return entity;
         }).orElse(null);
     }
 
@@ -275,103 +299,26 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable, VariantHel
     public void copyDataToStack(ItemStack stack) {
         Bucketable.copyDataToStack(this, stack);
         NbtCompound nbt = stack.getOrCreateNbt();
-        VariantHelper.toBucket(this.getVariant(), nbt);
+        this.getVariant().writeNbt(nbt, KEY_BUCKET_VARIANT_TAG);
     }
 
     @Override
     public void copyDataFromNbt(NbtCompound nbt) {
         Bucketable.copyDataFromNbt(this, nbt);
-        this.setVariant(VariantHelper.fromBucket(Variant.class, nbt, this.random));
+        this.setVariant(ShrimpVariant.readNbt(nbt, KEY_BUCKET_VARIANT_TAG));
     }
 
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        VariantHelper.toNbt(this.getVariant(), nbt);
+        this.getVariant().writeNbt(nbt, KEY_VARIANT);
         nbt.putBoolean(KEY_FROM_BUCKET, this.isFromBucket());
     }
 
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        this.setVariant(VariantHelper.fromNbt(Variant.class, nbt, this.random));
+        this.setVariant(ShrimpVariant.readNbt(nbt, KEY_VARIANT));
         this.setFromBucket(nbt.getBoolean(KEY_FROM_BUCKET));
-    }
-
-    /* Static */
-
-    public static DefaultAttributeContainer.Builder createShrimpAttributes() {
-        return MobEntity.createMobAttributes()
-                        .add(EntityAttributes.GENERIC_MAX_HEALTH, 6.0D)
-                        .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
-    }
-
-    public static boolean canSpawn(EntityType<? extends ShrimpEntity> type, WorldAccess world, SpawnReason reason, BlockPos pos, Random random) {
-        return world.getBlockState(pos).isOf(Blocks.WATER) && world.getBlockState(pos.up()).isOf(Blocks.WATER);
-    }
-
-    public enum Variant {
-        METALLIC,
-        SNOW_WHITE,
-        AMBER_PEARL,
-        WHITE_PEARL,
-        RED_TIGER,
-        RED_WINE,
-        RED_BEE,
-        BLACK_BEE,
-        PURPLE_ZEBRA,
-        RED_ZEBRA,
-        RED_YELLOW_TIGER,
-        TANGERINE_TIGER,
-        GREEN_APPLE,
-        SUPER_WILD_TIGER,
-        CHOCOLATE,
-        DEEP_BLUE_TIGER,
-        ROYAL_BLUE_OE,
-        RED_FANCY,
-        BLACK_FANCY,
-        GOLDEN_BOA,
-        RUSTY_RED_TIFER_OE,
-        SHOKO,
-        GOLDBACK_CARBON_RILI,
-        GREEN_EMERALD,
-        GREEN_RILI,
-        GOLDENBACK_JADE,
-        GREEN_JADE,
-        GREEN,
-        BABAULTI_GREEN,
-        TIGER_OE,
-        KANOKO,
-        RED_ONYX,
-        DRAGON_BLOOD,
-        BLUE_FANTASY,
-        BLUE_DREAM,
-        BLUE_DIAMOND,
-        BLUE_JELLY,
-        BLUE_BOLT,
-        SULAWESI_TIGER_CARDINAL,
-        ORANGE,
-        YELLOW_NEON,
-        BLACK_ROSE,
-        CARBON_RILI,
-        YELLOW_RILI,
-        ORANGE_RILI,
-        BLUE_RILI,
-        CARBON_BLUE_RILI,
-        RED_BOLT,
-        RED_DEVIL_OE,
-        RED_RILI,
-        RED_BLUE_RILI,
-        BLOODY_MARY;
-
-        private final Identifier texture;
-
-        Variant() {
-            this.texture = TextureHelper.create(SofishticatedEntityType.SHRIMP, this.name().toLowerCase());
-        }
-
-        public Identifier getTexture() {
-            return texture;
-        }
     }
 }

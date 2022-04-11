@@ -12,8 +12,8 @@ import net.moddingplayground.sofishticated.api.Sofishticated;
 import static net.moddingplayground.sofishticated.api.item.SofishticatedItems.*;
 
 public class ItemModelGenerator extends AbstractItemModelGenerator {
-    public ItemModelGenerator(String modId) {
-        super(modId);
+    public ItemModelGenerator() {
+        super(Sofishticated.MOD_ID);
     }
 
     @Override

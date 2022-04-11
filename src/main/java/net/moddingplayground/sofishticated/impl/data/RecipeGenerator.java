@@ -6,13 +6,14 @@ import net.minecraft.recipe.CookingRecipeSerializer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.moddingplayground.frame.api.toymaker.v0.generator.recipe.AbstractRecipeGenerator;
+import net.moddingplayground.sofishticated.api.Sofishticated;
 
 import static net.minecraft.recipe.Ingredient.*;
 import static net.moddingplayground.sofishticated.api.item.SofishticatedItems.*;
 
 public class RecipeGenerator extends AbstractRecipeGenerator {
-    public RecipeGenerator(String modId) {
-        super(modId);
+    public RecipeGenerator() {
+        super(Sofishticated.MOD_ID);
     }
 
     @Override

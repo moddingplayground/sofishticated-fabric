@@ -5,8 +5,10 @@ import net.fabricmc.api.ModInitializer;
 import net.moddingplayground.frame.api.util.InitializationLogger;
 import net.moddingplayground.sofishticated.api.Sofishticated;
 import net.moddingplayground.sofishticated.api.entity.SofishticatedEntityType;
+import net.moddingplayground.sofishticated.api.entity.variant.ShrimpVariants;
 import net.moddingplayground.sofishticated.api.item.SofishticatedItemGroups;
 import net.moddingplayground.sofishticated.api.item.SofishticatedItems;
+import net.moddingplayground.sofishticated.api.registry.SofishticatedRegistry;
 import net.moddingplayground.sofishticated.api.sound.SofishticatedSoundEvents;
 
 public final class SofishticatedImpl implements Sofishticated, ModInitializer {
@@ -22,8 +24,9 @@ public final class SofishticatedImpl implements Sofishticated, ModInitializer {
 		this.initializer.start();
 
 		// initialize in separate calls to ensure item registry order
-		Reflection.initialize(SofishticatedSoundEvents.class, SofishticatedEntityType.class);
-		Reflection.initialize(SofishticatedItemGroups.class, SofishticatedItems.class);
+		Reflection.initialize(SofishticatedRegistry.class, ShrimpVariants.class);
+		Reflection.initialize(SofishticatedEntityType.class);
+		Reflection.initialize(SofishticatedSoundEvents.class, SofishticatedItemGroups.class, SofishticatedItems.class);
 
 		this.initializer.finish();
 	}
