@@ -37,6 +37,15 @@ public interface SofishticatedEntityType {
                                .trackRangeBlocks(8)
     );
 
+    EntityType<SeahorseEntity> SEAHORSE = register("seahorse", 0xE88A36, 0xFFFFFF,
+        FabricEntityTypeBuilder.createMob()
+                               .entityFactory(SeahorseEntity::new).spawnGroup(SpawnGroup.WATER_AMBIENT)
+                               .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, SeahorseEntity::canSpawn)
+                               .defaultAttributes(SeahorseEntity::createSeahorseAttributes)
+                               .dimensions(EntityDimensions.changing(0.25F, 0.75F))
+                               .trackRangeBlocks(8)
+    );
+
     @SuppressWarnings("unchecked")
     private static <T extends Entity> EntityType<T> register(String id, FabricEntityTypeBuilder<T> type, int primary, int secondary, SpawnEggFactory egg) {
         EntityType<T> built = type.build();

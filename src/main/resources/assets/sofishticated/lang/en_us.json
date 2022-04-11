@@ -9,6 +9,7 @@
   "entity.sofishticated.piranha": "Piranha",
   "entity.sofishticated.reef_shark": "Reef Shark",
   "entity.sofishticated.gar": "Gar",
+  "entity.sofishticated.seahorse": "Seahorse",
 
   "advancements.sofishticated.obtain_reef_shark_bucket.title": "Bucket of Friend",
   "advancements.sofishticated.obtain_reef_shark_bucket.description": "Catch a 'fearsome' predator in a bucket",
@@ -83,6 +84,8 @@
   "death.attack.mob.sofishticated:piranha.item": "%1$s was killed by a %2$s weilding %3$s",
 
   "item.sofishticated.gar_spawn_egg": "Gar Spawn Egg",
+  "item.sofishticated.seahorse_spawn_egg": "Bucket of Seahorse",
+  "item.sofishticated.seahorse_bucket": "Seahorse Spawn Egg",
   "item.sofishticated.butterfly_fish_spawn_egg": "Butterfly Fish Spawn Egg",
   "item.sofishticated.butterfly_fish_bucket": "Bucket of Butterfly Fish",
   "item.sofishticated.tooth_club": "Tooth Club",

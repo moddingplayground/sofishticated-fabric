@@ -23,6 +23,8 @@ public interface SofishticatedItems {
     Item ANGLER_FISH = food("angler_fish", 3, 0.3F, food -> food.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 3 * 20), 1.0F).alwaysEdible());
     Item ANGLER_FISH_BUCKET = variantEntityBucket("angler_fish_bucket", SofishticatedEntityType.ANGLER_FISH);
 
+    Item SEAHORSE_BUCKET = variantEntityBucket("seahorse_bucket", SofishticatedEntityType.SEAHORSE);
+
     private static Item register(String id, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(Sofishticated.MOD_ID, id), item);
     }

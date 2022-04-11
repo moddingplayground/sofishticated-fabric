@@ -7,6 +7,7 @@ import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.sofishticated.api.Sofishticated;
 import net.moddingplayground.sofishticated.api.client.model.entity.AnglerFishEntityModel;
+import net.moddingplayground.sofishticated.api.client.model.entity.SeahorseEntityModel;
 import net.moddingplayground.sofishticated.api.client.model.entity.ShrimpEntityModel;
 
 @Environment(EnvType.CLIENT)
@@ -14,6 +15,7 @@ public interface SofishticatedEntityModelLayers {
     EntityModelLayer SHRIMP = main("shrimp", ShrimpEntityModel::getTexturedModelData);
     EntityModelLayer ANGLER_FISH = main("angler_fish", AnglerFishEntityModel::getTexturedModelData);
     EntityModelLayer ANGLER_FISH_DEFLATED = main("angler_fish_deflated", AnglerFishEntityModel::getDeflatedTexturedModelData);
+    EntityModelLayer SEAHORSE = main("seahorse", SeahorseEntityModel::getTexturedModelData);
 
     private static EntityModelLayer register(String id, String name, EntityModelLayerRegistry.TexturedModelDataProvider provider) {
         EntityModelLayer layer = new EntityModelLayer(new Identifier(Sofishticated.MOD_ID, id), name);

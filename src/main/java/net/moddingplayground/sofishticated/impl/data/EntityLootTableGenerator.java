@@ -39,6 +39,8 @@ public class EntityLootTableGenerator extends AbstractLootTableGenerator<EntityT
         );
 
         this.add(SofishticatedEntityType.ANGLER_FISH, LootTable.builder().pool(pool().with(ItemEntry.builder(SofishticatedItems.ANGLER_FISH))));
+
+        this.add(SofishticatedEntityType.SEAHORSE, LootTable.builder().pool(pool().with(ItemEntry.builder(Items.BONE_MEAL)).conditionally(chance(0.05F))));
     }
 
     @Override

@@ -25,5 +25,9 @@ public class BiomeTagGenerator extends AbstractTagGenerator<Biome> {
             DEEP_FROZEN_OCEAN,
             DEEP_OCEAN
         );
+
+        this.add(createSpawnTag(SEAHORSE),
+            WARM_OCEAN
+        );
     }
 }

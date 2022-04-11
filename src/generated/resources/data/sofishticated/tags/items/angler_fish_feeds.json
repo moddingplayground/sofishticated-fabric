@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "minecraft:glow_berries",
+    "minecraft:glow_lichen",
+    "minecraft:glowstone_dust",
     "minecraft:glow_ink_sac"
   ]
 }
