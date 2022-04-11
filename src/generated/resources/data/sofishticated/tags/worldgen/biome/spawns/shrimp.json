@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "minecraft:river",
+    "minecraft:lush_caves",
     "minecraft:dark_forest",
-    "minecraft:lush_caves"
+    "minecraft:river"
   ]
 }
