@@ -22,9 +22,9 @@ public class ItemTagGenerator extends AbstractTagGenerator<Item> {
 
         this.add(SofishticatedItemTags.SHRIMP_BREEDS, Items.SEAGRASS);
 
-        this.add(SofishticatedItemTags.ANGLER_FISH_FEEDS, Items.GLOW_INK_SAC, Items.GLOW_BERRIES);
+        this.add(SofishticatedItemTags.ANGLER_FISH_FEEDS, Items.GLOW_INK_SAC, Items.GLOWSTONE_DUST, Items.GLOW_LICHEN);
         this.add(SofishticatedItemTags.ANGLER_FISH_TEMPTS,
-            Items.GLOWSTONE_DUST,
+            Items.GLOW_BERRIES,
             Items.GLOWSTONE
         ).add(SofishticatedItemTags.ANGLER_FISH_FEEDS);
     }
