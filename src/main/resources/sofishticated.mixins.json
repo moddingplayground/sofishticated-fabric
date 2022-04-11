@@ -8,6 +8,7 @@
   },
   "mixins": [
     "EntityBucketItemAccessor",
-    "FishEntityMixin"
+    "FishEntityMixin",
+    "LivingEntityAccessor"
   ]
 }

@@ -106,6 +106,8 @@
   "subtitles.entity.sofishticated.shrimp.death": "Shrimp dies",
   "subtitles.entity.sofishticated.shrimp.ambient": "Shrimp Swimming",
   "subtitles.entity.sofishticated.angler_fish.deflate": "Angler Fish deflates",
+  "subtitles.entity.sofishticated.angler_fish.effect.give": "Angler Fish graces",
+  "subtitles.entity.sofishticated.angler_fish.effect.deny": "Angler Fish tires",
   "subtitles.entity.sofishticated.fish.flop": "Fish flops",
   "subtitles.entity.sofishticated.fish.hurt": "Fish hurts",
   "subtitles.entity.sofishticated.fish.death": "Fish dies",
@@ -113,9 +115,6 @@
   "subtitles.entity.sofishticated.piranha.ambient": "Piranha thuds",
   "subtitles.entity.sofishticated.piranha.nibble": "Piranha nibbles",
   "subtitles.entity.sofishticated.shark.bite": "Shark bites",
-  "subtitles.entity.sofishticated.big_eyed.attack": "Big Eyed attacks",
-  "subtitles.entity.sofishticated.big_eyed.hurt": "Big Eyed hurts",
-  "subtitles.entity.sofishticated.big_eyed.death": "Big Eyed dies",
 
   "enchantment.sofishticated.debilitating": "Debilitating",
 

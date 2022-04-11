@@ -25,5 +25,6 @@ public class ItemTagGenerator extends AbstractTagGenerator<Item> {
             Items.GLOWSTONE_DUST,
             Items.GLOWSTONE
         );
+        this.add(SofishticatedItemTags.ANGLER_FISH_FEEDS, Items.GLOW_INK_SAC, Items.GLOW_BERRIES);
     }
 }

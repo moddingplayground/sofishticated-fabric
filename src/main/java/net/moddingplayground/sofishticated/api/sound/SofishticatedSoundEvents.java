@@ -15,6 +15,8 @@ public interface SofishticatedSoundEvents {
     }
 
     SoundEvent ENTITY_ANGLER_FISH_DEFLATE = anglerFish("deflate");
+    SoundEvent ENTITY_ANGLER_FISH_EFFECT_GIVE = anglerFish("effect.give");
+    SoundEvent ENTITY_ANGLER_FISH_EFFECT_DENY = anglerFish("effect.deny");
     private static SoundEvent anglerFish(String id) {
         return entity("angler_fish", id);
     }
@@ -35,13 +37,6 @@ public interface SofishticatedSoundEvents {
     SoundEvent ENTITY_SHARK_BITE = shark("bite");
     private static SoundEvent shark(String id) {
         return entity("shark", id);
-    }
-
-    SoundEvent ENTITY_BIG_EYED_ATTACK = bigEyed("attack");
-    SoundEvent ENTITY_BIG_EYED_HURT = bigEyed("hurt");
-    SoundEvent ENTITY_BIG_EYED_DEATH = bigEyed("death");
-    private static SoundEvent bigEyed(String id) {
-        return entity("big_eyed", id);
     }
 
     private static SoundEvent register(String id) {

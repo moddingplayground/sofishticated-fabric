@@ -28,7 +28,18 @@
   },
   "entity.fish.ambient": { "sounds": [], "subtitle": "subtitles.entity.sofishticated.fish.ambient" },
 
-  "entity.angler_fish.deflate": { "sounds": [ "sofishticated:entity/angler_fish/deflate" ], "subtitle": "subtitles.entity.sofishticated.angler_fish.deflate" },
+  "entity.angler_fish.deflate": {
+    "sounds": [ "sofishticated:entity/angler_fish/deflate" ],
+    "subtitle": "subtitles.entity.sofishticated.angler_fish.deflate"
+  },
+  "entity.angler_fish.effect.give": {
+    "sounds": [ "sofishticated:entity/angler_fish/effect_give" ],
+    "subtitle": "subtitles.entity.sofishticated.angler_fish.effect.give"
+  },
+  "entity.angler_fish.effect.deny": {
+    "sounds": [ "sofishticated:entity/angler_fish/effect_deny" ],
+    "subtitle": "subtitles.entity.sofishticated.angler_fish.effect.deny"
+  },
 
   "entity.shrimp.hurt": {
     "sounds": [
