@@ -21,7 +21,7 @@ public class SeahorseEntityRenderer<E extends SeahorseEntity> extends MobEntityR
     protected void setupTransforms(E entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta) {
         super.setupTransforms(entity, matrices, animationProgress, bodyYaw, tickDelta);
         if (!entity.isTouchingWater()) {
-            matrices.translate(0.1D, 0.1D, -0.1D);
+            matrices.translate(0.4D, 0.1D, 0.0D);
             matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(90.0F));
         }
     }

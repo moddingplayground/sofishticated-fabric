@@ -42,7 +42,7 @@ public interface SofishticatedEntityType {
                                .entityFactory(SeahorseEntity::new).spawnGroup(SpawnGroup.WATER_AMBIENT)
                                .spawnRestriction(SpawnRestriction.Location.IN_WATER, Heightmap.Type.OCEAN_FLOOR, SeahorseEntity::canSpawn)
                                .defaultAttributes(SeahorseEntity::createSeahorseAttributes)
-                               .dimensions(EntityDimensions.changing(0.25F, 0.75F))
+                               .dimensions(EntityDimensions.changing(0.3F, 0.6F))
                                .trackRangeBlocks(8)
     );
 

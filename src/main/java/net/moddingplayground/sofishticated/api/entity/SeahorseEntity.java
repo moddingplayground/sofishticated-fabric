@@ -2,6 +2,8 @@ package net.moddingplayground.sofishticated.api.entity;
 
 import net.minecraft.entity.Bucketable;
 import net.minecraft.entity.EntityData;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.goal.LookAroundGoal;
@@ -75,6 +77,11 @@ public class SeahorseEntity extends FishEntity implements Bucketable {
     }
 
     /* Getters/Setters */
+
+    @Override
+    protected float getActiveEyeHeight(EntityPose pose, EntityDimensions dimensions) {
+        return dimensions.height * 0.95F;
+    }
 
     public SeahorseVariant getVariant() {
         return SofishticatedRegistry.SEAHORSE_VARIANT.get(Identifier.tryParse(this.dataTracker.get(VARIANT)));
