@@ -29,12 +29,12 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
 
     public AnglerFishEntityModel(ModelPart root) {
         this.root     = root;
-        this.body     = root.getChild(BODY);
-        this.tail     = body.getChild(TAIL);
-        this.lantern  = body.getChild(LANTERN);
-        this.jaw      = body.getChild(JAW);
-        this.leftFin  = body.getChild(LEFT_FIN);
-        this.rightFin = body.getChild(RIGHT_FIN);
+        this.body     = this.root.getChild(BODY);
+        this.tail     = this.body.getChild(TAIL);
+        this.lantern  = this.body.getChild(LANTERN);
+        this.jaw      = this.body.getChild(JAW);
+        this.leftFin  = this.body.getChild(LEFT_FIN);
+        this.rightFin = this.body.getChild(RIGHT_FIN);
     }
 
     public static TexturedModelData getTexturedModelData() {

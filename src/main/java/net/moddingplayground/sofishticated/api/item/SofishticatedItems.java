@@ -16,14 +16,14 @@ import net.moddingplayground.sofishticated.api.entity.SofishticatedEntityType;
 import java.util.function.UnaryOperator;
 
 public interface SofishticatedItems {
+    Item SHRIMP_BUCKET = variantEntityBucket("shrimp_bucket", SofishticatedEntityType.SHRIMP);
+    Item ANGLER_FISH_BUCKET = variantEntityBucket("angler_fish_bucket", SofishticatedEntityType.ANGLER_FISH);
+    Item SEAHORSE_BUCKET = variantEntityBucket("seahorse_bucket", SofishticatedEntityType.SEAHORSE);
+
     Item SHRIMP = food("shrimp", 3, 0.3F);
     Item COOKED_SHRIMP = food("cooked_shrimp", 5, 0.4F);
-    Item SHRIMP_BUCKET = variantEntityBucket("shrimp_bucket", SofishticatedEntityType.SHRIMP);
 
     Item ANGLER_FISH = food("angler_fish", 3, 0.3F, food -> food.statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 3 * 20), 1.0F).alwaysEdible());
-    Item ANGLER_FISH_BUCKET = variantEntityBucket("angler_fish_bucket", SofishticatedEntityType.ANGLER_FISH);
-
-    Item SEAHORSE_BUCKET = variantEntityBucket("seahorse_bucket", SofishticatedEntityType.SEAHORSE);
 
     private static Item register(String id, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(Sofishticated.MOD_ID, id), item);

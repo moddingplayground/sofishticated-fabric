@@ -37,15 +37,15 @@ public class ShrimpEntityModel<E extends ShrimpEntity> extends AnimalModel<E> {
     public ShrimpEntityModel(ModelPart root) {
         super(RenderLayer::getEntityTranslucent, true, 16.0F, 0.0F, 2.0F, 2.0F, 24.0F);
 
-        this.root      = root;
-        this.body      = this.root.getChild(BODY);
-        this.tail      = this.body.getChild(TAIL);
-        this.tailFin   = this.tail.getChild(TAIL_FIN);
-        this.hands     = this.body.getChild(HANDS);
-        this.leftLeg   = this.body.getChild(LEFT_LEG);
-        this.rightLeg  = this.body.getChild(RIGHT_LEG);
-        this.face      = this.body.getChild(FACE);
-        this.antennae  = this.face.getChild(ANTENNAE);
+        this.root     = root;
+        this.body     = this.root.getChild(BODY);
+        this.tail     = this.body.getChild(TAIL);
+        this.tailFin  = this.tail.getChild(TAIL_FIN);
+        this.hands    = this.body.getChild(HANDS);
+        this.leftLeg  = this.body.getChild(LEFT_LEG);
+        this.rightLeg = this.body.getChild(RIGHT_LEG);
+        this.face     = this.body.getChild(FACE);
+        this.antennae = this.face.getChild(ANTENNAE);
     }
 
     public static TexturedModelData getTexturedModelData() {
