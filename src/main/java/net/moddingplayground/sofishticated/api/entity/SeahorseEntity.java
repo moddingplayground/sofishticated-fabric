@@ -105,17 +105,21 @@ public class SeahorseEntity extends FishEntity implements Bucketable {
 
     @Override
     protected SoundEvent getDeathSound() {
-        return SofishticatedSoundEvents.ENTITY_FISH_DEATH;
+        return SofishticatedSoundEvents.ENTITY_SEAHORSE_DEATH;
     }
 
     @Override
     public SoundEvent getAmbientSound() {
-        return SofishticatedSoundEvents.ENTITY_FISH_AMBIENT;
+        if (this.isSubmergedInWater()) {
+            if (this.random.nextInt(3) == 0) return SofishticatedSoundEvents.ENTITY_SEAHORSE_GROWL;
+            return SofishticatedSoundEvents.ENTITY_SEAHORSE_CLICK;
+        }
+        return null;
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return SofishticatedSoundEvents.ENTITY_FISH_HURT;
+        return SofishticatedSoundEvents.ENTITY_SEAHORSE_HURT;
     }
 
     @Override

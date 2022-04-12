@@ -68,6 +68,41 @@
     ],
     "subtitle": "subtitles.entity.sofishticated.piranha.ambient"
   },
+
+  "entity.seahorse.hurt": {
+    "sounds": [
+      "minecraft:entity/fish/hurt1",
+      "minecraft:entity/fish/hurt2",
+      "minecraft:entity/fish/hurt3",
+      "minecraft:entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.sofishticated.seahorse.hurt"
+  },
+  "entity.seahorse.death": {
+    "sounds": [
+      "minecraft:entity/fish/hurt1",
+      "minecraft:entity/fish/hurt2",
+      "minecraft:entity/fish/hurt3",
+      "minecraft:entity/fish/hurt4"
+    ],
+    "subtitle": "subtitles.entity.sofishticated.seahorse.death"
+  },
+  "entity.seahorse.growl": { "sounds": [
+    "sofishticated:entity/seahorse/growl1",
+    "sofishticated:entity/seahorse/growl2"
+  ],
+    "subtitle": "subtitles.entity.sofishticated.seahorse.growl"
+  },
+  "entity.seahorse.click": { "sounds": [
+    "sofishticated:entity/seahorse/click1",
+    "sofishticated:entity/seahorse/click2",
+    "sofishticated:entity/seahorse/click3"
+  ],
+    "subtitle": "subtitles.entity.sofishticated.seahorse.click"
+  },
+
+
+
   "entity.piranha.nibble": {
     "sounds": [
       "minecraft:mob/fox/bite1",

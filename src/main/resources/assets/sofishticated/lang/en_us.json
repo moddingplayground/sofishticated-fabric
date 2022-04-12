@@ -112,6 +112,10 @@
   "item.sofishticated.sunfish_spawn_egg": "Sunfish Spawn Egg",
   "item.sofishticated.manta_ray_spawn_egg": "Manta Ray Spawn Egg",
 
+  "subtitles.entity.sofishticated.seahorse.hurt": "Seahorse hurts",
+  "subtitles.entity.sofishticated.seahorse.death": "Seahorse dies",
+  "subtitles.entity.sofishticated.seahorse.growl": "Seahorse growls",
+  "subtitles.entity.sofishticated.seahorse.click": "Seahorse clicks",
   "subtitles.entity.sofishticated.shrimp.hurt": "Shrimp hurts",
   "subtitles.entity.sofishticated.shrimp.death": "Shrimp dies",
   "subtitles.entity.sofishticated.shrimp.ambient": "Shrimp Swimming",

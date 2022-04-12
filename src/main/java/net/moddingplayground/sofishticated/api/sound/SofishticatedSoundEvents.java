@@ -28,6 +28,14 @@ public interface SofishticatedSoundEvents {
         return entity("shrimp", id);
     }
 
+    SoundEvent ENTITY_SEAHORSE_CLICK = seahorse("click");
+    SoundEvent ENTITY_SEAHORSE_GROWL = seahorse("growl");
+    SoundEvent ENTITY_SEAHORSE_HURT = seahorse("hurt");
+    SoundEvent ENTITY_SEAHORSE_DEATH = seahorse("death");
+    private static SoundEvent seahorse(String id) {
+        return entity("seahorse", id);
+    }
+
     SoundEvent ENTITY_PIRANHA_AMBIENT = piranha("ambient");
     SoundEvent ENTITY_PIRANHA_NIBBLE = piranha("nibble");
     private static SoundEvent piranha(String id) {
