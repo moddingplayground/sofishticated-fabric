@@ -109,12 +109,11 @@ public class SeahorseEntity extends FishEntity implements Bucketable {
     }
 
     @Override
-    public SoundEvent getAmbientSound() {
-        if (this.isSubmergedInWater()) {
-            if (this.random.nextInt(3) == 0) return SofishticatedSoundEvents.ENTITY_SEAHORSE_GROWL;
-            return SofishticatedSoundEvents.ENTITY_SEAHORSE_CLICK;
-        }
-        return null;
+    public @Nullable SoundEvent getAmbientSound() {
+        return this.isSubmergedInWater() ? (this.random.nextInt(3) == 0
+            ? SofishticatedSoundEvents.ENTITY_SEAHORSE_GROWL
+            : SofishticatedSoundEvents.ENTITY_SEAHORSE_CLICK
+        ) : null;
     }
 
     @Override
