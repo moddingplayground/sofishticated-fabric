@@ -2,7 +2,7 @@
   "replace": false,
   "values": [
     "#sofishticated:angler_fish_feeds",
-    "minecraft:glowstone",
-    "minecraft:glow_berries"
+    "minecraft:glow_berries",
+    "minecraft:glowstone"
   ]
 }

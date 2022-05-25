@@ -1,8 +1,8 @@
 {
   "replace": false,
   "values": [
-    "minecraft:glow_lichen",
+    "minecraft:glow_ink_sac",
     "minecraft:glowstone_dust",
-    "minecraft:glow_ink_sac"
+    "minecraft:glow_lichen"
   ]
 }

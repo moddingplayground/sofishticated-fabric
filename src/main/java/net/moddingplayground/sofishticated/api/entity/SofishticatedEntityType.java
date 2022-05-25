@@ -10,9 +10,11 @@ import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.SpawnEggItem;
+import net.minecraft.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
+import net.minecraft.world.biome.Biome;
 import net.moddingplayground.sofishticated.api.Sofishticated;
 import net.moddingplayground.sofishticated.api.item.SofishticatedItemGroups;
 
@@ -59,6 +61,11 @@ public interface SofishticatedEntityType {
 
     private static <T extends Entity> EntityType<T> register(String id, int primary, int secondary, FabricEntityTypeBuilder<T> entityType) {
         return register(id, entityType, primary, secondary, SpawnEggItem::new);
+    }
+
+    static TagKey<Biome> createSpawnTag(EntityType<?> type) {
+        Identifier id = Registry.ENTITY_TYPE.getId(type);
+        return TagKey.of(Registry.BIOME_KEY, new Identifier(id.getNamespace(), "spawns/%s".formatted(id.getPath())));
     }
 
     @FunctionalInterface interface SpawnEggFactory { SpawnEggItem apply(EntityType<? extends MobEntity> type, int primaryColor, int secondaryColor, Item.Settings settings); }

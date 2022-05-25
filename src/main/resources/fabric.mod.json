@@ -37,15 +37,15 @@
       "net.moddingplayground.sofishticated.impl.client.particle.SofishticatedParticleTypesClientImpl"
     ],
 
-    "toymaker": [ "net.moddingplayground.sofishticated.impl.data.SofishticatedToymakerImpl" ]
+    "fabric-datagen": [ "net.moddingplayground.sofishticated.impl.data.SofishticatedDataGeneratorImpl" ]
   },
   "mixins": [ "sofishticated.mixins.json" ],
 
   "depends": {
     "java": ">=17",
-    "minecraft": ">=1.18.2",
-    "fabricloader": ">=0.13",
-    "fabric": ">=0.51",
-    "frame": ">=0.16"
+    "minecraft": ">=1.19-beta",
+    "fabricloader": ">=0.14",
+    "fabric": ">=0.53",
+    "frame": ">=0.18"
   }
 }

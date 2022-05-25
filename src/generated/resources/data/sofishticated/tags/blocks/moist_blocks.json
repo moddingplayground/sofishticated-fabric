@@ -1,7 +1,7 @@
 {
   "replace": false,
   "values": [
-    "minecraft:wet_sponge",
-    "minecraft:clay"
+    "minecraft:clay",
+    "minecraft:wet_sponge"
   ]
 }

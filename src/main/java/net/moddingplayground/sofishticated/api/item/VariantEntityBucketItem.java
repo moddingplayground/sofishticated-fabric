@@ -9,7 +9,6 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import net.moddingplayground.sofishticated.mixin.EntityBucketItemAccessor;
@@ -31,7 +30,7 @@ public class VariantEntityBucketItem extends EntityBucketItem {
             String variant = nbt.getString(KEY_BUCKET_VARIANT_TAG);
             String entityTranslation = ((EntityBucketItemAccessor) this).getEntityType().getTranslationKey();
             String key = "%s.variant.%s".formatted(entityTranslation, variant.toLowerCase());
-            Text text = new TranslatableText(key).formatted(Formatting.ITALIC, Formatting.GRAY);
+            Text text = Text.translatable(key).formatted(Formatting.ITALIC, Formatting.GRAY);
             tooltip.add(text);
         }
     }

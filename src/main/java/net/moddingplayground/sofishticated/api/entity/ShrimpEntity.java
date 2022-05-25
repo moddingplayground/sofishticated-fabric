@@ -41,6 +41,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.ServerWorldAccess;
@@ -57,7 +58,6 @@ import net.moddingplayground.sofishticated.api.tag.SofishticatedShrimpVariantTag
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
-import java.util.Random;
 
 import static net.moddingplayground.sofishticated.api.entity.VariantHelper.*;
 
@@ -207,7 +207,7 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable {
     }
 
     @Override
-    public SoundEvent getBucketedSound() {
+    public SoundEvent getBucketFillSound() {
         return SoundEvents.ITEM_BUCKET_FILL_FISH;
     }
 
