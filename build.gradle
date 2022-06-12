@@ -5,10 +5,10 @@ plugins {
   id 'idea'
   id 'eclipse'
 
-  id 'fabric-loom' version '0.11-SNAPSHOT'
+  id 'fabric-loom' version '0.12-SNAPSHOT'
   id 'maven-publish'
 
-  id 'com.modrinth.minotaur' version '2.1.1'
+  id 'com.modrinth.minotaur' version '2.3.0'
   id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 
@@ -142,8 +142,8 @@ if (ENV.MODRINTH_TOKEN) modrinth {
   uploadFile = remapJar
   gameVersions = [ project.ver_minecraft ]
   dependencies = [
-          new ModDependency("P7dR8mSH", DependencyType.REQUIRED), // Fabric API
-          new ModDependency("dY183GiL", DependencyType.REQUIRED)  // Frame
+          new ModDependency("fabric-api", DependencyType.REQUIRED),
+          new ModDependency("frame-api", DependencyType.REQUIRED)
   ]
 }
 

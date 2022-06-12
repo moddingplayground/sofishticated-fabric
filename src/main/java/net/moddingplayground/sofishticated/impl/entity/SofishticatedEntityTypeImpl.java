@@ -5,8 +5,6 @@ import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.tag.TagKey;
-import net.minecraft.world.biome.Biome;
 import net.moddingplayground.sofishticated.api.entity.SofishticatedEntityType;
 
 public final class SofishticatedEntityTypeImpl implements SofishticatedEntityType, ModInitializer {
@@ -18,7 +16,6 @@ public final class SofishticatedEntityTypeImpl implements SofishticatedEntityTyp
     }
 
     private void addSpawn(EntityType<?> type, SpawnGroup group, int weight, int minGroupSize, int maxGroupSize) {
-        TagKey<Biome> tag = SofishticatedEntityType.createSpawnTag(type);
-        BiomeModifications.addSpawn(BiomeSelectors.tag(tag), group, type, weight, minGroupSize, maxGroupSize);
+        BiomeModifications.addSpawn(BiomeSelectors.tag(SofishticatedEntityType.createSpawnTag(type)), group, type, weight, minGroupSize, maxGroupSize);
     }
 }

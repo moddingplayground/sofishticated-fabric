@@ -20,9 +20,7 @@ public final class SofishticatedClientImpl implements Sofishticated, ClientModIn
     @Override
     public void onInitializeClient() {
         this.initializer.start();
-
         Reflection.initialize(SofishticatedEntityModelLayers.class);
-
         this.initializer.finish();
     }
 }
