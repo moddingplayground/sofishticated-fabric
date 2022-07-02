@@ -19,16 +19,21 @@ public final class SofishticatedImpl implements Sofishticated, ModInitializer {
 		this.initializer = new InitializationLogger(LOGGER, MOD_NAME);
 	}
 
-	@SuppressWarnings("UnstableApiUsage")
 	@Override
 	public void onInitialize() {
 		this.initializer.start();
 
 		// initialize in separate calls to ensure item registry order
-		Reflection.initialize(SofishticatedRegistry.class, ShrimpVariants.class, SeahorseVariants.class);
-		Reflection.initialize(SofishticatedEntityType.class);
-		Reflection.initialize(SofishticatedSoundEvents.class, SofishticatedItemGroups.class, SofishticatedItems.class);
+		this.initialize(
+			SofishticatedRegistry.class, ShrimpVariants.class, SeahorseVariants.class,
+			SofishticatedEntityType.class, SofishticatedSoundEvents.class, SofishticatedItemGroups.class, SofishticatedItems.class
+		);
 
 		this.initializer.finish();
+	}
+
+	@SuppressWarnings("UnstableApiUsage")
+	private void initialize(Class<?>... classes) {
+		for (Class<?> clazz : classes) Reflection.initialize(clazz);
 	}
 }

@@ -8,7 +8,7 @@ plugins {
   id 'fabric-loom' version '0.12-SNAPSHOT'
   id 'maven-publish'
 
-  id 'com.modrinth.minotaur' version '2.3.+'
+  id 'com.modrinth.minotaur' version '2.+'
   id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 
@@ -56,13 +56,17 @@ dependencies {
   modImplementation "com.terraformersmc:modmenu:${project.ver_mod_menu}"
 }
 
+/* Loom */
+
+loom {
+  runtimeOnlyLog4j = true
+}
+
 /* Data Generation */
 
 def dataOutput = 'src/generated/resources'
 
 loom {
-  runtimeOnlyLog4j = true
-
   runs {
     datagen {
       server()
@@ -98,7 +102,7 @@ processResources {
       file.text = JsonOutput.toJson(new JsonSlurper().parse(file))
       bytes += oldLength - file.length()
     }
-    println("'Minified $minif json files. Saved $bytes bytes. Took ${System.currentTimeMillis() - start} ms.'")
+    println("Minified $minif json files. Saved $bytes bytes. Took ${System.currentTimeMillis() - start} ms.")
   }
 }
 
@@ -160,8 +164,8 @@ if (ENV.CURSEFORGE_API_KEY) curseforge {
     mainArtifact(remapJar) {
       displayName = VER_NAME
       relations {
-        requiredLibrary 'fabric-api'
-        requiredLibrary 'frame-api'
+        requiredDependency 'fabric-api'
+        requiredDependency 'frame-api'
       }
     }
 
