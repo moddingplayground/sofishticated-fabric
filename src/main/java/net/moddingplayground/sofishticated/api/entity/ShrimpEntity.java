@@ -264,6 +264,7 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable {
                                                     .map(RegistryEntry::value)
                                                     .ifPresent(entity::setVariant);
             } else entity.setVariant(this.getVariant());
+            entity.setPersistent();
             return entity;
         }).orElse(null);
     }
