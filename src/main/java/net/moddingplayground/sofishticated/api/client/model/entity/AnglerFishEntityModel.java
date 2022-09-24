@@ -10,22 +10,26 @@ import net.minecraft.client.model.ModelPartData;
 import net.minecraft.client.model.ModelTransform;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
-import net.minecraft.util.math.MathHelper;
 import net.moddingplayground.sofishticated.api.entity.AnglerFishEntity;
 
 import static net.minecraft.client.render.entity.model.EntityModelPartNames.*;
+import static net.minecraft.util.math.MathHelper.*;
+import static net.moddingplayground.sofishticated.api.client.model.SofishticatedEntityModelPartNames.*;
 
 @Environment(EnvType.CLIENT)
 public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePartEntityModel<E> {
-    public static final String LANTERN = "lantern";
+    public static final float
+        ANIMATION_SPEED = 2.5f,
+        ANIMATION_DEGREE = 1.5f;
 
-    private final ModelPart root;
-    private final ModelPart body;
-    private final ModelPart tail;
-    private final ModelPart lantern;
-    private final ModelPart jaw;
-    private final ModelPart leftFin;
-    private final ModelPart rightFin;
+    public final ModelPart
+        root,
+        body,
+        tail,
+        lantern,
+        jaw,
+        leftFin,
+        rightFin;
 
     public AnglerFishEntityModel(ModelPart root) {
         this.root     = root;
@@ -49,7 +53,7 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             ModelTransform.pivot(0.5F, 19.0F, -1.0F)
         );
 
-        ModelPartData tail = body.addChild(
+        body.addChild(
             TAIL,
             ModelPartBuilder.create()
                             .uv(0, 0)
@@ -57,7 +61,7 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             ModelTransform.pivot(-0.5F, 0.5F, 4.5F)
         );
 
-        ModelPartData lantern = body.addChild(
+        body.addChild(
             LANTERN,
             ModelPartBuilder.create()
                             .uv(0, 14)
@@ -67,7 +71,7 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             ModelTransform.of(-0.5F, -3.5F, -2.5F, -0.3927F, 0.0F, 0.0F)
         );
 
-        ModelPartData jaw = body.addChild(
+        body.addChild(
             JAW,
             ModelPartBuilder.create()
                             .uv(0, 16)
@@ -75,7 +79,7 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             ModelTransform.of(-0.5F, 1.0F, 3.0F, 0.1745F, 0.0F, 0.0F)
         );
 
-        ModelPartData leftFin = body.addChild(
+        body.addChild(
             LEFT_FIN,
             ModelPartBuilder.create()
                             .uv(0, 0)
@@ -83,7 +87,7 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             ModelTransform.of(3.0F, 0.0F, 1.5F, 0.0F, 0.3927F, 0.0F)
         );
 
-        ModelPartData rightFin = body.addChild(
+        body.addChild(
             RIGHT_FIN,
             ModelPartBuilder.create()
                             .uv(0, 0)
@@ -106,7 +110,7 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             ModelTransform.pivot(0.5F, 21.0F, -1.0F)
         );
 
-        ModelPartData tail = body.addChild(
+        body.addChild(
             TAIL,
             ModelPartBuilder.create()
                             .uv(0, 0)
@@ -114,7 +118,7 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             ModelTransform.pivot(-0.5F, 0.5F, 4.5F)
         );
 
-        ModelPartData lantern = body.addChild(
+        body.addChild(
             LANTERN,
             ModelPartBuilder.create()
                             .uv(0, 14)
@@ -124,7 +128,7 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             ModelTransform.of(-0.5F, -1.5F, -2.5F, -0.8727F, 0.0F, 0.0F)
         );
 
-        ModelPartData jaw = body.addChild(
+        body.addChild(
             JAW,
             ModelPartBuilder.create()
                             .uv(0, 16)
@@ -132,7 +136,7 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             ModelTransform.pivot(-0.5F, 1.0F, 3.0F)
         );
 
-        ModelPartData leftFin = body.addChild(
+        body.addChild(
             LEFT_FIN,
             ModelPartBuilder.create()
                             .uv(0, 0)
@@ -140,7 +144,7 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
             ModelTransform.of(3.0F, 0.0F, 1.5F, 0.0F, 0.3927F, 0.0F)
         );
 
-        ModelPartData rightFin = body.addChild(
+        body.addChild(
             RIGHT_FIN,
             ModelPartBuilder.create()
                             .uv(0, 0)
@@ -153,20 +157,21 @@ public class AnglerFishEntityModel<E extends AnglerFishEntity> extends SinglePar
 
     @Override
     public void setAngles(E entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-        float speed = 2.5f;
-        float degree = 1.5f;
         this.body.yaw = headYaw * 0.01F;
-        this.tail.yaw = MathHelper.cos(animationProgress * speed * 0.2F) * degree * 1.4F * 0.25F;
-        this.leftFin.yaw = MathHelper.cos(-1.0F + animationProgress * speed * 0.2F) * degree * 0.8F * 0.25F + 0.8F;
-        this.rightFin.yaw = MathHelper.cos(2.0F + animationProgress * speed * 0.2F) * degree * 0.8F * 0.25F - 0.8F;
+        this.tail.yaw = cos(animationProgress * ANIMATION_SPEED * 0.2F) * ANIMATION_DEGREE * 1.4F * 0.25F;
+        this.leftFin.yaw = cos(-1.0F + animationProgress * ANIMATION_SPEED * 0.2F) * ANIMATION_DEGREE * 0.8F * 0.25F + 0.8F;
+        this.rightFin.yaw = cos(2.0F + animationProgress * ANIMATION_SPEED * 0.2F) * ANIMATION_DEGREE * 0.8F * 0.25F - 0.8F;
 
-        if (entity.isDeflated()) return;
-        this.body.pitch = headPitch * 0.015F;
-        this.body.yaw += MathHelper.cos(animationProgress * speed * 0.2F) * degree * 0.4F * 0.25F;
-        this.jaw.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.2F * limbDistance + 0.25F;
-        this.tail.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F;
-        this.leftFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F + 0.8F;
-        this.rightFin.yaw = MathHelper.cos(3.0F + animationProgress * speed * 0.4F) * degree * 0.8F * 0.25F - 0.8F;
+        if (!entity.isDeflated()) {
+            this.body.pitch = headPitch * 0.015F;
+            this.body.yaw += cos(animationProgress * ANIMATION_SPEED * 0.2F) * ANIMATION_DEGREE * 0.4F * 0.25F;
+            this.jaw.pitch = cos(limbAngle * ANIMATION_SPEED * 0.2F) * ANIMATION_DEGREE * 0.2F * limbDistance + 0.25F;
+            this.tail.yaw = cos(animationProgress * ANIMATION_SPEED * 0.4F) * ANIMATION_DEGREE * 0.8F * 0.25F;
+            this.leftFin.yaw = cos(animationProgress * ANIMATION_SPEED * 0.4F) * ANIMATION_DEGREE * 0.8F * 0.25F + 0.8F;
+            this.rightFin.yaw = cos(3.0F + animationProgress * ANIMATION_SPEED * 0.4F) * ANIMATION_DEGREE * 0.8F * 0.25F - 0.8F;
+        }
+
+        this.lantern.visible = true;
     }
 
     @Override

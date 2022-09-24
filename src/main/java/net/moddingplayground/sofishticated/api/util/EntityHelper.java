@@ -6,7 +6,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
-import net.moddingplayground.sofishticated.mixin.LivingEntityAccessor;
+import net.moddingplayground.sofishticated.mixin.access.LivingEntityAccessor;
 
 public interface EntityHelper {
     static void playSoundFromEntity(PlayerEntity except, LivingEntity entity, SoundEvent sound) {

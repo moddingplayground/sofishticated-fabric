@@ -1,4 +1,4 @@
-package net.moddingplayground.sofishticated.impl.client.render.entity.feature;
+package net.moddingplayground.sofishticated.api.client.render.entity.feature;
 
 import com.google.common.base.Suppliers;
 import net.fabricmc.api.EnvType;

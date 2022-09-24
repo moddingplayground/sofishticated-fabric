@@ -132,24 +132,24 @@ public class SeahorseEntity extends FishEntity implements Bucketable {
     public void copyDataToStack(ItemStack stack) {
         super.copyDataToStack(stack);
         NbtCompound nbt = stack.getOrCreateNbt();
-        this.getVariant().writeNbt(nbt, KEY_BUCKET_VARIANT_TAG);
+        this.getVariant().writeNbt(nbt, BUCKET_VARIANT_TAG_KEY);
     }
 
     @Override
     public void copyDataFromNbt(NbtCompound nbt) {
         super.copyDataFromNbt(nbt);
-        this.setVariant(SeahorseVariant.readNbt(nbt, KEY_BUCKET_VARIANT_TAG));
+        this.setVariant(SeahorseVariant.readNbt(nbt, BUCKET_VARIANT_TAG_KEY));
     }
 
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        this.getVariant().writeNbt(nbt, KEY_VARIANT);
+        this.getVariant().writeNbt(nbt, VARIANT_KEY);
     }
 
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        this.setVariant(SeahorseVariant.readNbt(nbt, KEY_VARIANT));
+        this.setVariant(SeahorseVariant.readNbt(nbt, VARIANT_KEY));
     }
 }

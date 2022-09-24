@@ -1,4 +1,4 @@
-package net.moddingplayground.sofishticated.impl.data;
+package net.moddingplayground.sofishticated.impl.data.server;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -8,7 +8,7 @@ import net.moddingplayground.sofishticated.api.tag.SofishticatedShrimpVariantTag
 
 import static net.moddingplayground.sofishticated.api.entity.variant.ShrimpVariants.*;
 
-class ShrimpVariantTagProvider extends FabricTagProvider<ShrimpVariant> {
+public final class ShrimpVariantTagProvider extends FabricTagProvider<ShrimpVariant> {
     public ShrimpVariantTagProvider(FabricDataGenerator gen) {
         super(gen, SofishticatedRegistry.SHRIMP_VARIANT);
     }

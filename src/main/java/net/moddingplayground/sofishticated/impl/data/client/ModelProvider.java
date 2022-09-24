@@ -1,4 +1,4 @@
-package net.moddingplayground.sofishticated.impl.data;
+package net.moddingplayground.sofishticated.impl.data.client;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
@@ -18,7 +18,7 @@ import net.moddingplayground.sofishticated.api.item.SofishticatedItems;
 import java.util.List;
 import java.util.stream.StreamSupport;
 
-class ModelProvider extends FabricModelProvider {
+public final class ModelProvider extends FabricModelProvider {
     public ModelProvider(FabricDataGenerator gen) {
         super(gen);
     }

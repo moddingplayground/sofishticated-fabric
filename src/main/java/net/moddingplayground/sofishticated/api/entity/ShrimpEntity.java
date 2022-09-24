@@ -300,26 +300,26 @@ public class ShrimpEntity extends AnimalEntity implements Bucketable {
     public void copyDataToStack(ItemStack stack) {
         Bucketable.copyDataToStack(this, stack);
         NbtCompound nbt = stack.getOrCreateNbt();
-        this.getVariant().writeNbt(nbt, KEY_BUCKET_VARIANT_TAG);
+        this.getVariant().writeNbt(nbt, BUCKET_VARIANT_TAG_KEY);
     }
 
     @Override
     public void copyDataFromNbt(NbtCompound nbt) {
         Bucketable.copyDataFromNbt(this, nbt);
-        this.setVariant(ShrimpVariant.readNbt(nbt, KEY_BUCKET_VARIANT_TAG));
+        this.setVariant(ShrimpVariant.readNbt(nbt, BUCKET_VARIANT_TAG_KEY));
     }
 
     @Override
     public void writeCustomDataToNbt(NbtCompound nbt) {
         super.writeCustomDataToNbt(nbt);
-        this.getVariant().writeNbt(nbt, KEY_VARIANT);
-        nbt.putBoolean(KEY_FROM_BUCKET, this.isFromBucket());
+        this.getVariant().writeNbt(nbt, VARIANT_KEY);
+        nbt.putBoolean(FROM_BUCKET_KEY, this.isFromBucket());
     }
 
     @Override
     public void readCustomDataFromNbt(NbtCompound nbt) {
         super.readCustomDataFromNbt(nbt);
-        this.setVariant(ShrimpVariant.readNbt(nbt, KEY_VARIANT));
-        this.setFromBucket(nbt.getBoolean(KEY_FROM_BUCKET));
+        this.setVariant(ShrimpVariant.readNbt(nbt, VARIANT_KEY));
+        this.setFromBucket(nbt.getBoolean(FROM_BUCKET_KEY));
     }
 }

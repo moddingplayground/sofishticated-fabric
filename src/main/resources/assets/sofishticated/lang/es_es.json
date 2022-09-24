@@ -7,10 +7,10 @@
   "entity.sofishticated.reef_shark": "Tiburón de Arrecife",
   "entity.sofishticated.butterfly_fish": "Pez Mariposa",
 
-  "advancements.husbandry.reef_shark_bucket.title": "Balde Amigo",
-  "advancements.husbandry.reef_shark_bucket.description": "Atrapa un \"Intimidante\" depredador con un balde.",
-  "advancements.husbandry.shrimp_bucket.title": "Camaroncito Táctico",
-  "advancements.husbandry.shrimp_bucket.description": "Atrapa un camarón con un balde.",
+  "advancements.sofishticated.obtain_reef_shark_bucket.title": "Balde Amigo",
+  "advancements.sofishticated.obtain_reef_shark_bucket.description": "Atrapa un \"Intimidante\" depredador con un balde.",
+  "advancements.sofishticated.obtain_shrimp_bucket.title": "Camaroncito Táctico",
+  "advancements.sofishticated.obtain_shrimp_bucket.description": "Atrapa un camarón con un balde.",
 
   "death.attack.mob.sofishticated:piranha": "%1$s fue mordido hasta la muerte por %2$s",
   "death.attack.mob.sofishticated:piranha.item": "%1$s murió por %2$s sosteniendo %3$s",

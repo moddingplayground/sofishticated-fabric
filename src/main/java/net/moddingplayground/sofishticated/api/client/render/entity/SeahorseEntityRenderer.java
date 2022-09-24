@@ -1,4 +1,4 @@
-package net.moddingplayground.sofishticated.impl.client.render.entity;
+package net.moddingplayground.sofishticated.api.client.render.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;

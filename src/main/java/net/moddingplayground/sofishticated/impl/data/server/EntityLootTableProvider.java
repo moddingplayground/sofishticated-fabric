@@ -1,4 +1,4 @@
-package net.moddingplayground.sofishticated.impl.data;
+package net.moddingplayground.sofishticated.impl.data.server;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.SimpleFabricLootTableProvider;
@@ -21,7 +21,7 @@ import static net.minecraft.item.Items.*;
 import static net.minecraft.loot.context.LootContext.EntityTarget.*;
 import static net.moddingplayground.sofishticated.api.entity.SofishticatedEntityType.*;
 
-class EntityLootTableProvider extends SimpleFabricLootTableProvider {
+public final class EntityLootTableProvider extends SimpleFabricLootTableProvider {
     private static final EntityPredicate.Builder NEEDS_ENTITY_ON_FIRE = EntityPredicate.Builder.create().flags(EntityFlagsPredicate.Builder.create().onFire(true).build());
 
     public EntityLootTableProvider(FabricDataGenerator gen) {

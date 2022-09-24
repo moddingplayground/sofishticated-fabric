@@ -1,4 +1,4 @@
-package net.moddingplayground.sofishticated.impl.data;
+package net.moddingplayground.sofishticated.impl.data.server;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 
 import static net.moddingplayground.sofishticated.api.item.SofishticatedItems.*;
 
-class RecipeProvider extends FabricRecipeProvider {
+public final class RecipeProvider extends FabricRecipeProvider {
     public RecipeProvider(FabricDataGenerator gen) {
         super(gen);
     }

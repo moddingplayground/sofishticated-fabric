@@ -1,5 +1,5 @@
 package net.moddingplayground.sofishticated.api.entity;
 
-public interface FlopConditionable {
+public interface Flops {
     boolean doesFlopWhileOutOfWater();
 }

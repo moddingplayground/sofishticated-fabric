@@ -11,7 +11,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
-import net.moddingplayground.sofishticated.mixin.EntityBucketItemAccessor;
+import net.moddingplayground.sofishticated.mixin.access.EntityBucketItemAccessor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -26,8 +26,8 @@ public class VariantEntityBucketItem extends EntityBucketItem {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         NbtCompound nbt = stack.getNbt();
-        if (nbt != null && nbt.contains(KEY_BUCKET_VARIANT_TAG, NbtElement.STRING_TYPE)) {
-            String variant = nbt.getString(KEY_BUCKET_VARIANT_TAG);
+        if (nbt != null && nbt.contains(BUCKET_VARIANT_TAG_KEY, NbtElement.STRING_TYPE)) {
+            String variant = nbt.getString(BUCKET_VARIANT_TAG_KEY);
             String entityTranslation = ((EntityBucketItemAccessor) this).getEntityType().getTranslationKey();
             String key = "%s.variant.%s".formatted(entityTranslation, variant.toLowerCase());
             Text text = Text.translatable(key).formatted(Formatting.ITALIC, Formatting.GRAY);

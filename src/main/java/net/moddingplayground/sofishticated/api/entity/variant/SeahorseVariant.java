@@ -1,6 +1,5 @@
 package net.moddingplayground.sofishticated.api.entity.variant;
 
-import com.google.common.base.Suppliers;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Identifier;
 import net.moddingplayground.sofishticated.api.entity.SeahorseEntity;
@@ -8,30 +7,27 @@ import net.moddingplayground.sofishticated.api.entity.SofishticatedEntityType;
 import net.moddingplayground.sofishticated.api.registry.SofishticatedRegistry;
 import net.moddingplayground.sofishticated.api.util.TextureHelper;
 
-import java.util.function.Supplier;
-
 /**
  * Represents a variant of a {@link SeahorseEntity}.
  */
 public class SeahorseVariant {
-    private final Supplier<Identifier> texture = Suppliers.memoize(this::createTexture);
+    private Identifier texture;
 
     public SeahorseVariant() {}
-
-    private Identifier createTexture() {
-        Identifier id = SofishticatedRegistry.SEAHORSE_VARIANT.getId(this);
-        return TextureHelper.create(SofishticatedEntityType.SEAHORSE, id.getPath());
-    }
 
     /**
      * Retrieves the cached texture for this variant.
      */
     public Identifier getTexture() {
-        return this.texture.get();
+        if (this.texture == null) {
+            this.texture = TextureHelper.createTexture(SofishticatedEntityType.SEAHORSE, this.getId().getPath());
+        }
+
+        return this.texture;
     }
 
     public void writeNbt(NbtCompound nbt, String key) {
-        nbt.putString(key, this.toString());
+        nbt.putString(key, this.getStringId());
     }
 
     public static SeahorseVariant readNbt(NbtCompound nbt, String key) {
@@ -43,8 +39,12 @@ public class SeahorseVariant {
         return SofishticatedRegistry.SEAHORSE_VARIANT.getId(this);
     }
 
+    public String getStringId() {
+        return this.getId().toString();
+    }
+
     @Override
     public String toString() {
-        return this.getId().toString();
+        return this.getStringId();
     }
 }

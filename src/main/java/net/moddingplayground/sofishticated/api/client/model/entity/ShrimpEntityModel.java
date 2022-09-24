@@ -16,23 +16,27 @@ import net.minecraft.util.math.MathHelper;
 import net.moddingplayground.sofishticated.api.entity.ShrimpEntity;
 
 import static net.minecraft.client.render.entity.model.EntityModelPartNames.*;
+import static net.moddingplayground.sofishticated.api.client.model.SofishticatedEntityModelPartNames.TAIL_FIN;
+import static net.moddingplayground.sofishticated.api.client.model.SofishticatedEntityModelPartNames.*;
 
 @Environment(EnvType.CLIENT)
 public class ShrimpEntityModel<E extends ShrimpEntity> extends AnimalModel<E> {
-    public static final String TAIL_FIN = "tail_fin";
-    public static final String HANDS    = "hands";
-    public static final String FACE     = "face";
-    public static final String ANTENNAE = "antennae";
+    public static final float
+        STATIONARY_ANIMATION_SPEED = 8.0f,
+        STATIONARY_ANIMATION_DEGREE = 3.5f,
+        ANIMATION_SPEED = 4.5f,
+        ANIMATION_DEGREE = 1.5f;
 
-    private final ModelPart root;
-    private final ModelPart body;
-    private final ModelPart face;
-    private final ModelPart tail;
-    private final ModelPart tailFin;
-    private final ModelPart antennae;
-    private final ModelPart rightLeg;
-    private final ModelPart leftLeg;
-    private final ModelPart hands;
+    private final ModelPart
+        root,
+        body,
+        face,
+        tail,
+        tailFin,
+        antennae,
+        rightLeg,
+        leftLeg,
+        hands;
 
     public ShrimpEntityModel(ModelPart root) {
         super(RenderLayer::getEntityTranslucent, true, 16.0F, 0.0F, 2.0F, 2.0F, 24.0F);
@@ -69,7 +73,7 @@ public class ShrimpEntityModel<E extends ShrimpEntity> extends AnimalModel<E> {
             ModelTransform.of(0.0F, 1.5F, -2.5F, -0.1745F, 0.0F, 0.0F)
         );
 
-        ModelPartData antennae = face.addChild(
+        face.addChild(
             ANTENNAE,
             ModelPartBuilder.create()
                             .uv(0, 12)
@@ -85,7 +89,7 @@ public class ShrimpEntityModel<E extends ShrimpEntity> extends AnimalModel<E> {
             ModelTransform.of(0.0F, 0.0F, 2.0F, 0.2618F, 0.0F, 0.0F)
         );
 
-        ModelPartData tailFin = tail.addChild(
+        tail.addChild(
             TAIL_FIN,
             ModelPartBuilder.create()
                             .uv(16, 2)
@@ -93,7 +97,7 @@ public class ShrimpEntityModel<E extends ShrimpEntity> extends AnimalModel<E> {
             ModelTransform.of(0.0F, 0.0F, 4.8F, -0.5236F, 0.0F, 0.0F)
         );
 
-        ModelPartData rightLeg = body.addChild(
+        body.addChild(
             RIGHT_LEG,
             ModelPartBuilder.create()
                             .uv(16, 10)
@@ -102,7 +106,7 @@ public class ShrimpEntityModel<E extends ShrimpEntity> extends AnimalModel<E> {
             ModelTransform.of(-1.0F, 3.0F, -0.5F, 0.0F, 0.0F, 0.7854F)
         );
 
-        ModelPartData leftLeg = body.addChild(
+        body.addChild(
             LEFT_LEG,
             ModelPartBuilder.create()
                             .uv(16, 10)
@@ -110,7 +114,7 @@ public class ShrimpEntityModel<E extends ShrimpEntity> extends AnimalModel<E> {
             ModelTransform.of(1.0F, 3.0F, -0.5F, 0.0F, 0.0F, -0.7854F)
         );
 
-        ModelPartData hands = body.addChild(
+        body.addChild(
             HANDS,
             ModelPartBuilder.create()
                             .uv(22, 6)
@@ -124,32 +128,31 @@ public class ShrimpEntityModel<E extends ShrimpEntity> extends AnimalModel<E> {
     @Override
     public void setAngles(E entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
         if (entity.getVelocity().length() <= 0.1D && !entity.isSubmergedInWater()) {
-            float speed = 8.0f;
-            float degree = 3.5f;
-            this.tail.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.4F * limbDistance + 0.25F;
-            this.tailFin.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.4F * limbDistance - 0.25F;
-            this.antennae.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.6F * limbDistance - 1.0F;
-            this.body.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.1F * limbDistance;
-            this.body.yaw = MathHelper.cos(1.5F + limbAngle * speed * 0.2F) * degree * 0.2F * limbDistance;
-            this.hands.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.6F * limbDistance;
-            this.rightLeg.roll = MathHelper.cos(3.0F + limbAngle * speed * 0.6F) * degree * 0.4F * limbDistance + 0.8F;
-            this.leftLeg.roll = MathHelper.cos(3.0F + limbAngle * speed * 0.6F) * degree * 0.4F * limbDistance - 0.8F;
-            this.rightLeg.yaw = MathHelper.cos(3.0F + limbAngle * speed * 0.6F) * degree * 0.1F * limbDistance;
-            this.leftLeg.yaw = MathHelper.cos(3.0F + limbAngle * speed * 0.6F) * degree * 0.1F * limbDistance;
+            this.tail.pitch = MathHelper.cos(limbAngle * STATIONARY_ANIMATION_SPEED * 0.2F) * STATIONARY_ANIMATION_DEGREE * 0.4F * limbDistance + 0.25F;
+            this.tailFin.pitch = MathHelper.cos(limbAngle * STATIONARY_ANIMATION_SPEED * 0.2F) * STATIONARY_ANIMATION_DEGREE * 0.4F * limbDistance - 0.25F;
+            this.antennae.pitch = MathHelper.cos(limbAngle * STATIONARY_ANIMATION_SPEED * 0.2F) * STATIONARY_ANIMATION_DEGREE * 0.6F * limbDistance - 1.0F;
+            this.body.pitch = MathHelper.cos(limbAngle * STATIONARY_ANIMATION_SPEED * 0.2F) * STATIONARY_ANIMATION_DEGREE * 0.1F * limbDistance;
+            this.body.yaw = MathHelper.cos(1.5F + limbAngle * STATIONARY_ANIMATION_SPEED * 0.2F) * STATIONARY_ANIMATION_DEGREE * 0.2F * limbDistance;
+            this.hands.pitch = MathHelper.cos(limbAngle * STATIONARY_ANIMATION_SPEED * 0.2F) * STATIONARY_ANIMATION_DEGREE * 0.6F * limbDistance;
+            this.rightLeg.roll = MathHelper.cos(3.0F + limbAngle * STATIONARY_ANIMATION_SPEED * 0.6F) * STATIONARY_ANIMATION_DEGREE * 0.4F * limbDistance + 0.8F;
+            this.leftLeg.roll = MathHelper.cos(3.0F + limbAngle * STATIONARY_ANIMATION_SPEED * 0.6F) * STATIONARY_ANIMATION_DEGREE * 0.4F * limbDistance - 0.8F;
+            this.rightLeg.yaw = MathHelper.cos(3.0F + limbAngle * STATIONARY_ANIMATION_SPEED * 0.6F) * STATIONARY_ANIMATION_DEGREE * 0.1F * limbDistance;
+            this.leftLeg.yaw = MathHelper.cos(3.0F + limbAngle * STATIONARY_ANIMATION_SPEED * 0.6F) * STATIONARY_ANIMATION_DEGREE * 0.1F * limbDistance;
         } else {
-            float speed = 4.5f;
-            float degree = 1.5f;
-            this.tail.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.4F * limbDistance + 0.25F;
-            this.tailFin.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.4F * limbDistance - 0.25F;
-            this.antennae.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.6F * limbDistance - 1.0F;
-            this.body.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.1F * limbDistance;
-            this.body.yaw = MathHelper.cos(1.5F + limbAngle * speed * 0.2F) * degree * 0.2F * limbDistance;
-            this.hands.pitch = MathHelper.cos(limbAngle * speed * 0.2F) * degree * 0.6F * limbDistance;
-            this.rightLeg.roll = MathHelper.cos(3.0F + limbAngle * speed * 0.6F) * degree * 0.4F * limbDistance + 0.8F;
-            this.leftLeg.roll = MathHelper.cos(3.0F + limbAngle * speed * 0.6F) * degree * 0.4F * limbDistance - 0.8F;
-            this.rightLeg.yaw = MathHelper.cos(3.0F + limbAngle * speed * 0.6F) * degree * 0.1F * limbDistance;
-            this.leftLeg.yaw = MathHelper.cos(3.0F + limbAngle * speed * 0.6F) * degree * 0.1F * limbDistance;
+            this.tail.pitch = MathHelper.cos(limbAngle * ANIMATION_SPEED * 0.2F) * ANIMATION_DEGREE * 0.4F * limbDistance + 0.25F;
+            this.tailFin.pitch = MathHelper.cos(limbAngle * ANIMATION_SPEED * 0.2F) * ANIMATION_DEGREE * 0.4F * limbDistance - 0.25F;
+            this.antennae.pitch = MathHelper.cos(limbAngle * ANIMATION_SPEED * 0.2F) * ANIMATION_DEGREE * 0.6F * limbDistance - 1.0F;
+            this.body.pitch = MathHelper.cos(limbAngle * ANIMATION_SPEED * 0.2F) * ANIMATION_DEGREE * 0.1F * limbDistance;
+            this.body.yaw = MathHelper.cos(1.5F + limbAngle * ANIMATION_SPEED * 0.2F) * ANIMATION_DEGREE * 0.2F * limbDistance;
+            this.hands.pitch = MathHelper.cos(limbAngle * ANIMATION_SPEED * 0.2F) * ANIMATION_DEGREE * 0.6F * limbDistance;
+            this.rightLeg.roll = MathHelper.cos(3.0F + limbAngle * ANIMATION_SPEED * 0.6F) * ANIMATION_DEGREE * 0.4F * limbDistance + 0.8F;
+            this.leftLeg.roll = MathHelper.cos(3.0F + limbAngle * ANIMATION_SPEED * 0.6F) * ANIMATION_DEGREE * 0.4F * limbDistance - 0.8F;
+            this.rightLeg.yaw = MathHelper.cos(3.0F + limbAngle * ANIMATION_SPEED * 0.6F) * ANIMATION_DEGREE * 0.1F * limbDistance;
+            this.leftLeg.yaw = MathHelper.cos(3.0F + limbAngle * ANIMATION_SPEED * 0.6F) * ANIMATION_DEGREE * 0.1F * limbDistance;
         }
+
+        this.root.visible = true;
+        this.face.visible = true;
     }
 
     @Override

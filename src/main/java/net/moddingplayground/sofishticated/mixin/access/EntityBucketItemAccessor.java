@@ -1,4 +1,4 @@
-package net.moddingplayground.sofishticated.mixin;
+package net.moddingplayground.sofishticated.mixin.access;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.item.EntityBucketItem;

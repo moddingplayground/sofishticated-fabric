@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:husbandry/tactical_fishing",
+  "criteria": {
+    "obtain_shrimp_bucket": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sofishticated:shrimp_bucket"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.sofishticated.obtain_shrimp_bucket.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "sofishticated:shrimp_bucket"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.sofishticated.obtain_shrimp_bucket.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_shrimp_bucket"
+    ]
+  ]
+}

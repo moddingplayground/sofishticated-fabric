@@ -26,12 +26,13 @@ import net.moddingplayground.sofishticated.api.sound.SofishticatedSoundEvents;
 import net.moddingplayground.sofishticated.api.tag.SofishticatedItemTags;
 import net.moddingplayground.sofishticated.api.util.EntityHelper;
 
-public class AnglerFishEntity extends TiltingFishEntity implements Bucketable, DeepLurker, FlopConditionable {
+public class AnglerFishEntity extends TiltingFishEntity implements Bucketable, DeepLurker, Flops {
     public static final Ingredient TEMPT_INGREDIENT = Ingredient.fromTag(SofishticatedItemTags.ANGLER_FISH_TEMPTS);
     public static final String LAST_EFFECT_GIVEN_KEY = "LastEffectGiven";
 
-    public static final int EFFECT_DURATION = 40;
-    public static final int EFFECT_DELAY = EFFECT_DURATION + 20;
+    public static final int
+        EFFECT_DURATION = 40,
+        EFFECT_DELAY = EFFECT_DURATION + 20;
 
     private boolean lastDeflated;
     private long lastDeflationSound;

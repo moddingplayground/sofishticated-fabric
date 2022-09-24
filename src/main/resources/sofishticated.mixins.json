@@ -3,12 +3,12 @@
   "minVersion": "0.8",
   "compatibilityLevel": "JAVA_17",
   "package": "net.moddingplayground.sofishticated.mixin",
+  "mixins": [
+    "FishEntityMixin",
+    "access.EntityBucketItemAccessor",
+    "access.LivingEntityAccessor"
+  ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "mixins": [
-    "EntityBucketItemAccessor",
-    "FishEntityMixin",
-    "LivingEntityAccessor"
-  ]
+  }
 }

@@ -1,4 +1,4 @@
-package net.moddingplayground.sofishticated.impl.data;
+package net.moddingplayground.sofishticated.impl.data.server;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -8,7 +8,7 @@ import net.moddingplayground.sofishticated.api.tag.SofishticatedItemTags;
 import static net.minecraft.item.Items.*;
 import static net.moddingplayground.sofishticated.api.item.SofishticatedItems.*;
 
-class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
+public final class ItemTagProvider extends FabricTagProvider.ItemTagProvider {
     public ItemTagProvider(FabricDataGenerator gen, BlockTagProvider blockTagProvider) {
         super(gen, blockTagProvider);
     }

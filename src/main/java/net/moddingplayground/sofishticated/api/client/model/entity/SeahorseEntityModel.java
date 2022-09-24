@@ -9,26 +9,28 @@ import net.minecraft.client.model.ModelPartData;
 import net.minecraft.client.model.ModelTransform;
 import net.minecraft.client.model.TexturedModelData;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
-import net.minecraft.util.math.MathHelper;
 import net.moddingplayground.sofishticated.api.entity.SeahorseEntity;
 
 import static net.minecraft.client.render.entity.model.EntityModelPartNames.*;
+import static net.minecraft.util.math.MathHelper.*;
+import static net.moddingplayground.sofishticated.api.client.model.SofishticatedEntityModelPartNames.*;
 
 @Environment(EnvType.CLIENT)
 public class SeahorseEntityModel<E extends SeahorseEntity> extends SinglePartEntityModel<E> {
-    public static final String TAIL_BASE = "tail_base";
-    public static final String SNOUT     = "snout";
-    public static final String CREST     = "crest";
+    public static final float
+        ANIMATION_SPEED = 2.0f,
+        ANIMATION_DEGREE = 1.0f;
 
-    private final ModelPart root;
-    private final ModelPart body;
-    private final ModelPart tailBase;
-    private final ModelPart tail;
-    private final ModelPart leftFin;
-    private final ModelPart rightFin;
-    private final ModelPart head;
-    private final ModelPart snout;
-    private final ModelPart crest;
+    private final ModelPart
+        root,
+        body,
+        tailBase,
+        tail,
+        leftFin,
+        rightFin,
+        head,
+        snout,
+        crest;
 
     public SeahorseEntityModel(ModelPart root) {
         this.root     = root;
@@ -62,7 +64,7 @@ public class SeahorseEntityModel<E extends SeahorseEntity> extends SinglePartEnt
             ModelTransform.pivot(0.0F, 3.0F, 0.5F)
         );
 
-        ModelPartData tail = tailBase.addChild(
+        tailBase.addChild(
             TAIL,
             ModelPartBuilder.create()
                             .uv(14, 0)
@@ -70,7 +72,7 @@ public class SeahorseEntityModel<E extends SeahorseEntity> extends SinglePartEnt
             ModelTransform.pivot(0.0F, 1.0F, 0.0F)
         );
 
-        ModelPartData leftFin = body.addChild(
+        body.addChild(
             LEFT_FIN,
             ModelPartBuilder.create()
                             .uv(0, 0)
@@ -78,7 +80,7 @@ public class SeahorseEntityModel<E extends SeahorseEntity> extends SinglePartEnt
             ModelTransform.pivot(-1.5F, 1.0F, 0.0F)
         );
 
-        ModelPartData rightFin = body.addChild(
+        body.addChild(
             RIGHT_FIN,
             ModelPartBuilder.create()
                             .uv(0, 0)
@@ -94,7 +96,7 @@ public class SeahorseEntityModel<E extends SeahorseEntity> extends SinglePartEnt
             ModelTransform.pivot(0.0F, -2.0F, 0.0F)
         );
 
-        ModelPartData snout = head.addChild(
+        head.addChild(
             SNOUT,
             ModelPartBuilder.create()
                             .uv(16, 17)
@@ -102,7 +104,7 @@ public class SeahorseEntityModel<E extends SeahorseEntity> extends SinglePartEnt
             ModelTransform.pivot(0.1F, 0.5F, -2.5F)
         );
 
-        ModelPartData crest = head.addChild(
+        head.addChild(
             CREST,
             ModelPartBuilder.create()
                             .uv(0, 4)
@@ -115,18 +117,20 @@ public class SeahorseEntityModel<E extends SeahorseEntity> extends SinglePartEnt
 
     @Override
     public void setAngles(E entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
-        float speed = 2.0f;
-        float degree = 1.0f;
         if (entity.isSubmergedInWater()) {
             this.head.pitch = headPitch * (float) (Math.PI / 180);
             this.head.yaw = headYaw * (float) (Math.PI / 180);
         }
-        this.body.pivotY = MathHelper.cos(animationProgress * speed * 0.1F) * degree * 0.5F * 0.25F + 17.0F;
-        this.leftFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * -1.8F * 0.25F - 0.6F;
-        this.rightFin.yaw = MathHelper.cos(animationProgress * speed * 0.4F) * degree * 1.8F * 0.25F + 0.6F;
-        this.tailBase.pitch = MathHelper.cos(-1.0F + animationProgress * speed * 0.1F) * degree * 0.6F * 0.25F;
-        this.tail.pitch = MathHelper.cos(-2.0F + animationProgress * speed * 0.1F) * degree * 0.6F * 0.25F;
-        this.body.pitch = MathHelper.cos(animationProgress * speed * 0.1F) * degree * 0.4F * 0.25F;
+
+        this.body.pivotY = cos(animationProgress * ANIMATION_SPEED * 0.1F) * ANIMATION_DEGREE * 0.5F * 0.25F + 17.0F;
+        this.leftFin.yaw = cos(animationProgress * ANIMATION_SPEED * 0.4F) * ANIMATION_DEGREE * -1.8F * 0.25F - 0.6F;
+        this.rightFin.yaw = cos(animationProgress * ANIMATION_SPEED * 0.4F) * ANIMATION_DEGREE * 1.8F * 0.25F + 0.6F;
+        this.tailBase.pitch = cos(-1.0F + animationProgress * ANIMATION_SPEED * 0.1F) * ANIMATION_DEGREE * 0.6F * 0.25F;
+        this.tail.pitch = cos(-2.0F + animationProgress * ANIMATION_SPEED * 0.1F) * ANIMATION_DEGREE * 0.6F * 0.25F;
+        this.body.pitch = cos(animationProgress * ANIMATION_SPEED * 0.1F) * ANIMATION_DEGREE * 0.4F * 0.25F;
+
+        this.snout.visible = true;
+        this.crest.visible = true;
     }
 
     @Override

@@ -1,11 +1,11 @@
-buildscript { dependencies { classpath 'org.kohsuke:github-api:1.303' } }
+buildscript { dependencies { classpath 'org.kohsuke:github-api:1.308' } }
 
 plugins {
   id 'java-library'
   id 'idea'
   id 'eclipse'
 
-  id 'fabric-loom' version '0.12-SNAPSHOT'
+  id 'fabric-loom' version '1.0-SNAPSHOT'
   id 'maven-publish'
 
   id 'com.modrinth.minotaur' version '2.+'
@@ -19,14 +19,17 @@ def ENV = System.getenv()
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
 tasks.withType(JavaCompile).configureEach { it.options.release = 17 }
 
-String ver = "${project.version_id}+${project.major_version}"
+String ver = "${project.version_id}+${project.major_version}-fabric"
 version = ENV.GITHUB_ACTIONS ? "${ver}.build.${ENV.GITHUB_RUN_NUMBER}" : ver
 
+archivesBaseName = project.mod_id
 group = project.maven_group
 
 /* Dependencies */
 
 repositories {
+  /* Frame */
+
   maven {
     name = 'Modding Playground'
     url  = 'https://raw.githubusercontent.com/moddingplayground/maven/main/'
@@ -36,6 +39,8 @@ repositories {
     name = 'Shedaniel'
     url  = 'https://maven.shedaniel.me/'
   }
+
+  /* Mod Menu */
 
   maven {
     name = 'Terraformers'
@@ -50,7 +55,9 @@ dependencies {
 
   // api
   modImplementation "net.fabricmc.fabric-api:fabric-api:${project.ver_fabric}"
-  modImplementation "net.moddingplayground.frame:frame-fabric:${project.ver_frame}"
+  modImplementation ("net.moddingplayground.frame:frame-fabric:${project.ver_frame}-fabric") {
+    exclude module: 'frame-enchantments-v0'
+  }
 
   // integration
   modImplementation "com.terraformersmc:modmenu:${project.ver_mod_menu}"
@@ -60,11 +67,12 @@ dependencies {
 
 loom {
   runtimeOnlyLog4j = true
+  accessWidenerPath = file("src/main/resources/${project.mod_id}.accesswidener")
 }
 
 /* Data Generation */
 
-def dataOutput = 'src/generated/resources'
+def dataOutput = 'src/main/generated'
 
 loom {
   runs {
@@ -111,12 +119,24 @@ jar { from('README.md', 'LICENSE', 'LICENSE_ASSETS') exclude('.cache') }
 
 /* Publishing */
 
-publishing { publications { mavenJava(MavenPublication) { from components.java } } }
+java { withSourcesJar() }
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      artifact(remapJar) { builtBy remapJar }
+      artifact(sourcesJar) { builtBy remapSourcesJar }
+    }
+  }
+}
+
+loom { disableDeprecatedPomGeneration(publishing.publications.mavenJava) }
 
 /* Releasing */
 
 def VER_NAME = "[$project.major_version] $project.mod_name $project.version_id"
 def CHANGELOG = new File("./gradle", "CHANGELOG.md").text
+def SUPPORTED_VERSIONS = Arrays.asList(project.supported_versions.split(','))
 
 import org.kohsuke.github.*
 task github(dependsOn: build) {
@@ -129,7 +149,7 @@ task github(dependsOn: build) {
     builder.name(VER_NAME)
     builder.body(CHANGELOG)
     builder.commitish(project.github_branch)
-    builder.prerelease(project.release_type == 'beta')
+    builder.prerelease(project.release_type != 'release')
     builder.create().uploadAsset(file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar"), "application/java-archive");
   }
 }
@@ -143,7 +163,7 @@ if (ENV.MODRINTH_TOKEN) modrinth {
   versionType = project.release_type
   changelog = CHANGELOG
   uploadFile = remapJar
-  gameVersions = [ project.ver_minecraft ]
+  gameVersions = SUPPORTED_VERSIONS
   dependencies = [
           new ModDependency("fabric-api", DependencyType.REQUIRED),
           new ModDependency("frame-api", DependencyType.REQUIRED)
@@ -155,8 +175,8 @@ if (ENV.CURSEFORGE_API_KEY) curseforge {
 
   project {
     id = project.curseforge_id
-    addGameVersion project.curseforge_version
     addGameVersion 'Fabric'
+    for (final def cf_ver in SUPPORTED_VERSIONS) addGameVersion cf_ver
 
     changelog = CHANGELOG
     releaseType = project.release_type

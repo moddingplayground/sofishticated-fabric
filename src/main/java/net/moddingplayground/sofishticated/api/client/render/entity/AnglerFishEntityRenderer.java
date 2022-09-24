@@ -1,4 +1,4 @@
-package net.moddingplayground.sofishticated.impl.client.render.entity;
+package net.moddingplayground.sofishticated.api.client.render.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -11,24 +11,24 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3f;
 import net.moddingplayground.sofishticated.api.client.model.SofishticatedEntityModelLayers;
 import net.moddingplayground.sofishticated.api.client.model.entity.AnglerFishEntityModel;
+import net.moddingplayground.sofishticated.api.client.render.entity.feature.EmissiveLayerFeatureRenderer;
 import net.moddingplayground.sofishticated.api.entity.AnglerFishEntity;
 import net.moddingplayground.sofishticated.api.entity.SofishticatedEntityType;
 import net.moddingplayground.sofishticated.api.util.TextureHelper;
-import net.moddingplayground.sofishticated.impl.client.render.entity.feature.EmissiveLayerFeatureRenderer;
 
 import java.util.function.Predicate;
 
 @Environment(EnvType.CLIENT)
 public class AnglerFishEntityRenderer<E extends AnglerFishEntity> extends MobEntityRenderer<E, AnglerFishEntityModel<E>> {
-    public static final Identifier TEXTURE = TextureHelper.create(SofishticatedEntityType.ANGLER_FISH);
-    public static final Identifier TEXTURE_EMISSIVE = TextureHelper.create(SofishticatedEntityType.ANGLER_FISH, "bioluminescence");
-    public static final Identifier TEXTURE_DEFLATED = TextureHelper.create(SofishticatedEntityType.ANGLER_FISH, "deflated");
+    public static final Identifier TEXTURE = TextureHelper.createTexture(SofishticatedEntityType.ANGLER_FISH);
+    public static final Identifier TEXTURE_EMISSIVE = TextureHelper.createTexture(SofishticatedEntityType.ANGLER_FISH, "bioluminescence");
+    public static final Identifier TEXTURE_DEFLATED = TextureHelper.createTexture(SofishticatedEntityType.ANGLER_FISH, "deflated");
 
     private final AnglerFishEntityModel<E> normalModel, deflatedModel;
 
     public AnglerFishEntityRenderer(EntityRendererFactory.Context context) {
         super(context, null, 0.3F);
-        this.addFeature(new EmissiveLayerFeatureRenderer<>(this, TEXTURE_EMISSIVE, Predicate.not(E::isDeflated)));
+        this.addFeature(new EmissiveLayerFeatureRenderer<>(this, TEXTURE_EMISSIVE, Predicate.not(AnglerFishEntity::isDeflated)));
 
         this.model = this.normalModel = createModel(context, SofishticatedEntityModelLayers.ANGLER_FISH);
         this.deflatedModel = createModel(context, SofishticatedEntityModelLayers.ANGLER_FISH_DEFLATED);
